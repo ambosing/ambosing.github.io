@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[제멋대로맛 초코볼]]></title><description><![CDATA[이것저것 하고 싶은 개발자의 기술블로그]]></description><link>https://ambosing.github.io/</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 08 May 2023 10:05:09 GMT</lastBuildDate><author><![CDATA[Ambosing]]></author><item><title><![CDATA[마크다운 문법 모음집]]></title><description><![CDATA[블로그 디자인하려고 올린 게시글]]></description><link>https://ambosing.github.io/others/markdown/</link><guid isPermaLink="false">https://ambosing.github.io/others/markdown/</guid><category><![CDATA[Others]]></category><dc:creator><![CDATA[Ambosing]]></dc:creator><pubDate>Mon, 27 Mar 2023 15:00:00 GMT</pubDate><content:encoded>&lt;h1 id=&quot;this-is-a-h1&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#this-is-a-h1&quot; aria-label=&quot;this is a h1 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;This is a H1&lt;/h1&gt;
+&lt;h2 id=&quot;this-is-a-h2&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#this-is-a-h2&quot; aria-label=&quot;this is a h2 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;This is a H2&lt;/h2&gt;
+&lt;h3 id=&quot;this-is-a-h3&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#this-is-a-h3&quot; aria-label=&quot;this is a h3 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;This is a H3&lt;/h3&gt;
+&lt;h4 id=&quot;this-is-a-h4&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#this-is-a-h4&quot; aria-label=&quot;this is a h4 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;This is a H4&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This is a first blockquote.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This is a second blockquote.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This is a third blockquote.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;이것은 인용구입니다&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;첫번째&lt;/li&gt;
+&lt;li&gt;두번째
+&lt;ol&gt;
+&lt;li&gt;두번째 안의 첫번째&lt;/li&gt;
+&lt;li&gt;두번째 안의 두번째
+&lt;ol&gt;
+&lt;li&gt;두번째 안의 두번째 안의 첫번째&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;세번째&lt;/li&gt;
+&lt;li&gt;네번째&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;빨강&lt;/li&gt;
+&lt;li&gt;분홍&lt;/li&gt;
+&lt;li&gt;보라
+&lt;ul&gt;
+&lt;li&gt;녹색
+&lt;ul&gt;
+&lt;li&gt;파랑&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;검정&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;1단계
+&lt;ul&gt;
+&lt;li&gt;2단계
+&lt;ul&gt;
+&lt;li&gt;3단계
+&lt;ul&gt;
+&lt;li&gt;4단계&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt; is code block&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;code-header&quot;&gt;
+	&lt;span class=&quot;red btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;yellow btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;green btn&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt; is code block too&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;em&gt;기울임꼴&lt;/em&gt;
+&lt;em&gt;기울임꼴&lt;/em&gt;
+&lt;strong&gt;강조하기&lt;/strong&gt;
+&lt;strong&gt;강조하기&lt;/strong&gt;
+&lt;del&gt;취소선&lt;/del&gt;
+&lt;mark&gt;형광펜 강조&lt;/mark&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;테이블1&lt;/th&gt;
+&lt;th&gt;테이블2&lt;/th&gt;
+&lt;th&gt;테이블3&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;내용1&lt;/td&gt;
+&lt;td&gt;내용2&lt;/td&gt;
+&lt;td&gt;내용3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;내용1&lt;/td&gt;
+&lt;td&gt;내용2&lt;/td&gt;
+&lt;td&gt;내용3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;내용1&lt;/td&gt;
+&lt;td&gt;내용2&lt;/td&gt;
+&lt;td&gt;내용3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;이건 줄바꿈 안한 문장&lt;/p&gt;
+&lt;p&gt;줄 바꿈을 하기 위해서는 문장 마지막에서 &lt;strong&gt;3칸이상&lt;/strong&gt;을 띄어쓰기해야 한다.&lt;br&gt;
+이렇게&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;줄 바꿈을 하기 위해서는 문장 마지막에서 3칸이상을 띄어쓰기해야 한다.&lt;br&gt;
+이렇게&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 640px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/d9c170bc6185d663e6c13f49d45919e8/0c8fb/2023-03-29-14-49-13.webp&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 66.66666666666666%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAABQAwCdASoUAA0APtFUo0uoJKMhsAgBABoJZwDDNCHhVhc3HAD+8dMKnsLDvXnbxvt8GHD9EDGaWOgl0iNmEq00rW4nrTnL9M69Xv3xu2qEAAAA&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/d9c170bc6185d663e6c13f49d45919e8/a59e9/2023-03-29-14-49-13.webp 192w,
+/static/d9c170bc6185d663e6c13f49d45919e8/0ca9f/2023-03-29-14-49-13.webp 384w,
+/static/d9c170bc6185d663e6c13f49d45919e8/0c8fb/2023-03-29-14-49-13.webp 640w&quot;
+              sizes=&quot;(max-width: 640px) 100vw, 640px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/d9c170bc6185d663e6c13f49d45919e8/a59e9/2023-03-29-14-49-13.webp 192w,
+/static/d9c170bc6185d663e6c13f49d45919e8/0ca9f/2023-03-29-14-49-13.webp 384w,
+/static/d9c170bc6185d663e6c13f49d45919e8/0c8fb/2023-03-29-14-49-13.webp 640w&quot;
+            sizes=&quot;(max-width: 640px) 100vw, 640px&quot;
+            type=&quot;image/webp&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/d9c170bc6185d663e6c13f49d45919e8/0c8fb/2023-03-29-14-49-13.webp&quot;
+            alt=&quot;2023 03 29 14 49 13&quot;
+            title=&quot;&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;이미지&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;참고 게시글: &lt;a href=&quot;https://gist.github.com/ihoneymon/652be052a0727ad59601&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;&lt;a href=&quot;https://gist.github.com/ihoneymon/652be052a0727ad59601&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;https://gist.github.com/ihoneymon/652be052a0727ad59601&lt;/a&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded></item></channel></rss>
