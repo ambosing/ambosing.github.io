@@ -77,7 +77,7 @@ __강조하기__
 ![](../images/content/2023-03-29-14-49-13.webp)
 
 이미지
-
+![](../images/content/2023-05-09-18-33-20.png)
 ---
 
 참고 게시글: [<https://gist.github.com/ihoneymon/652be052a0727ad59601>](https://gist.github.com/ihoneymon/652be052a0727ad59601)
