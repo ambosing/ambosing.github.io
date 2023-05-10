@@ -134,11 +134,7 @@ export const Template: FunctionComponent<TemplateProps> = ({
 
         <meta
           name="google-site-verification"
-          content="QxP8HV3avuS-TynhxJcJZBJnyXaInJHSmpLvXF9PiWU"
-        />
-        <meta
-          name="naver-site-verification"
-          content="ae65cb659d9c9ea1ae78b5b3cf6745526fe8ef8d"
+          content="YHcIQTesSp-p83_hLmhPoI-W7Zi4TNRo1jFDNIW1WD0"
         />
 
         <html lang="ko" />
