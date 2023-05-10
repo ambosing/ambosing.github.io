@@ -136,6 +136,10 @@ export const Template: FunctionComponent<TemplateProps> = ({
           name="google-site-verification"
           content="YHcIQTesSp-p83_hLmhPoI-W7Zi4TNRo1jFDNIW1WD0"
         />
+        <meta
+          name="naver-site-verification"
+          content="2b9dcd2de5f321382d275b22b42f3380d274a383"
+        />
 
         <html lang="ko" />
       </Helmet>
