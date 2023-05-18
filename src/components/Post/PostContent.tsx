@@ -336,6 +336,12 @@ const MarkdownRenderer = styled.div`
     color: #cc99cd;
   }
 
+  code.language-text {
+    background-color: #dfe0df;
+    color: #c25450;
+    padding: 0 8px;
+  }
+
   .code-header {
     display: flex;
     align-items: center;

@@ -38,7 +38,7 @@ thumbnail: '../images/thumbnail/chocoball.webp'
       + 4단계
 
 
-```javascript
+```python
 this is code block
 ```
 
@@ -48,7 +48,7 @@ this is code block
 	<span class="green btn"></span>
 </div>
 
-```javascript
+```python
 this is code block too
 ```
 
