@@ -70,13 +70,29 @@
 <ul>
 <li><a href="#-%EC%A0%84%ED%99%94%EB%B2%88%ED%98%B8-%EC%A0%95%EA%B7%9C%ED%91%9C%ED%98%84%EC%8B%9D-%ED%8C%A8%ED%84%B4">📞 전화번호 정규표현식 패턴</a></li>
 <li><a href="#-%EC%9D%B4%EB%A9%94%EC%9D%BC-%EC%A0%95%EA%B7%9C%ED%91%9C%ED%98%84%EC%8B%9D-%ED%8C%A8%ED%84%B4">✉ 이메일 정규표현식 패턴</a></li>
+<li><a href="#%EC%88%98%EC%8B%9D-%EB%B6%84%EB%A6%AC%ED%95%98%EA%B8%B0">수식 분리하기</a></li>
 </ul>
 </li>
 <li>
 <p><a href="#%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%A0%95%EA%B7%9C%ED%91%9C%ED%98%84%EC%8B%9D-re-%EB%AA%A8%EB%93%88">파이썬 정규표현식 re 모듈</a></p>
 <ul>
-<li><a href="#rematchpattern-string-flags0">re.match(pattern, string, flags=0)</a></li>
+<li><a href="#%EB%AC%B8%EC%9E%90%EC%97%B4%EC%9D%98-%EC%8B%9C%EC%9E%91%EB%B6%80%EB%B6%84%EB%B6%80%ED%84%B0-%ED%8C%A8%ED%84%B4%EC%9D%B4-%EB%A7%A4%EC%B9%98%EB%90%98%EB%8A%94%EC%A7%80-%ED%99%95%EC%9D%B8%ED%95%98%EB%8A%94-%ED%95%A8%EC%88%98rematch">문자열의 시작부분부터 패턴이 매치되는지 확인하는 함수(re.match)</a></li>
+<li><a href="#%EB%AC%B8%EC%9E%90%EC%97%B4-%EC%A0%84%EC%B2%B4%EC%97%90%EC%84%9C-%ED%8C%A8%ED%84%B4%EC%9D%B4-%EB%A7%A4%EC%B9%98%EB%90%98%EB%8A%94-%EB%B6%80%EB%B6%84%EC%9D%84-%EC%B0%BE%EB%8A%94-%ED%95%A8%EC%88%98research">문자열 전체에서 패턴이 매치되는 부분을 찾는 함수(re.search)</a></li>
+<li><a href="#%EB%AC%B8%EC%9E%90%EC%97%B4-%EC%A0%84%EC%B2%B4%EC%97%90%EC%84%9C-%ED%8C%A8%ED%84%B4%EC%97%90-%EB%A7%A4%EC%B9%98%EB%90%98%EB%8A%94-%EB%AA%A8%EB%93%A0-%EB%B6%80%EB%B6%84%EC%9D%84-%EC%B0%BE%EC%95%84-%EB%A6%AC%EC%8A%A4%ED%8A%B8%EB%A1%9C-%EB%B0%98%ED%99%98%ED%95%98%EB%8A%94-%ED%95%A8%EC%88%98refindall">문자열 전체에서 패턴에 매치되는 모든 부분을 찾아 리스트로 반환하는 함수(re.findall)</a></li>
+<li><a href="#%EB%AC%B8%EC%9E%90%EC%97%B4-%EB%82%B4%EC%97%90%EC%84%9C-%ED%8C%A8%ED%84%B4%EC%97%90-%EB%A7%A4%EC%B9%98%EB%90%98%EB%8A%94-%EB%B6%80%EB%B6%84%EC%9D%84-%EB%8B%A4%EB%A5%B8-%EB%AC%B8%EC%9E%90%EC%97%B4%EB%A1%9C-%EA%B5%90%EC%B2%B4%ED%95%98%EB%8A%94-%ED%95%A8%EC%88%98resub">문자열 내에서 패턴에 매치되는 부분을 다른 문자열로 교체하는 함수(re.sub)</a></li>
 </ul>
+</li>
+<li>
+<p><a href="#%EC%A0%95%EA%B7%9C%EC%8B%9D-%ED%94%8C%EB%9E%98%EA%B7%B8">정규식 플래그</a></p>
+</li>
+<li>
+<p><a href="#%EC%A0%95%EA%B7%9C%EC%8B%9D-%ED%8A%B9%EC%A0%95-%EB%AC%B8%EC%9E%90-%EC%88%AB%EC%9E%90-%EB%A7%A4%EC%B9%AD-%ED%8C%A8%ED%84%B4">정규식 특정 문자 숫자 매칭 패턴</a></p>
+</li>
+<li>
+<p><a href="#%EC%A0%95%EA%B7%9C%EC%8B%9D-%EA%B0%AF%EC%88%98-%EB%B0%98%EB%B3%B5-%ED%8C%A8%ED%84%B4">정규식 갯수 반복 패턴</a></p>
+</li>
+<li>
+<p><a href="#%EC%A0%95%EA%B7%9C%EC%8B%9D-%EA%B7%B8%EB%A3%B9%ED%99%94-%ED%8C%A8%ED%84%B4">정규식 그룹화 패턴</a></p>
 </li>
 </ul></div><style data-emotion="css 1jhumt6">.css-1jhumt6{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:860px;margin:0 auto;padding:100px 0 100px 60px;word-break:break-all;line-height:1.8;font-size:18px;font-weight:400;}.css-1jhumt6 *{color:#402e32;}.css-1jhumt6 strong{font-weight:600;}.css-1jhumt6 mark{font-weight:600;background-color:#ffeace;}.css-1jhumt6 small{font-style:italic;color:grey;font-size:16px;}.css-1jhumt6 del{color:grey;}.css-1jhumt6 p{padding:2px 0;margin:16px 0;}.css-1jhumt6 img{border-radius:10px;}.css-1jhumt6 a.anchor.before{display:none;}.css-1jhumt6 h1,.css-1jhumt6 h2,.css-1jhumt6 h3,.css-1jhumt6 h4{font-weight:800;}.css-1jhumt6 h2{font-size:32px;margin-bottom:40px;line-height:1.5em;padding-bottom:24px;position:relative;}.css-1jhumt6 h2:before{content:'';position:absolute;left:0;bottom:0;height:6px;width:60px;border-radius:8px;background-color:#ab8b71;}.css-1jhumt6 h2:after{content:'';position:absolute;left:0;bottom:2px;height:1px;width:100%;background-color:#ab8b71;}.css-1jhumt6 *+h2{margin-top:70px;}.css-1jhumt6 h3{font-size:26px;margin-bottom:20px;}.css-1jhumt6 *+h3{margin-top:60px;}.css-1jhumt6 h4{font-size:22px;margin-bottom:20px;}.css-1jhumt6 *+h4{margin-top:50px;}.css-1jhumt6 h1+*,.css-1jhumt6 h2+*,.css-1jhumt6 h3+*,.css-1jhumt6 h4+*{margin-top:0;}.css-1jhumt6 blockquote{margin:16px 0;padding:5px 15px;border-left:4px solid #ab8b71;background-color:#fff6ea;}.css-1jhumt6 blockquote p{margin:0;}.css-1jhumt6 table{margin:16px 0;width:100%;border-collapse:collapse;overflow:hidden;}.css-1jhumt6 th{text-align:left;font-weight:600;background:#fff8ee;border-top:1px solid #dfe0df;border-bottom:1px solid #dfe0df;}.css-1jhumt6 td,.css-1jhumt6 th{padding:0.8em 0.6em;vertical-align:middle;}.css-1jhumt6 td{border-bottom:1px solid #dfe0df;background:#fff;}.css-1jhumt6 ol,.css-1jhumt6 ul{padding:16px 0;list-style:none;}.css-1jhumt6 ol ul,.css-1jhumt6 ol ol,.css-1jhumt6 ul ol,.css-1jhumt6 ul ul{padding:0;}.css-1jhumt6 li{margin:10px 0;}.css-1jhumt6 li p{margin:0;padding:0;display:inline;font-weight:600;vertical-align:middle;}.css-1jhumt6 ol{counter-reset:list-counter;}.css-1jhumt6 ol li{padding-left:44px;text-indent:-44px;}.css-1jhumt6 ol li::before{content:counter(list-counter);counter-increment:list-counter;width:0.5em;height:0.5em;padding:0.5em;font-size:0.9em;margin-right:12px;border-radius:50%;border:4px solid #baa89b;background-color:#ab8b71;color:#fff;display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;text-indent:0;}.css-1jhumt6 ol li li::before,.css-1jhumt6 ul ol li::before{width:0.3em;height:0.3em;padding:0.3em;font-size:1em;border:none;background:none;color:#ab8b71;}.css-1jhumt6 ul li{padding-left:32px;text-indent:-32px;}.css-1jhumt6 ul li::before{content:'';width:0.2em;height:0.2em;padding:0.2em;margin-right:12px;border-radius:50%;border:4px solid #baa89b;background-color:#ab8b71;display:inline-block;vertical-align:middle;text-indent:0;}.css-1jhumt6 ul li li::before,.css-1jhumt6 ol ul li::before{width:0.15em;height:0.15em;padding:0.15em;border:3px solid #ab8b71;background-color:#fff;}.css-1jhumt6 ul li li li::before{border:none;background-color:#ab8b71;}.css-1jhumt6 hr{border-width:0 0 6px;border-style:solid;border-image:url('/icon/dot.svg') 0 0 100% repeat;width:100%;margin:60px 0;}.css-1jhumt6 hr+*{margin-top:0;}.css-1jhumt6 a{color:#ff8887;-webkit-text-decoration:underline;text-decoration:underline;}.css-1jhumt6 .gatsby-highlight{position:relative;margin:16px 0;}.css-1jhumt6 .code-header+.gatsby-highlight{margin-top:0;}.css-1jhumt6 .code-header+.gatsby-highlight::after{content:attr(data-language);position:absolute;top:-36px;right:18px;color:#cfd2d1;font-size:12px;}.css-1jhumt6 code[class*='language-'],.css-1jhumt6 pre[class*='language-']{tab-size:2;}.css-1jhumt6 pre[class*='language-']{margin:0;padding:20px;border-radius:10px;max-height:600px;overflow:scroll;font-size:16px;}.css-1jhumt6 .code-header+.gatsby-highlight pre[class*='language-']{border-top-left-radius:0;border-top-right-radius:0;}.css-1jhumt6 pre[class*='language-']::-webkit-scrollbar{width:10px;height:10px;}.css-1jhumt6 pre[class*='language-']::-webkit-scrollbar-thumb{background-color:#5d5d5d;border-radius:4px;}.css-1jhumt6 pre[class*='language-']::-webkit-scrollbar-corner{display:none;}.css-1jhumt6 code[class*='language-'] span.token.interpolation,.css-1jhumt6 code[class*='language-'] span.token.parameter{color:#ccc;}.css-1jhumt6 code[class*='language-'] span.token.regex-delimiter{color:#67cdcc;}.css-1jhumt6 code[class*='language-'] span.token.regex-source.language-regex{color:#7ec699;}.css-1jhumt6 code[class*='language-'] span.token.regex-flags{color:#cc99cd;}.css-1jhumt6 code.language-text{background-color:#dfe0df;color:#c25450;padding:0 8px;}.css-1jhumt6 .code-header{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding:16px;background-color:#434041;border-radius:8px 8px 0 0;margin-top:16px;}.css-1jhumt6 .code-header .btn{border-radius:50%;width:14px;height:14px;margin:0 4px;}.css-1jhumt6 .code-header .btn.red{background-color:#f5655b;}.css-1jhumt6 .code-header .btn.yellow{background-color:#f6bd3b;}.css-1jhumt6 .code-header .btn.green{background-color:#43c645;}.css-1jhumt6 .source{color:grey;font-size:14px;text-align:center;margin-bottom:16px;}@media (max-width: 1512px){.css-1jhumt6{width:920px;padding-left:220px;}}@media (max-width: 1024px){.css-1jhumt6{width:700px;font-size:16px;padding:100px 0;}.css-1jhumt6 h2{font-size:28px;}.css-1jhumt6 h3{font-size:22px;}.css-1jhumt6 h4{font-size:18px;}.css-1jhumt6 pre[class*='language-']{font-size:14px;}.css-1jhumt6 small{font-size:14px;}.css-1jhumt6 .source{font-size:12px;}}@media (max-width: 744px){.css-1jhumt6{width:100%;padding:120px 36px;}}@media (max-width: 428px){.css-1jhumt6{padding:80px 28px;font-size:12px;}.css-1jhumt6 p{margin:12px 0;}.css-1jhumt6 small{font-size:10px;}.css-1jhumt6 .source{font-size:8px;margin-bottom:12px;}.css-1jhumt6 h2{font-size:20px;margin-bottom:30px;padding-bottom:14px;}.css-1jhumt6 h2:before{width:30px;}.css-1jhumt6 *+h2{margin-top:50px;}.css-1jhumt6 h3{font-size:18px;margin-bottom:14px;}.css-1jhumt6 *+h3{margin-top:40px;}.css-1jhumt6 h4{font-size:14px;margin-bottom:14px;}.css-1jhumt6 *+h4{margin-top:30px;}.css-1jhumt6 h1+*,.css-1jhumt6 h2+*,.css-1jhumt6 h3+*,.css-1jhumt6 h4+*{margin-top:0;}.css-1jhumt6 blockquote{margin:12px 0;border-left:2px solid #ab8b71;}.css-1jhumt6 table{margin:12px 0;}.css-1jhumt6 ol,.css-1jhumt6 ul{padding:12px 0;}.css-1jhumt6 li{margin:8px 0;}.css-1jhumt6 ol li{padding-left:34px;text-indent:-34px;}.css-1jhumt6 ul li{padding-left:24px;text-indent:-24px;}.css-1jhumt6 ol li::before,.css-1jhumt6 ul li::before{margin-right:8px;}.css-1jhumt6 hr{margin:30px 0;}.css-1jhumt6 hr+*{margin-top:0;}.css-1jhumt6 .gatsby-highlight{margin:12px 0;}.css-1jhumt6 .code-header+.gatsby-highlight{margin-top:0;}.css-1jhumt6 .code-header+.gatsby-highlight::after{top:-28px;right:14px;font-size:10px;}.css-1jhumt6 pre[class*='language-']{padding:14px;max-height:400px;font-size:10px;}.css-1jhumt6 pre[class*='language-']::-webkit-scrollbar{width:6px;height:6px;}.css-1jhumt6 .code-header{margin-top:12px;padding:12px;}.css-1jhumt6 .code-header .btn{width:12px;height:12px;}}@media (max-width: 320px){.css-1jhumt6{padding:60px 18px;font-size:10px;}.css-1jhumt6 h2{font-size:16px;}.css-1jhumt6 h3{font-size:14px;}.css-1jhumt6 h4{font-size:12px;}.css-1jhumt6 pre[class*='language-']{font-size:8px;}.css-1jhumt6 small{font-size:8px;}.css-1jhumt6 .source{font-size:6px;}}</style><div class="css-1jhumt6 e1ijh0y10"><h2 id="왜-정규표현식을-알아야-하나" style="position:relative;"><a href="#%EC%99%9C-%EC%A0%95%EA%B7%9C%ED%91%9C%ED%98%84%EC%8B%9D%EC%9D%84-%EC%95%8C%EC%95%84%EC%95%BC-%ED%95%98%EB%82%98" aria-label="왜 정규표현식을 알아야 하나 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>왜 정규표현식을 알아야 하나!?</h2>
 <p>정규표현식은 문자열을 가공할 때 많이 사용됩니다.<br>
@@ -192,9 +208,10 @@ email_pattern <span class="token operator">=</span> <span class="token string">r
 <li><code class="language-text">$</code>: 문자열의 끝</li>
 </ul>
 <p>이 패턴을 사용하여 검증하려는 이메일 주소가 정규표현식 패턴과 일치하는지 검사할 때는 re 모듈의 search()나 match() 메서드 등을 사용할 수 있습니다.</p>
-<h2 id="파이썬-정규표현식-re-모듈" style="position:relative;"><a href="#%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%A0%95%EA%B7%9C%ED%91%9C%ED%98%84%EC%8B%9D-re-%EB%AA%A8%EB%93%88" aria-label="파이썬 정규표현식 re 모듈 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>파이썬 정규표현식 re 모듈</h2>
-<p>Python에서 정규표현식을 사용하기 위해서는 re 모듈을 import하여 사용합니다. 이 모듈에서 제공하는 메서드들과 각 메서드의 예시를 함께 정리해보겠습니다.</p>
-<h3 id="rematchpattern-string-flags0" style="position:relative;"><a href="#rematchpattern-string-flags0" aria-label="rematchpattern string flags0 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>re.match(pattern, string, flags=0)</h3>
+<h3 id="수식-분리하기" style="position:relative;"><a href="#%EC%88%98%EC%8B%9D-%EB%B6%84%EB%A6%AC%ED%95%98%EA%B8%B0" aria-label="수식 분리하기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>수식 분리하기</h3>
+<p>이번에는 제가 코딩테스트 문제를 풀다가 마주했던 문제에 대해서 잠시 설명하겠습니다.<br>
+수식이 <code class="language-text">100-200*300-500+20</code>으로 주어졌을 때 <code class="language-text">['100', '-', '200', '*', '300', '-', '500', '+', '20']</code>으로 분리하는 과정이 필요했습니다.<br>
+이 때도 정규표현식을 생각하지 못해서 상당히 어렵게 구현했습니다.</p>
 <div class="code-header">
 	<span class="red btn"></span>
 	<span class="yellow btn"></span>
@@ -202,16 +219,295 @@ email_pattern <span class="token operator">=</span> <span class="token string">r
 </div>
 <div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">import</span> re
 
-pattern <span class="token operator">=</span> <span class="token string">r'Hello'</span>
-string <span class="token operator">=</span> <span class="token string">'Hello, world!'</span>
+expression <span class="token operator">=</span> <span class="token string">'100-200*300-500+20'</span>
 
-<span class="token keyword">match</span> <span class="token operator">=</span> re<span class="token punctuation">.</span><span class="token keyword">match</span><span class="token punctuation">(</span>pattern<span class="token punctuation">,</span> string<span class="token punctuation">)</span>
+tokens <span class="token operator">=</span> re<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">r'(\D)'</span><span class="token punctuation">,</span> expression<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>tokens<span class="token punctuation">)</span>
+<span class="token comment"># ['100', '-', '200', '*', '300', '-', '500', '+', '20']</span></code></pre></div>
+<ul>
+<li>정규표현식에서 괄호는 그룹을 나타내는 역할을 합니다. 따라서 괄호로 괄호로 둘러싼 부분은 하나의 그룹으로 처리되며, <code class="language-text">split()</code> 메소드는 그룹을 포함한 구분자를 기준으로 문자열을 분리합니다.</li>
+<li>위 코드에서는 <code class="language-text">\D</code>를 그룹으로 둘러싸서 하나의 그룹으로 처리하였습니다. 따라서 숫자와 숫자가 아닌 문자가 번갈아가면서 그룹을 처리되게 하며, <code class="language-text">split()</code> 메소드는 이를 구분자로 문자열을 분리합니다.</li>
+<li>결과적으로 리스트의 요소는 숫자와 숫자가 아닌 문자가 번갈아가면서 저장됩니다.</li>
+</ul>
+<p><a href="https://school.programmers.co.kr/learn/courses/30/lessons/67257" target="_blank" rel="nofollow">위의 코딩테스트 문제</a></p>
+<h2 id="파이썬-정규표현식-re-모듈" style="position:relative;"><a href="#%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%A0%95%EA%B7%9C%ED%91%9C%ED%98%84%EC%8B%9D-re-%EB%AA%A8%EB%93%88" aria-label="파이썬 정규표현식 re 모듈 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>파이썬 정규표현식 re 모듈</h2>
+<p>Python에서 정규표현식을 사용하기 위해서는 re 모듈을 import하여 사용합니다. 이 모듈에서 제공하는 메서드들과 각 메서드의 예시를 함께 정리해보겠습니다.</p>
+<h3 id="문자열의-시작부분부터-패턴이-매치되는지-확인하는-함수rematch" style="position:relative;"><a href="#%EB%AC%B8%EC%9E%90%EC%97%B4%EC%9D%98-%EC%8B%9C%EC%9E%91%EB%B6%80%EB%B6%84%EB%B6%80%ED%84%B0-%ED%8C%A8%ED%84%B4%EC%9D%B4-%EB%A7%A4%EC%B9%98%EB%90%98%EB%8A%94%EC%A7%80-%ED%99%95%EC%9D%B8%ED%95%98%EB%8A%94-%ED%95%A8%EC%88%98rematch" aria-label="문자열의 시작부분부터 패턴이 매치되는지 확인하는 함수rematch permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>문자열의 시작부분부터 패턴이 매치되는지 확인하는 함수(re.match)</h3>
+<p><code class="language-text">re.match(pattern, string)</code></p>
+<div class="code-header">
+	<span class="red btn"></span>
+	<span class="yellow btn"></span>
+	<span class="green btn"></span>
+</div>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">import</span> re
+<span class="token keyword">print</span><span class="token punctuation">(</span>re<span class="token punctuation">.</span><span class="token keyword">match</span><span class="token punctuation">(</span><span class="token string">'abc'</span><span class="token punctuation">,</span> <span class="token string">'abcdef'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># &lt;re.Match object; span=(0, 3), match='abc'></span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>re<span class="token punctuation">.</span><span class="token keyword">match</span><span class="token punctuation">(</span><span class="token string">'abc'</span><span class="token punctuation">,</span> <span class="token string">'abcdefabc'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># &lt;re.Match object; span=(0, 3), match='abc'></span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>re<span class="token punctuation">.</span><span class="token keyword">match</span><span class="token punctuation">(</span><span class="token string">'abc'</span><span class="token punctuation">,</span> <span class="token string">'abcdefabcabc'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># &lt;re.Match object; span=(0, 3), match='abc'></span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>re<span class="token punctuation">.</span><span class="token keyword">match</span><span class="token punctuation">(</span><span class="token string">'abc'</span><span class="token punctuation">,</span> <span class="token string">'ababcdef'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># None</span></code></pre></div>
+<p>이 함수는 매치되면 match 객체를 반환하고, 그렇지 않으면 None을 반환합니다.</p>
+<h3 id="문자열-전체에서-패턴이-매치되는-부분을-찾는-함수research" style="position:relative;"><a href="#%EB%AC%B8%EC%9E%90%EC%97%B4-%EC%A0%84%EC%B2%B4%EC%97%90%EC%84%9C-%ED%8C%A8%ED%84%B4%EC%9D%B4-%EB%A7%A4%EC%B9%98%EB%90%98%EB%8A%94-%EB%B6%80%EB%B6%84%EC%9D%84-%EC%B0%BE%EB%8A%94-%ED%95%A8%EC%88%98research" aria-label="문자열 전체에서 패턴이 매치되는 부분을 찾는 함수research permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>문자열 전체에서 패턴이 매치되는 부분을 찾는 함수(re.search)</h3>
+<p><code class="language-text">re.search(pattern, string)</code></p>
+<div class="code-header">
+	<span class="red btn"></span>
+	<span class="yellow btn"></span>
+	<span class="green btn"></span>
+</div>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">import</span> re
+<span class="token keyword">print</span><span class="token punctuation">(</span>re<span class="token punctuation">.</span>search<span class="token punctuation">(</span><span class="token string">'abc'</span><span class="token punctuation">,</span> <span class="token string">'abcdef'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># &lt;re.Match object; span=(0, 3), match='abc'></span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>re<span class="token punctuation">.</span>search<span class="token punctuation">(</span><span class="token string">'abc'</span><span class="token punctuation">,</span> <span class="token string">'abcdefabc'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># &lt;re.Match object; span=(0, 3), match='abc'></span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>re<span class="token punctuation">.</span>search<span class="token punctuation">(</span><span class="token string">'abc'</span><span class="token punctuation">,</span> <span class="token string">'ababcdefabc'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># &lt;re.Match object; span=(2, 5), match='abc'></span></code></pre></div>
+<p>처음으로 매치되는 부분의 match 객체를 반환합니다. 매치되는 부분이 없으면 None을 반환합니다.</p>
+<h3 id="문자열-전체에서-패턴에-매치되는-모든-부분을-찾아-리스트로-반환하는-함수refindall" style="position:relative;"><a href="#%EB%AC%B8%EC%9E%90%EC%97%B4-%EC%A0%84%EC%B2%B4%EC%97%90%EC%84%9C-%ED%8C%A8%ED%84%B4%EC%97%90-%EB%A7%A4%EC%B9%98%EB%90%98%EB%8A%94-%EB%AA%A8%EB%93%A0-%EB%B6%80%EB%B6%84%EC%9D%84-%EC%B0%BE%EC%95%84-%EB%A6%AC%EC%8A%A4%ED%8A%B8%EB%A1%9C-%EB%B0%98%ED%99%98%ED%95%98%EB%8A%94-%ED%95%A8%EC%88%98refindall" aria-label="문자열 전체에서 패턴에 매치되는 모든 부분을 찾아 리스트로 반환하는 함수refindall permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>문자열 전체에서 패턴에 매치되는 모든 부분을 찾아 리스트로 반환하는 함수(re.findall)</h3>
+<p><code class="language-text">re.findall(pattern, string)</code></p>
+<div class="code-header">
+	<span class="red btn"></span>
+	<span class="yellow btn"></span>
+	<span class="green btn"></span>
+</div>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">import</span> re
+<span class="token keyword">print</span><span class="token punctuation">(</span>re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span><span class="token string">'abc'</span><span class="token punctuation">,</span> <span class="token string">'abcdefabcabc'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># ['abc', 'abc', 'abc']</span></code></pre></div>
+<h3 id="문자열-내에서-패턴에-매치되는-부분을-다른-문자열로-교체하는-함수resub" style="position:relative;"><a href="#%EB%AC%B8%EC%9E%90%EC%97%B4-%EB%82%B4%EC%97%90%EC%84%9C-%ED%8C%A8%ED%84%B4%EC%97%90-%EB%A7%A4%EC%B9%98%EB%90%98%EB%8A%94-%EB%B6%80%EB%B6%84%EC%9D%84-%EB%8B%A4%EB%A5%B8-%EB%AC%B8%EC%9E%90%EC%97%B4%EB%A1%9C-%EA%B5%90%EC%B2%B4%ED%95%98%EB%8A%94-%ED%95%A8%EC%88%98resub" aria-label="문자열 내에서 패턴에 매치되는 부분을 다른 문자열로 교체하는 함수resub permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>문자열 내에서 패턴에 매치되는 부분을 다른 문자열로 교체하는 함수(re.sub)</h3>
+<p><code class="language-text">re.sub(pattern, repl, string)</code></p>
+<div class="code-header">
+	<span class="red btn"></span>
+	<span class="yellow btn"></span>
+	<span class="green btn"></span>
+</div>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">import</span> re
+<span class="token keyword">print</span><span class="token punctuation">(</span>re<span class="token punctuation">.</span>sub<span class="token punctuation">(</span><span class="token string">'abc'</span><span class="token punctuation">,</span> <span class="token string">'123'</span><span class="token punctuation">,</span> <span class="token string">'abcdefabcabc'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># '123def123123'</span></code></pre></div>
+<hr>
+<p>이 외에도 다른 함수들이 많지만 나머지는 <a href="https://docs.python.org/3/library/re.html?highlight=re#module-re" target="_blank" rel="nofollow">python Document</a>를 보시면 될 것 같습니다.</p>
+<h2 id="정규식-플래그" style="position:relative;"><a href="#%EC%A0%95%EA%B7%9C%EC%8B%9D-%ED%94%8C%EB%9E%98%EA%B7%B8" aria-label="정규식 플래그 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>정규식 플래그</h2>
+<p>파이썬 <code class="language-text">re</code> 모듈에서 사용되는 주요 정규식 플래그는 다음과 같습니다</p>
+<table>
+<thead>
+<tr>
+<th>플래그</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="language-text">re.IGNORECASE</code> 또는 <code class="language-text">re.I</code></td>
+<td>대소문자를 구분하지 않습니다.</td>
+</tr>
+<tr>
+<td><code class="language-text">re.MULTILINE</code> 또는 <code class="language-text">re.M</code></td>
+<td><code class="language-text">^</code>와 <code class="language-text">$</code> 메타문자를 각각 문자열의 시작과 끝, 그리고 개행문자로 구분된 각 줄의 시작과 끝으로 인식합니다.</td>
+</tr>
+<tr>
+<td><code class="language-text">re.DOTALL</code> 또는 <code class="language-text">re.S</code></td>
+<td><code class="language-text">.</code> 메타문자가 개행문자를 포함한 모든 문자와 매치되도록 합니다.</td>
+</tr>
+<tr>
+<td><code class="language-text">re.VERBOSE</code> 또는 <code class="language-text">re.X</code></td>
+<td>정규표현식을 더 읽기 쉽게 만들 수 있도록 해주며, 라인을 분리하고 주석을 추가하는 것이 가능합니다.</td>
+</tr>
+<tr>
+<td><code class="language-text">re.ASCII</code> 또는 <code class="language-text">re.A</code></td>
+<td><code class="language-text">\b</code>, <code class="language-text">\B</code>, <code class="language-text">\d</code>, <code class="language-text">\D</code>, <code class="language-text">\s</code>, <code class="language-text">\S</code>, <code class="language-text">\w</code>, <code class="language-text">\W</code> 등과 같은 특수 문자 시퀀스가 ASCII 문자에 대해서만 작동하도록 합니다.</td>
+</tr>
+</tbody>
+</table>
+<p>각 플래그는 <code class="language-text">re.compile(pattern, flags)</code> 형식의 선택적 <code class="language-text">flags</code> 매개변수로 전달할 수 있으며, <code class="language-text">re.match()</code>, <code class="language-text">re.search()</code> 등의 메소드에서도 사용될 수 있습니다. 또한 플래그를 <code class="language-text">|</code> 연산자를 사용하여 결합할 수 있습니다. 예를 들어, 대소문자를 구분하지 않으며 여러 줄의 텍스트를 처리하려면 다음과 같이 사용할 수 있습니다:</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">import</span> re
 
-<span class="token keyword">if</span> <span class="token keyword">match</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"Matched string: </span><span class="token interpolation"><span class="token punctuation">{</span><span class="token keyword">match</span><span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
-<span class="token keyword">else</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"No match"</span><span class="token punctuation">)</span>
-</code></pre></div></div><style data-emotion="css e0qusf">.css-e0qusf .giscus{max-width:860px;margin:0 auto;padding-left:60px;}@media (max-width: 1512px){.css-e0qusf .giscus{max-width:920px;padding-left:220px;}}@media (max-width: 1024px){.css-e0qusf .giscus{max-width:700px;padding-left:0;}}@media (max-width: 744px){.css-e0qusf .giscus{max-width:100%;padding:0 36px;}}@media (max-width: 428px){.css-e0qusf .giscus{padding:0 28px;}}@media (max-width: 320px){.css-e0qusf .giscus{padding:0 18px;}}</style><div class="css-e0qusf e1gqsjds0"><div id="giscus-container"></div></div></div><style data-emotion="css 6mcz1x">.css-6mcz1x{width:100%;padding:100px 36px 30px 256px;}@media (max-width: 1024px){.css-6mcz1x{padding:100px 36px 30px;}}@media (max-width: 428px){.css-6mcz1x{padding:100px 28px 30px;}}@media (max-width: 320px){.css-6mcz1x{padding:100px 18px 30px;}}</style><div class="css-6mcz1x e1oae0v81"><style data-emotion="css sagebg">.css-sagebg{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:end;-ms-flex-pack:end;-webkit-justify-content:end;justify-content:end;color:#baa89b;width:100%;font-size:12px;line-height:30px;border-top:1px solid rgba(186, 168, 155, 0.5);-webkit-align-self:flex-end;-ms-flex-item-align:flex-end;align-self:flex-end;}</style><footer class="css-sagebg e1oae0v80">© Ambosing, Powered By Gatsby.</footer></div></main></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-H0V757R2CP"></script><script>
+pattern <span class="token operator">=</span> re<span class="token punctuation">.</span><span class="token builtin">compile</span><span class="token punctuation">(</span><span class="token string">'abc'</span><span class="token punctuation">,</span> re<span class="token punctuation">.</span>I <span class="token operator">|</span> re<span class="token punctuation">.</span>M<span class="token punctuation">)</span>
+matches <span class="token operator">=</span> pattern<span class="token punctuation">.</span>findall<span class="token punctuation">(</span><span class="token string">'ABC\nabc\nAbC'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>matches<span class="token punctuation">)</span>  <span class="token comment"># ['ABC', 'abc', 'AbC']</span></code></pre></div>
+<h2 id="정규식-특정-문자-숫자-매칭-패턴" style="position:relative;"><a href="#%EC%A0%95%EA%B7%9C%EC%8B%9D-%ED%8A%B9%EC%A0%95-%EB%AC%B8%EC%9E%90-%EC%88%AB%EC%9E%90-%EB%A7%A4%EC%B9%AD-%ED%8C%A8%ED%84%B4" aria-label="정규식 특정 문자 숫자 매칭 패턴 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>정규식 특정 문자 숫자 매칭 패턴</h2>
+<p>정규식에서 특정 문자나 숫자를 매치하는 데 사용되는 주요 패턴들은 다음과 같습니다</p>
+<table>
+<thead>
+<tr>
+<th>패턴</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="language-text">\d</code></td>
+<td>모든 숫자와 일치합니다. <code class="language-text">[0-9]</code>와 동일합니다.</td>
+</tr>
+<tr>
+<td><code class="language-text">\D</code></td>
+<td>숫자를 제외한 모든 문자와 일치합니다. <code class="language-text">[^0-9]</code>와 동일합니다.</td>
+</tr>
+<tr>
+<td><code class="language-text">\s</code></td>
+<td>공백 문자(스페이스, 탭, 줄바꿈 등)와 일치합니다.</td>
+</tr>
+<tr>
+<td><code class="language-text">\S</code></td>
+<td>공백 문자를 제외한 모든 문자와 일치합니다.</td>
+</tr>
+<tr>
+<td><code class="language-text">\w</code></td>
+<td>모든 알파벳 문자, 숫자, 밑줄과 일치합니다. <code class="language-text">[a-zA-Z0-9_]</code>와 동일합니다.</td>
+</tr>
+<tr>
+<td><code class="language-text">\W</code></td>
+<td><code class="language-text">\w</code>에 해당하는 문자를 제외한 모든 문자와 일치합니다. <code class="language-text">[^a-zA-Z0-9_]</code>와 동일합니다.</td>
+</tr>
+<tr>
+<td><code class="language-text">^</code></td>
+<td>문자열이나 행의 시작 부분과 일치합니다.</td>
+</tr>
+<tr>
+<td><code class="language-text">$</code></td>
+<td>문자열이나 행의 끝 부분과 일치합니다.</td>
+</tr>
+<tr>
+<td><code class="language-text">[abc]</code></td>
+<td>괄호 안의 문자 중 하나와 일치합니다. <code class="language-text">a</code>, <code class="language-text">b</code>, <code class="language-text">c</code> 중 어느 하나와 일치하는 패턴을 의미합니다.</td>
+</tr>
+<tr>
+<td><code class="language-text">[^abc]</code></td>
+<td>괄호 안의 문자들을 제외한 모든 문자와 일치합니다. <code class="language-text">a</code>, <code class="language-text">b</code>, <code class="language-text">c</code>를 제외한 모든 문자와 일치하는 패턴을 의미합니다.</td>
+</tr>
+<tr>
+<td><code class="language-text">[a-z]</code></td>
+<td>지정된 범위 내의 문자 중 하나와 일치합니다. 이 경우 소문자 <code class="language-text">a</code>에서 <code class="language-text">z</code>까지 모든 문자와 일치합니다.</td>
+</tr>
+<tr>
+<td><code class="language-text">[A-Z]</code></td>
+<td>지정된 범위 내의 문자 중 하나와 일치합니다. 이 경우 대문자 <code class="language-text">A</code>에서 <code class="language-text">Z</code>까지 모든 문자와 일치합니다.</td>
+</tr>
+<tr>
+<td><code class="language-text">[0-9]</code></td>
+<td>지정된 범위 내의 문자 중 하나와 일치합니다. 이 경우 숫자 <code class="language-text">0</code>에서 <code class="language-text">9</code>까지 모든 숫자와 일치합니다.</td>
+</tr>
+</tbody>
+</table>
+<p>이러한 패턴들을 조합하여 복잡한 문자열 검색 및 처리 작업을 수행할 수 있습니다. 예를 들어, 이메일 주소나 전화번호와 같은 특정 패턴을 가진 문자열을 찾거나, 텍스트에서 특정 형태의 정보를 추출하는 데 이러한 패턴들이 사용됩니다.</p>
+<h2 id="정규식-갯수-반복-패턴" style="position:relative;"><a href="#%EC%A0%95%EA%B7%9C%EC%8B%9D-%EA%B0%AF%EC%88%98-%EB%B0%98%EB%B3%B5-%ED%8C%A8%ED%84%B4" aria-label="정규식 갯수 반복 패턴 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>정규식 갯수 반복 패턴</h2>
+<p>정규식에서 검색 기준을 설정하는데 사용되는 주요 패턴들은 다음과 같습니다</p>
+<table>
+<thead>
+<tr>
+<th>패턴</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="language-text">*</code></td>
+<td>앞선 문자나 그룹이 0번 이상 반복되는 것과 일치합니다.</td>
+</tr>
+<tr>
+<td><code class="language-text">+</code></td>
+<td>앞선 문자나 그룹이 1번 이상 반복되는 것과 일치합니다.</td>
+</tr>
+<tr>
+<td><code class="language-text">?</code></td>
+<td>앞선 문자나 그룹이 0번 또는 1번 등장하는 것과 일치합니다.</td>
+</tr>
+<tr>
+<td><code class="language-text">{n}</code></td>
+<td>앞선 문자나 그룹이 정확히 <code class="language-text">n</code>번 반복되는 것과 일치합니다.</td>
+</tr>
+<tr>
+<td><code class="language-text">{n,}</code></td>
+<td>앞선 문자나 그룹이 <code class="language-text">n</code>번 이상 반복되는 것과 일치합니다.</td>
+</tr>
+<tr>
+<td><code class="language-text">{,n}</code></td>
+<td>앞선 문자나 그룹이 <code class="language-text">n</code>번 이하 반복되는 것과 일치합니다.</td>
+</tr>
+<tr>
+<td><code class="language-text">{n,m}</code></td>
+<td>앞선 문자나 그룹이 최소 <code class="language-text">n</code>번 이상, 최대 <code class="language-text">m</code>번 이하 반복되는 것과 일치합니다.</td>
+</tr>
+<tr>
+<td><code class="language-text">a|b</code></td>
+<td><code class="language-text">a</code> 또는 <code class="language-text">b</code>와 일치합니다.</td>
+</tr>
+</tbody>
+</table>
+<p>이러한 패턴들은 텍스트에서 특정 패턴을 가진 문자열을 찾거나 텍스트를 분석하는 데 사용됩니다. 예를 들어, 이메일 주소의 형식이나 전화번호와 같은 특정 패턴을 찾을 때 사용할 수 있습니다. 또한 텍스트에서 특정 형식의 데이터를 추출하는 데도 사용됩니다.</p>
+<p>아래는 이 패턴들을 사용한 예제입니다:</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">import</span> re
+
+<span class="token comment"># '+'를 사용한 예제</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span><span class="token string">'a+'</span><span class="token punctuation">,</span> <span class="token string">'aaaaaabcaaa'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># ['aaaaaa', 'a', 'aaa']</span>
+
+<span class="token comment"># '*'를 사용한 예제</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span><span class="token string">'a*'</span><span class="token punctuation">,</span> <span class="token string">'aaaaaabcaaa'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># ['aaaaaa', '', '', '', '', 'a', 'aaa', '']</span>
+
+<span class="token comment"># '?'를 사용한 예제</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span><span class="token string">'a?'</span><span class="token punctuation">,</span> <span class="token string">'aaaaaabcaaa'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># ['a', 'a', 'a', 'a', 'a', 'a', '', 'a', 'a', 'a', '']</span>
+
+<span class="token comment"># '{n}'를 사용한 예제</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span><span class="token string">'a{2}'</span><span class="token punctuation">,</span> <span class="token string">'aaaaaabcaaa'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># ['aa', 'aa', 'aa', 'aa']</span>
+
+<span class="token comment"># '{n,}'를 사용한 예제</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span><span class="token string">'a{2,}'</span><span class="token punctuation">,</span> <span class="token string">'aaaaaabcaaa'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># ['aaaaaa', 'aaa']</span>
+
+<span class="token comment"># '{,n}'를 사용한 예제</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span><span class="token string">'a{,2}'</span><span class="token punctuation">,</span> <span class="token string">'aaaaaabcaaa'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># ['', 'aa', 'aa', 'aa', '', '', 'aa', 'a', '']</span>
+
+<span class="token comment"># '{n,m}'를 사용한 예제</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span><span class="token string">'a{2,4}'</span><span class="token punctuation">,</span> <span class="token string">'aaaaaabcaaa'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># ['aaaa', 'aaa']</span>
+
+<span class="token comment"># '|'를 사용한 예제</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span><span class="token string">'a|b'</span><span class="token punctuation">,</span> <span class="token string">'abcd'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># ['a', 'b']</span></code></pre></div>
+<h2 id="정규식-그룹화-패턴" style="position:relative;"><a href="#%EC%A0%95%EA%B7%9C%EC%8B%9D-%EA%B7%B8%EB%A3%B9%ED%99%94-%ED%8C%A8%ED%84%B4" aria-label="정규식 그룹화 패턴 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>정규식 그룹화 패턴</h2>
+<p>정규식에서 그룹을 생성하고 참조하는 데 사용되는 주요 패턴들은 다음과 같습니다</p>
+<table>
+<thead>
+<tr>
+<th>패턴</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="language-text">( )</code></td>
+<td>괄호 안의 패턴을 그룹으로 만들어줍니다. 이를 통해 패턴의 일부분을 하나의 단위로 취급할 수 있게 해줍니다.</td>
+</tr>
+<tr>
+<td><code class="language-text">\n</code></td>
+<td><code class="language-text">n</code>번째 그룹에 해당하는 부분과 동일한 문자열에 일치합니다. <code class="language-text">n</code>은 1부터 시작하는 그룹의 인덱스입니다.</td>
+</tr>
+<tr>
+<td><code class="language-text">(?P&lt;name> )</code></td>
+<td>이름이 <code class="language-text">name</code>인 그룹을 생성합니다.</td>
+</tr>
+<tr>
+<td><code class="language-text">(?P=name)</code></td>
+<td>이름이 <code class="language-text">name</code>인 그룹에 해당하는 부분과 동일한 문자열에 일치합니다.</td>
+</tr>
+</tbody>
+</table>
+<p>아래는 이 패턴들을 사용한 예제입니다:</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">import</span> re
+
+<span class="token comment"># '( )'를 사용한 예제</span>
+pattern <span class="token operator">=</span> re<span class="token punctuation">.</span><span class="token builtin">compile</span><span class="token punctuation">(</span><span class="token string">'(a)(b)(c)'</span><span class="token punctuation">)</span>
+<span class="token keyword">match</span> <span class="token operator">=</span> pattern<span class="token punctuation">.</span><span class="token keyword">match</span><span class="token punctuation">(</span><span class="token string">'abc'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token keyword">match</span><span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 'abc'</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token keyword">match</span><span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 'a'</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token keyword">match</span><span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 'b'</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token keyword">match</span><span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 'c'</span>
+
+<span class="token comment"># '\n'를 사용한 예제</span>
+pattern <span class="token operator">=</span> re<span class="token punctuation">.</span><span class="token builtin">compile</span><span class="token punctuation">(</span><span class="token string">'(a)\\1'</span><span class="token punctuation">)</span>
+<span class="token keyword">match</span> <span class="token operator">=</span> pattern<span class="token punctuation">.</span><span class="token keyword">match</span><span class="token punctuation">(</span><span class="token string">'aa'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token keyword">match</span><span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 'aa'</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token keyword">match</span><span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 'a'</span>
+
+<span class="token comment"># '(?P&lt;name> )'와 '(?P=name)'을 사용한 예제</span>
+pattern <span class="token operator">=</span> re<span class="token punctuation">.</span><span class="token builtin">compile</span><span class="token punctuation">(</span><span class="token string">'(?P&lt;first>a)(?P=first)'</span><span class="token punctuation">)</span>
+<span class="token keyword">match</span> <span class="token operator">=</span> pattern<span class="token punctuation">.</span><span class="token keyword">match</span><span class="token punctuation">(</span><span class="token string">'aa'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token keyword">match</span><span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 'aa'</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token keyword">match</span><span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token string">'first'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 'a'</span></code></pre></div>
+<p>이러한 패턴들은 텍스트에서 특정 패턴을 가진 문자열을 찾거나 텍스트를 분석하는 데 사용됩니다. 예를 들어, 이메일 주소의 형식이나 전화번호와 같은 특정 패턴을 찾을 때 사용할 수 있습니다. 또한 텍스트에서 특정 형식의 데이터를 추출하는 데도 사용됩니다.</p>
+<hr>
+<p>끝으로 마지막 정규표현식을 연습할 수 있는 간단한 문제와 문제집을 남겨놓고 가겠습니다.<br>
+<a href="https://www.acmicpc.net/problem/1264" target="_blank" rel="nofollow">백준 모음의 개수</a><br>
+<a href="https://www.acmicpc.net/problem/14405" target="_blank" rel="nofollow">백준 피카츄</a><br>
+<a href="https://www.acmicpc.net/workbook/view/6082" target="_blank" rel="nofollow">정규표현식 문제집</a></p>
+<p>참고 게시글: <a href="https://inpa.tistory.com/entry/JS-%F0%9F%93%9A-%EC%A0%95%EA%B7%9C%EC%8B%9D-RegExp-%EB%88%84%EA%B5%AC%EB%82%98-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-%EC%89%BD%EA%B2%8C-%EC%A0%95%EB%A6%AC" target="_blank" rel="nofollow">인파님 블로그</a></p></div><style data-emotion="css e0qusf">.css-e0qusf .giscus{max-width:860px;margin:0 auto;padding-left:60px;}@media (max-width: 1512px){.css-e0qusf .giscus{max-width:920px;padding-left:220px;}}@media (max-width: 1024px){.css-e0qusf .giscus{max-width:700px;padding-left:0;}}@media (max-width: 744px){.css-e0qusf .giscus{max-width:100%;padding:0 36px;}}@media (max-width: 428px){.css-e0qusf .giscus{padding:0 28px;}}@media (max-width: 320px){.css-e0qusf .giscus{padding:0 18px;}}</style><div class="css-e0qusf e1gqsjds0"><div id="giscus-container"></div></div></div><style data-emotion="css 6mcz1x">.css-6mcz1x{width:100%;padding:100px 36px 30px 256px;}@media (max-width: 1024px){.css-6mcz1x{padding:100px 36px 30px;}}@media (max-width: 428px){.css-6mcz1x{padding:100px 28px 30px;}}@media (max-width: 320px){.css-6mcz1x{padding:100px 18px 30px;}}</style><div class="css-6mcz1x e1oae0v81"><style data-emotion="css sagebg">.css-sagebg{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:end;-ms-flex-pack:end;-webkit-justify-content:end;justify-content:end;color:#baa89b;width:100%;font-size:12px;line-height:30px;border-top:1px solid rgba(186, 168, 155, 0.5);-webkit-align-self:flex-end;-ms-flex-item-align:flex-end;align-self:flex-end;}</style><footer class="css-sagebg e1oae0v80">© Ambosing, Powered By Gatsby.</footer></div></main></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-H0V757R2CP"></script><script>
       
       
       if(true) {
