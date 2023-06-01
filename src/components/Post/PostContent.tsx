@@ -176,7 +176,6 @@ const MarkdownRenderer = styled.div`
     margin: 0;
     padding: 0;
     display: inline;
-    font-weight: 600;
     vertical-align: middle;
   }
 
