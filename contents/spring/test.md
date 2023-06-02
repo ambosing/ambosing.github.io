@@ -1,6 +1,6 @@
 ---
 date: '2023-06-02'
-title: '스프링부트 테스트'
+title: '스프링부트 테스트 이론 & 맛보기 편'
 categories: ['Spring']
 summary: '스프링부트 테스트 정복해보자구'
 thumbnail: '../images/thumbnail/chocoball.webp'
@@ -144,7 +144,7 @@ class TestLifeCycle {
 
 ## afterAll 호출
 ```
-![테스트 실행 결과](../images/content/2023-05-29-17-51-45.png)
+![테스트 실행 결과](../images/content/2023-06-02-13-06-47.png)
 테스트 3는 Disable Annotation 때문에 실행이 되지 않았습니다!
 
 ## 좋은 테스트를 위한 이론!
@@ -226,3 +226,11 @@ RIGHT-BICEP 기법을 사용하면 다양한 시나리오와 테스트 케이스
 7. <mark>Tests (테스트)</mark>: 모든 테스트 케이스가 적절하게 작성되어 소프트웨어를 충분히 커버하는지 확인합니다. 이는 테스트 커버리지를 확인하고 빠뜨린 테스트 케이스가 없는지를 평가합니다.
 
 CORRECT 기법은 테스트의 완전성과 정확성을 높이기 위해 다양한 측면을 고려하여 테스트를 계획하고 수행하는 데 도움을 줍니다. 이를 통해 소프트웨어의 신뢰성과 품질을 향상시킬 수 있습니다.
+
+
+저도 공부하면서 적은것이라 행여나 잘못된 것이 있으면 알려주세요! 잘못된 지식을 전파하고 싶지 않습니다!    
+
+
+kotest에 대해서 조금 더 알고 싶다면
+[초코볼의 kotest](https://ambosing.github.io/spring/kotest)
+
