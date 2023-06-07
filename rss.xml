@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[제멋대로맛 초코볼]]></title><description><![CDATA[이것저것 하고 싶은 개발자의 기술블로그]]></description><link>https://ambosing.github.io/</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 02 Jun 2023 06:21:51 GMT</lastBuildDate><author><![CDATA[Ambosing]]></author><item><title><![CDATA[스프링부트 kotest, mockk]]></title><description><![CDATA[스프링부트 테스트 정복해보자구]]></description><link>https://ambosing.github.io/spring/kotest/</link><guid isPermaLink="false">https://ambosing.github.io/spring/kotest/</guid><category><![CDATA[Spring]]></category><dc:creator><![CDATA[Ambosing]]></dc:creator><pubDate>Thu, 01 Jun 2023 15:00:00 GMT</pubDate><content:encoded>&lt;p&gt;저번에는 테스트를 하는 이유와 좋은 테스트를 하기 위한 조건, 맛보기로 JUnit을 알아보았는데요.&lt;br&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[제멋대로맛 초코볼]]></title><description><![CDATA[이것저것 하고 싶은 개발자의 기술블로그]]></description><link>https://ambosing.github.io/</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 07 Jun 2023 03:55:03 GMT</lastBuildDate><author><![CDATA[Ambosing]]></author><item><title><![CDATA[스프링부트 kotest, mockk]]></title><description><![CDATA[스프링부트 테스트 정복해보자구]]></description><link>https://ambosing.github.io/spring/kotest/</link><guid isPermaLink="false">https://ambosing.github.io/spring/kotest/</guid><category><![CDATA[Spring]]></category><dc:creator><![CDATA[Ambosing]]></dc:creator><pubDate>Thu, 01 Jun 2023 15:00:00 GMT</pubDate><content:encoded>&lt;p&gt;저번에는 테스트를 하는 이유와 좋은 테스트를 하기 위한 조건, 맛보기로 JUnit을 알아보았는데요.&lt;br&gt;
 그래도 역시 제가 생각하기엔 코틀린을 사용하시는 분들이라면 kotest를 사용할 것 같습니다.&lt;br&gt;
 그래서 이번엔 kotest에 대해서 알아보겠습니다.&lt;/p&gt;
 &lt;h2 id=&quot;tdd-bdd&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#tdd-bdd&quot; aria-label=&quot;tdd bdd permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;TDD, BDD&lt;/h2&gt;
@@ -60,9 +60,95 @@
 &lt;p&gt;TDD를 했을 때 장점도 분명하지만 아무래도 작성하기 힘들고, 귀찮다는 것이 현실입니다. 그래서 BDD를 사용하면 조금 더 쉽게 테스트를 작성할 수 있습니다.&lt;/p&gt;
 &lt;p&gt;BDD로 테스트를 작성하는 것은 기획서를 읽어봤을 때 요구사항을 충족시키는 방향으로 작성하면 돼서 TDD보다 작성하기 수월합니다.&lt;/p&gt;
 &lt;p&gt;그래서 실무에서는 이렇게 사용한다고 합니다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;../images/content/2023-06-02-13-36-06.png&quot; alt=&quot;BDD와 TDD의 경계&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/bb8f6a79079496234c9f88d25d30f20a/92c1e/2023-06-02-13-36-06.webp&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 59.895833333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAACwAwCdASoUAAwAPtFWpUwoJKOiMAgBABoJaQAAXAekzVip9wkAAAD+9ZXDjq8AlasikVYOg/2NmpuxroPf6lqi23S+Ey4dhvqKIX58MnqsHIlDeMbtiw/SqdAQxXx4D7HZmrxrcaas4vJ6tbuNTG9U8r3Fcn6o2ZYbHPVzIARk/eJeAAA=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/bb8f6a79079496234c9f88d25d30f20a/a59e9/2023-06-02-13-36-06.webp 192w,
+/static/bb8f6a79079496234c9f88d25d30f20a/0ca9f/2023-06-02-13-36-06.webp 384w,
+/static/bb8f6a79079496234c9f88d25d30f20a/dc9b9/2023-06-02-13-36-06.webp 768w,
+/static/bb8f6a79079496234c9f88d25d30f20a/e2c2f/2023-06-02-13-36-06.webp 1152w,
+/static/bb8f6a79079496234c9f88d25d30f20a/92c1e/2023-06-02-13-36-06.webp 1222w&quot;
+              sizes=&quot;(max-width: 768px) 100vw, 768px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/bb8f6a79079496234c9f88d25d30f20a/a59e9/2023-06-02-13-36-06.webp 192w,
+/static/bb8f6a79079496234c9f88d25d30f20a/0ca9f/2023-06-02-13-36-06.webp 384w,
+/static/bb8f6a79079496234c9f88d25d30f20a/dc9b9/2023-06-02-13-36-06.webp 768w,
+/static/bb8f6a79079496234c9f88d25d30f20a/e2c2f/2023-06-02-13-36-06.webp 1152w,
+/static/bb8f6a79079496234c9f88d25d30f20a/92c1e/2023-06-02-13-36-06.webp 1222w&quot;
+            sizes=&quot;(max-width: 768px) 100vw, 768px&quot;
+            type=&quot;image/webp&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/bb8f6a79079496234c9f88d25d30f20a/dc9b9/2023-06-02-13-36-06.webp&quot;
+            alt=&quot;BDD와 TDD의 경계&quot;
+            title=&quot;&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;위의 그림과 같이 BDD와 TDD는 상호보완적으로 그려지는데요. 이는 BDD와 TDD를 함께 활용할 수 있음을 의미합니다.
-&lt;img src=&quot;../images/content/2023-06-02-13-38-46.png&quot; alt=&quot;테스트 피라미드&quot;&gt;&lt;/p&gt;
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 569px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/7e71ce66ae10baa0dc97f0510f78f42c/fa7e8/2023-06-02-13-38-46.webp&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 75%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAAAQBACdASoUAA8APtFUo0uoJKMhsAgBABoJQBXDhCqfGP4v02HbVbQ9gAD+9gfWh8VHvGDuL2DBQ8DKw5TDTip9coDsSAzGcjT5aUS3Ut7DxZyOJw5uBDDG0BoEAKEZ9OlJUAAA&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/7e71ce66ae10baa0dc97f0510f78f42c/a59e9/2023-06-02-13-38-46.webp 192w,
+/static/7e71ce66ae10baa0dc97f0510f78f42c/0ca9f/2023-06-02-13-38-46.webp 384w,
+/static/7e71ce66ae10baa0dc97f0510f78f42c/fa7e8/2023-06-02-13-38-46.webp 569w&quot;
+              sizes=&quot;(max-width: 569px) 100vw, 569px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/7e71ce66ae10baa0dc97f0510f78f42c/a59e9/2023-06-02-13-38-46.webp 192w,
+/static/7e71ce66ae10baa0dc97f0510f78f42c/0ca9f/2023-06-02-13-38-46.webp 384w,
+/static/7e71ce66ae10baa0dc97f0510f78f42c/fa7e8/2023-06-02-13-38-46.webp 569w&quot;
+            sizes=&quot;(max-width: 569px) 100vw, 569px&quot;
+            type=&quot;image/webp&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/7e71ce66ae10baa0dc97f0510f78f42c/fa7e8/2023-06-02-13-38-46.webp&quot;
+            alt=&quot;테스트 피라미드&quot;
+            title=&quot;&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;보통은 Integration 테스트에는 BDD를 사용하게 되고 TDD는 유닛테스트에서 사용한다고 합니다.&lt;/p&gt;
 &lt;h2 id=&quot;kotest&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#kotest&quot; aria-label=&quot;kotest permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Kotest&lt;/h2&gt;
 &lt;p&gt;Kotest는 코틀린(Kotlin) 프로그래밍 언어로 작성된 테스트 프레임워크입니다. 테스트 프레임워크는 개발자가 소프트웨어의 품질을 검증하기 위해 작성하는 테스트 코드를 관리하고 실행하는 데 도움을 주는 도구입니다.&lt;/p&gt;
