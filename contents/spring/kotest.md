@@ -3,9 +3,8 @@ date: '2023-06-02'
 title: '스프링부트 kotest, mockk'
 categories: ['Spring']
 summary: '스프링부트 테스트 정복해보자구'
-thumbnail: '../images/thumbnail/chocoball.webp'
+thumbnail: '../images/content/2023-06-15-12-20-28.webp'
 ---
-
 저번에는 테스트를 하는 이유와 좋은 테스트를 하기 위한 조건, 맛보기로 JUnit을 알아보았는데요.   
 그래도 역시 제가 생각하기엔 코틀린을 사용하시는 분들이라면 kotest를 사용할 것 같습니다.   
 그래서 이번엔 kotest에 대해서 알아보겠습니다.

@@ -1,7 +1,7 @@
 ---
 date: '2023-06-15'
 title: '파이썬에서의 코드 악취 대응하기'
-categories: ['Spring']
+categories: ['Python']
 summary: '으..~ 냄새! 얼른 제거하자!'
 thumbnail: '../images/thumbnail/chocoball.webp'
 ---
@@ -302,3 +302,13 @@ sorted(student_objects, key=itemgetter(2), reverse=False)
 reverse의 값을 False로 지정하지 않아도 기본값은 False입니다.  
 
 그래서 결론은 `플래그 변수가 무조건적으로 나쁜 것은 아니다`입니다.
+
+
+## 마무리
+이렇게 파이썬에 해당되는 코드 악취에 대해서와 오해에 대해서 정리해보았습니다.  
+제 파이썬 코드 실력도 한 단계 향상됐으면 좋겠습니다. 
+
+
+### 참고하며 도움을 받은 글
+책 - 클린 코드, 이제는 파이썬이다.
+[파이썬 Document](https://docs.python.org/ko/3/howto/sorting.html)
