@@ -310,5 +310,5 @@ reverse의 값을 False로 지정하지 않아도 기본값은 False입니다.
 
 
 ### 참고하며 도움을 받은 글
-책 - 클린 코드, 이제는 파이썬이다.
+책 - 클린 코드, 이제는 파이썬이다.  
 [파이썬 Document](https://docs.python.org/ko/3/howto/sorting.html)
