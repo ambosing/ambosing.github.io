@@ -243,7 +243,7 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.ContextConfiguration
 
 @DataJpaTest
-@ContextConfiguration(classes = [Application::class])
+@ContextConfiguration(classes = [UserRepository::class])
 class UserRepositoryTest(@Autowired val userRepository: UserRepository): FunSpec({
     test("getUser() 메서드는 userId에 맞는 user를 반환해야 합니다.") {
         val user = User(1, "John Doe") 
