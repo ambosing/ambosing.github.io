@@ -1,4 +1,251 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[제멋대로맛 초코볼]]></title><description><![CDATA[이것저것 하고 싶은 개발자의 기술블로그]]></description><link>https://ambosing.github.io/</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 10 Jul 2023 04:05:02 GMT</lastBuildDate><author><![CDATA[Ambosing]]></author><item><title><![CDATA[파이썬에서 문자열 출력 잘하는 법]]></title><description><![CDATA[아니 이거 너무 좋은걸..?]]></description><link>https://ambosing.github.io/python/string_good/</link><guid isPermaLink="false">https://ambosing.github.io/python/string_good/</guid><category><![CDATA[Python]]></category><dc:creator><![CDATA[Ambosing]]></dc:creator><pubDate>Sun, 09 Jul 2023 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;들어가기-전&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%93%A4%EC%96%B4%EA%B0%80%EA%B8%B0-%EC%A0%84&quot; aria-label=&quot;들어가기 전 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;들어가기 전&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[제멋대로맛 초코볼]]></title><description><![CDATA[이것저것 하고 싶은 개발자의 기술블로그]]></description><link>https://ambosing.github.io/</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 12 Jul 2023 07:03:21 GMT</lastBuildDate><author><![CDATA[Ambosing]]></author><item><title><![CDATA[반복문 파이썬스럽게 쓰는 방법]]></title><description><![CDATA[파이썬 반복문, 너는 다 알고 있니 ? 아니.. 그러면 드루와]]></description><link>https://ambosing.github.io/python/iterate_like_python/</link><guid isPermaLink="false">https://ambosing.github.io/python/iterate_like_python/</guid><category><![CDATA[Python]]></category><dc:creator><![CDATA[Ambosing]]></dc:creator><pubDate>Sun, 09 Jul 2023 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;들어가기-전&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%93%A4%EC%96%B4%EA%B0%80%EA%B8%B0-%EC%A0%84&quot; aria-label=&quot;들어가기 전 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;들어가기 전&lt;/h2&gt;
+&lt;p&gt;다른 언어들도 각각의 특성에 맞게 반복문이 특징이 있을 때가 있는데요.&lt;br&gt;
+파이썬은 매우 특이한 케이스라고 저는 생각합니다..!&lt;br&gt;
+그래서 이번에는 특이하다고 생각되는 반복문을 조금 더 파이썬스럽게 쓸 수 있는 방법들을 알아보고자 합니다&lt;/p&gt;
+&lt;p&gt;이번 글은 &lt;a href=&quot;https://product.kyobobook.co.kr/detail/S000001834494&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;파이썬 코딩의 기술&lt;/a&gt;을 보고 참조하였습니다.&lt;br&gt;
+만약 문제 발생시 글을 삭제처리 하도록 하겠습니다!&lt;/p&gt;
+&lt;h2 id=&quot;range보단-enumerate&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#range%EB%B3%B4%EB%8B%A8-enumerate&quot; aria-label=&quot;range보단 enumerate permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;range보단 enumerate!&lt;/h2&gt;
+&lt;p&gt;range 내장 함수는 어떤 정수 집합을 반복하는 루프가 필요할 때 유용합니다!&lt;/p&gt;
+&lt;div class=&quot;code-header&quot;&gt;
+	&lt;span class=&quot;red btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;yellow btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;green btn&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; i &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;i&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; end&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos; &apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;# 0 1 2 3 4 5 6 7 8 9 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;리스트를 반복하면서 리스트의 몇 번째 원소를 처리 중인지를 알아야 할 때가 있습니다.&lt;br&gt;
+예를 들어, 아이스크림 맛의 선호도 순위를 출력하고 싶다고 합시다!&lt;/p&gt;
+&lt;div class=&quot;code-header&quot;&gt;
+	&lt;span class=&quot;red btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;yellow btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;green btn&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;flavor_list &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;바닐라&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;초콜릿&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;피칸&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;딸기&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; i &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token builtin&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;flavor_list&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    flavor &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; flavor_list&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;i&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string-interpolation&quot;&gt;&lt;span class=&quot;token string&quot;&gt;f&apos;&lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;i &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;flavor&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;이 코드는 조금 투박해 보입니다..!&lt;br&gt;
+일단 list의 길이를 알아야 하고, 인덱스를 사용해 배열 원소에 접근해야 합니다.&lt;br&gt;
+이렇게 단계가 여러 개이므로 코드의 가독성이 떨어집니다.&lt;/p&gt;
+&lt;p&gt;파이썬은 이런 문제를 해결할 수 있는 &lt;mark&gt;enumerate&lt;/mark&gt; 내장함수를 제공합니다.&lt;br&gt;
+enumerate는 이터레이터를 &lt;strong&gt;지연 계산 제너레이터(lazy generator)&lt;/strong&gt; 로 감쌉니다.
+enumerate는 인덱스와 다음 값으로 이뤄진 쌍을 넘겨줍니다. &amp;#x3C;= yield 시키는 것과 동일!&lt;/p&gt;
+&lt;div class=&quot;code-header&quot;&gt;
+	&lt;span class=&quot;red btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;yellow btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;green btn&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;it &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;enumerate&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;flavor_list&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token builtin&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;it&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token builtin&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;it&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;# (0, &apos;바닐라&apos;)&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;# (1, &apos;초콜릿&apos;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;enumerate가 넘겨주는 각 쌍을 for문에서 간결하게 언패킹할 수 있습니다.&lt;/p&gt;
+&lt;div class=&quot;code-header&quot;&gt;
+	&lt;span class=&quot;red btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;yellow btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;green btn&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; i&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; flavor &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;enumerate&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;flavor_list&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string-interpolation&quot;&gt;&lt;span class=&quot;token string&quot;&gt;f&apos;&lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;i &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;flavor&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;token operator&quot;&gt;&gt;&gt;&lt;/span&gt;
+&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 바닐라
+&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 초콜릿
+&lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 피칸
+&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 딸기&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;enumerate는 두 번째 파라미터로 어디부터 수를 세기 시작할지 지정할 수 있습니다.&lt;/p&gt;
+&lt;div class=&quot;code-header&quot;&gt;
+	&lt;span class=&quot;red btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;yellow btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;green btn&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; i&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; flavor &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;enumerate&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;flavor_list&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string-interpolation&quot;&gt;&lt;span class=&quot;token string&quot;&gt;f&apos;&lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;i&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;flavor&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;token operator&quot;&gt;&gt;&gt;&lt;/span&gt;
+&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 바닐라
+&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 초콜릿
+&lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 피칸
+&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 딸기&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;mark&gt;이 부분에서 주의할점은 1부터 센다고 해서 인덱스 0을 빼고 반복하는 것이 아니라 인덱스에만 +1되는 것을 주의하세요!&lt;/mark&gt;&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;저는 착각하고 사용해서 당함…&lt;/del&gt;&lt;/p&gt;
+&lt;h2 id=&quot;여러-이터레이터를-한-번에-zip으로&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%97%AC%EB%9F%AC-%EC%9D%B4%ED%84%B0%EB%A0%88%EC%9D%B4%ED%84%B0%EB%A5%BC-%ED%95%9C-%EB%B2%88%EC%97%90-zip%EC%9C%BC%EB%A1%9C&quot; aria-label=&quot;여러 이터레이터를 한 번에 zip으로 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;여러 이터레이터를 한 번에 zip으로!&lt;/h2&gt;
+&lt;div class=&quot;code-header&quot;&gt;
+	&lt;span class=&quot;red btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;yellow btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;green btn&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;names &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;Cecilia&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;남궁민수&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;毛泽东&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+counts &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token builtin&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;n&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; n &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; names&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;names&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;counts&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;token operator&quot;&gt;&gt;&gt;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;Cecilia&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;남궁민수&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;毛泽东&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;위와 같이 주어졌을 때, 가장 긴 이름과 가장 긴 이름의 길이를 구하고 싶다고 해봅시다.&lt;/p&gt;
+&lt;p&gt;우리는 바로 위에서 enumerate를 배웠으니 enumerate를 써봅시다!&lt;/p&gt;
+&lt;div class=&quot;code-header&quot;&gt;
+	&lt;span class=&quot;red btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;yellow btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;green btn&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;longest_name &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;None&lt;/span&gt;
+max_count &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; i&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; name &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;enumerate&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;names&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    count &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; counts&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;i&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; count &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; max_count&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        longest_name &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; name
+        max_count &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; count
+
+&lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;longest_name&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;max_count&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;token operator&quot;&gt;&gt;&gt;&lt;/span&gt;
+Cecilia
+&lt;span class=&quot;token number&quot;&gt;7&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;enumerate를 사용하니깐 깔끔해보이긴 하지만 아직 counts의 인덱싱이 마음에 들지 않습니다.&lt;br&gt;
+이 때 코드를 더 깔끔하게 만들 수 있는 것이 &lt;strong&gt;zip&lt;/strong&gt;이라는 내장 함수입니다.&lt;/p&gt;
+&lt;p&gt;&lt;mark&gt;zip은 둘 이상의 이터레이터를 지연 계산 제너레이터를 사용해 묶어줍니다!&lt;/mark&gt;&lt;br&gt;
+zip 제너레이터는 각 이터레이터의 다음 값이 들어 있는 튜플을 반환하고, for문에서는 이를 바로 언패킹 할 수 있습니다.&lt;/p&gt;
+&lt;div class=&quot;code-header&quot;&gt;
+	&lt;span class=&quot;red btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;yellow btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;green btn&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; name&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; count &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;zip&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;names&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; counts&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; count &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; max_count&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        longest_name &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; name
+        max_count &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; count&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;이제는 인덱싱 없이 코드가 아주 깔끔해졌습니다.&lt;/p&gt;
+&lt;p&gt;zip에서는 주의할 점이 있는데요.&lt;br&gt;
+바로 서로 다른 길이의 이터레이터가 입력으로 주어졌을 때입니다.
+names에 하나의 길이를 추가한다고 했을 때, names의 길이는 4가 되고 counts의 길이는 3이 됩니다.&lt;/p&gt;
+&lt;div class=&quot;code-header&quot;&gt;
+	&lt;span class=&quot;red btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;yellow btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;green btn&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;names&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;append&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;Rosalind&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; name&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; count &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;zip&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;names&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; counts&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string-interpolation&quot;&gt;&lt;span class=&quot;token string&quot;&gt;f&apos;&lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;name&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;count&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token operator&quot;&gt;&gt;&gt;&lt;/span&gt; 
+Cecilia&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;7&lt;/span&gt;
+남궁민수&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;
+毛泽东&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;결과를 보시면 3개까지만 출력하는 것을 볼 수 있습니다.
+zip은 자신이 감싼 이터레이터 중 어느 하나가 끝날 때까지 튜플을 내놓습니다. 따라서 출력은 가장 짧은 입력의 길이와 같습니다.&lt;/p&gt;
+&lt;p&gt;만약 긴 이터레이터의 뒷부분을 찍고 싶다면 itertools 내장 모듈에 있는 zip_longest를 사용하면 됩니다.&lt;/p&gt;
+&lt;div class=&quot;code-header&quot;&gt;
+	&lt;span class=&quot;red btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;yellow btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;green btn&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; itertools
+&lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; name&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; count &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; itertools&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;zip_longest&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;names&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; counts&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string-interpolation&quot;&gt;&lt;span class=&quot;token string&quot;&gt;f&apos;&lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;name&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;count&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token operator&quot;&gt;&gt;&gt;&lt;/span&gt;
+Cecilia&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;7&lt;/span&gt;
+남궁민수&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;
+毛泽东&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;
+Rosalind&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;None&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&quot;for나-while-뒤에-else-블록-사용하지-않기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#for%EB%82%98-while-%EB%92%A4%EC%97%90-else-%EB%B8%94%EB%A1%9D-%EC%82%AC%EC%9A%A9%ED%95%98%EC%A7%80-%EC%95%8A%EA%B8%B0&quot; aria-label=&quot;for나 while 뒤에 else 블록 사용하지 않기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;for나 while 뒤에 else 블록 사용하지 않기!&lt;/h2&gt;
+&lt;p&gt;파이썬에서는 반복문이 반복 수행하는 내부 블록 바로 다음에 else 블록을 추가할 수 있습니다.&lt;/p&gt;
+&lt;div class=&quot;code-header&quot;&gt;
+	&lt;span class=&quot;red btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;yellow btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;green btn&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; i &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;Loop&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; i&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;Else block!&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+
+&lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; i &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;Loop&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; i&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;break&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;Else block!&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token operator&quot;&gt;&gt;&gt;&lt;/span&gt;
+Loop &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;
+Loop &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;
+Loop &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;
+Else block!
+Loop &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;
+Loop &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;for/else의 else 부분은 루프가 정상적으로 완료되어야 동작 하는 것을 알 수 있습니다.&lt;/p&gt;
+&lt;p&gt;빈 이터레이터나 반복문 조건이 처음부터 False였을 경우에도 else 블록이 바로 실행됩니다.&lt;/p&gt;
+&lt;div class=&quot;code-header&quot;&gt;
+	&lt;span class=&quot;red btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;yellow btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;green btn&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; x &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;이 줄은 실행되지 않음&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;For Else block!&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;이 줄은 실행되지 않음&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;While Else block!&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token operator&quot;&gt;&gt;&gt;&lt;/span&gt;
+For Else block!
+While Else block!&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;이런 방식으로 동작하는 이유는 break를 했을 때는 동작하지 않고, 모든 반복이 끝날 때만 동작하는 경우가 유용하기 때문입니다!
+이렇게 작성하면 가독성이 떨어지고 직관적이지 않습니다.&lt;/p&gt;
+&lt;p&gt;이를 위해 해결할 방법 중 첫 번째는 원하는 조건을 찾자마자 빠르게 함수를 반환하는 방식입니다.&lt;/p&gt;
+&lt;div class=&quot;code-header&quot;&gt;
+	&lt;span class=&quot;red btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;yellow btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;green btn&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;check&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; i &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;Loop&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; i&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;False&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;True&lt;/span&gt;
+
+
+&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; check&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;if block!&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;두 번째 방법은 루프 안에서 원하는 대상을 찾았는지 나타내는 결과 변수를 도입하는 것입니다.&lt;/p&gt;
+&lt;div class=&quot;code-header&quot;&gt;
+	&lt;span class=&quot;red btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;yellow btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;green btn&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;check2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    is_not_break &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;True&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; i &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;Loop&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; i&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+            is_not_break &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;False&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;break&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; is_not_break
+
+
+&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; check2&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;if block!&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;파이썬에서 루프와 같은 간단한 구성 요소는 그 자체로 의미가 명확해야 합니다.
+따라서 절대로 루프 뒤에 else 블록을 사용하지 말라고 하네요..!&lt;/p&gt;
+&lt;h2 id=&quot;요약&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%9A%94%EC%95%BD&quot; aria-label=&quot;요약 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;요약&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;enumerate를 사용하면 이터레이터에 대해 루프를 돌면서 이터레이터에서 가져오는 원소의 인덱스까지 얻는 코드를 간결하게 작성할 수 있습니다!&lt;/li&gt;
+&lt;li&gt;zip 내장 함수를 사용해 여러 이터레이터를 같이 이터레이션할 수 있습니다.&lt;/li&gt;
+&lt;li&gt;입력 이터레이터의 길이가 서로 다르면 zip은 가장 짧은 이터레이터 길이까지만 튜플을 내놓고 더 긴 이터레이터의 나머지 원소는 무시합니다.&lt;/li&gt;
+&lt;li&gt;서로 다른 이터레이터에 대해 더 긴 이터레이터까지 루프를 수행하려면 itertools 내장 모듈의 zip_longest 함수를 사용하면 됩니다!&lt;/li&gt;
+&lt;li&gt;for/while 뒤에 오는 else 블록은 루프가 반복되는 도중에 break를 만나지 않은 경우에만 실행됩니다.&lt;/li&gt;
+&lt;li&gt;for/while - else는 동작이 직관적이지 않고 혼동을 야기할 수 있으므로 else 블록을 사용하지 않는 게 좋습니다.&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[파이썬에서 문자열 출력 잘하는 법]]></title><description><![CDATA[아니 이거 너무 좋은걸..?]]></description><link>https://ambosing.github.io/python/string_good/</link><guid isPermaLink="false">https://ambosing.github.io/python/string_good/</guid><category><![CDATA[Python]]></category><dc:creator><![CDATA[Ambosing]]></dc:creator><pubDate>Sun, 09 Jul 2023 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;들어가기-전&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%93%A4%EC%96%B4%EA%B0%80%EA%B8%B0-%EC%A0%84&quot; aria-label=&quot;들어가기 전 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;들어가기 전&lt;/h2&gt;
 &lt;p&gt;파이썬을 사용하면서 문자열 가공을 가장 많이 처리할 겁니다. 어떤 언어보다도 문자열 처리하기가 제일 좋은 이유가 있기 때문이죠!&lt;br&gt;
 그래서 이번에 파이썬에서 다양한 문자열 출력 방법이 있는데 그중 어떤 것이 왜 가장 좋은지 한 번 알아봅시다.&lt;br&gt;
 결론이 급하신 분들은 맨 마지막 인터폴레이션만 보시면 될 것 같습니다!&lt;/p&gt;
