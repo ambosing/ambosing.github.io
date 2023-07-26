@@ -187,7 +187,7 @@ names에 하나의 길이를 추가한다고 했을 때, names의 길이는 4가
 	<span class="yellow btn"></span>
 	<span class="green btn"></span>
 </div>
-<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">names<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token string">'Rosalind'</span><span class="token punctuation">)</span>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">names<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token string">'Rosalind'</span><span class="token punctuation">)</span> <span class="token comment"># len(names) : 3 -> 4</span>
 <span class="token keyword">for</span> name<span class="token punctuation">,</span> count <span class="token keyword">in</span> <span class="token builtin">zip</span><span class="token punctuation">(</span>names<span class="token punctuation">,</span> counts<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f'</span><span class="token interpolation"><span class="token punctuation">{</span>name<span class="token punctuation">}</span></span><span class="token string">: </span><span class="token interpolation"><span class="token punctuation">{</span>count<span class="token punctuation">}</span></span><span class="token string">'</span></span><span class="token punctuation">)</span>
 <span class="token operator">>></span> 
@@ -195,7 +195,7 @@ Cecilia<span class="token punctuation">:</span> <span class="token number">7</sp
 남궁민수<span class="token punctuation">:</span> <span class="token number">4</span>
 毛泽东<span class="token punctuation">:</span> <span class="token number">3</span></code></pre></div>
 <p>결과를 보시면 3개까지만 출력하는 것을 볼 수 있습니다.
-zip은 자신이 감싼 이터레이터 중 어느 하나가 끝날 때까지 튜플을 내놓습니다. 따라서 출력은 가장 짧은 입력의 길이와 같습니다.</p>
+<mark>zip은 자신이 감싼 이터레이터 중 어느 하나가 끝날 때까지 튜플을 내놓습니다. 따라서 출력은 가장 짧은 입력의 길이와 같습니다.</mark></p>
 <p>만약 긴 이터레이터의 뒷부분을 찍고 싶다면 itertools 내장 모듈에 있는 zip_longest를 사용하면 됩니다.</p>
 <div class="code-header">
 	<span class="red btn"></span>
@@ -292,7 +292,7 @@ While Else block!</code></pre></div>
 <span class="token keyword">if</span> check2<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'if block!'</span><span class="token punctuation">)</span></code></pre></div>
 <p>파이썬에서 루프와 같은 간단한 구성 요소는 그 자체로 의미가 명확해야 합니다.
-따라서 절대로 루프 뒤에 else 블록을 사용하지 말라고 하네요..!</p>
+따라서 루프 뒤에 else 블록이 직관적이지 않기 때문에 되도록 사용하지 않는게 좋아보입니다!!</p>
 <h2 id="요약" style="position:relative;"><a href="#%EC%9A%94%EC%95%BD" aria-label="요약 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>요약</h2>
 <ul>
 <li>enumerate를 사용하면 이터레이터에 대해 루프를 돌면서 이터레이터에서 가져오는 원소의 인덱스까지 얻는 코드를 간결하게 작성할 수 있습니다!</li>
