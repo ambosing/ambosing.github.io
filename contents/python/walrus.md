@@ -7,7 +7,8 @@ thumbnail: '../images/thumbnail/chocoball.webp'
 ---
 
 ## 들어가기 전
-책을 읽다가 새로운 기능인 왈러스를 알게되었는데, 이 기능을 다른 분들도 알게 된다면 좋을 것 같아서 정리해봅니다!
+책을 읽다가 새로운 기능인 왈러스를 알게되었는데, 이 기능을 다른 분들도 알게 된다면 좋을 것 같아서 정리해봅니다!  
+아!! 이 기능은 <mark>파이썬 3.8이상</mark>부터 사용가능합니다! 
  
 이번 글은 [파이썬 코딩의 기술](https://product.kyobobook.co.kr/detail/S000001834494)을 보고 참조하였습니다.  
 만약 문제 발생시 글을 삭제처리 하도록 하겠습니다!
@@ -90,6 +91,8 @@ else:
 ```
 
 ## 왈러스 연산자를 사용하여 해결!
+앞에서 봤던 if-else 중첩은 코드를 보는 사람을 어렵게 합니다..!  
+그래서 이 코드도 왈러스(대입식) 연산자를 사용하여 해결해보겠습니다.
 <div class="code-header">
 	<span class="red btn"></span>
 	<span class="yellow btn"></span>
@@ -122,12 +125,12 @@ else:
 
 ```python
 bottles = []
-fresh_fruit = pick_fruit()
+fresh_fruit = pick_fruit() # 1
 while fresh_fruit:
     for fruit, count in fresh_fruit.items():
         batch = make_juice(fruit, count)
         bottles.extend(batch)
-    fresh_fruit = pick_fruit()
+    fresh_fruit = pick_fruit() # 2
 
 print(bottles)
 ```

@@ -28,7 +28,7 @@ thumbnail: '../images/thumbnail/chocoball.webp'
 sorted([5, 2, 3, 1, 4]) # 새로운 리스트 반환
 [1, 2, 3, 4, 5]
 ```
-sort() 함수는 리스트에만 존재합니다.  
+sorted()메서드와는 달리 sort() 함수는 리스트에만 존재합니다.  
 list.sort() 메서드를 사용해서 제자리(in-place)에서 수정할 수 있습니다.  
 list.sort()는 None을 반환합니다.  
 <div class="code-header">
@@ -45,8 +45,9 @@ print(a.sort())
 a
 >> [1, 2, 3, 4, 5]
 ```
-일반적으로 list.sort()는 sorted()보다는 덜 편리합니다.  
+일반적으로 list.sort()는 sorted()보다는 불편합니다..!
 하지만 원래 목록이 필요하지 않다면, 새로운 리스트를 하나 더 만드는 sorted()보다 효율적입니다.(공간복잡도가 낮아집니다!)
+(sorted()는 새로운 리스트를 반환하므로)
 
 또 다른 점은 list.sort() 메서드가 리스트에게만 정의된다는 것입니다. 이와 달리, sorted() 함수는 모든 iterable을 받아들입니다.
 <div class="code-header">
@@ -183,6 +184,8 @@ TypeError: bad operand type for unary -: 'str'
 
 ## 파이썬은 Stable 정렬을 제공한다..!
 파이썬은 Stable 정렬 알고리즘을 제공합니다.  
+아니 갑자기 왜 Stable 정렬이냐구요..?  
+이유는 바로 뒤에 나옵니다! 
 리스트 타입의 sort 메서드는 key 함수가 반환하는 값이 서로 같은 경우 리스트에 들어 있던 원래 순서를 그대로 유지해줍니다!  
 이는 같은 리스트에 대해 서로 다른 기준으로 sort를 여러 번 호출해도 된다는 뜻입니다.
 <div class="code-header">
@@ -202,7 +205,7 @@ print(power_tools)
 파이썬의 Stable한 정렬 덕분에 아까 에러가 발생했던 (weight, -name)에 대한 정렬 결과를 위 코드처럼 두 번 정렬함으로써 결과를 도출할 수 있습니다.
 
 ## cmp_to_key
-파이썬에서 두 변수를 변경시켜 정렬을 해야하는 경우가 있습니다. 그럴 때는 functools의 cmp_to_key를 사용하면 됩니다.  
+파이썬에서 key 파라미터로 해결되지 않고, 두 변수를 변경시켜 정렬을 해야하는 경우가 있습니다. 그럴 때는 functools의 cmp_to_key를 사용하면 됩니다.  
 <div class="code-header">
 	<span class="red btn"></span>
 	<span class="yellow btn"></span>
