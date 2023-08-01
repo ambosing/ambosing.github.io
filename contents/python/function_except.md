@@ -159,7 +159,7 @@ def determine_weight(volume, density):
 위의 그림들은 아래에 나올 코드 예시들을 쉽게 그림으로 정리한 내용입니다.  
 이해에 도움이 되실 것 같아서 첨부하였습니다!
 
-### 예상치 못한 예외를 처리하면서 프로세스를 종료시키지 않을 수 있습니다.
+### 최상위 예외가 있으면 예상치 못한 예외를 처리가 가능하고, API 코드의 버그를 발견할 때 도움이 됩니다.
 <div class="code-header">
 	<span class="red btn"></span>
 	<span class="yellow btn"></span>
@@ -184,5 +184,67 @@ except Exception:
     logging.exception('호출 코드에 버그가 있음')
 ```
 현재 코드의 최상위 부분에서는 InvalidDensityError, 즉 밀도만 따로 weight를 0으로 처리하고 있을 뿐, 따로 부피에 대해서는 예외를 처리해주지 않고 있습니다.  
-이럴 때 라이브러리에 있는 Exception을 사용하면 모든 예외 상황에 대해서 처리해서 프로세스가 종료되지 않게 할 수 있습니다.  
+이럴 때 <mark>라이브러리에 있는 Exception을 사용하면 모든 예외 상황에 대해서 처리해서 프로세스가 종료되지 않게 할 수 있고 로그를 찍어 에러를 쉽게 파악할 수 있습니다.</mark>  
 그리고 Exception의 Stack trace를 통해 따로 InvalidVolumeError에 대한 예외 처리를 InvalidDensityError와 같이 weight = 0으로 처리를 따로 해줄 수 있습니다.  
+
+### 새로운 예외 계층을 정의하면 API를 잘못 사용한 경우를 더 쉽게 이해할 수 있습니다.
+<div class="code-header">
+	<span class="red btn"></span>
+	<span class="yellow btn"></span>
+	<span class="green btn"></span>
+</div>
+
+```python
+try:
+    # 호출 코드 버그로 인한 오류가 나야 함
+    weight = my_module.determine_weight(-1, 1)
+except my_module.InvalidDensityError:
+    weight = 0
+except Exception: 
+    logging.exception('호출 코드에 버그가 있음')
+
+>> ERROR:root:호출 코드에 버그가 있음
+Traceback (most recent call last):
+  File "C:\Users\user\PycharmProjects\issueKeyword\test.py", line 27, in <module>
+    weight = determine_weight(-1, 1)
+  File "C:\Users\user\PycharmProjects\issueKeyword\test.py", line 18, in determine_weight
+    raise InvalidVolumeError('부피는 0보다 커야 합니다')
+InvalidVolumeError: 부피는 0보다 커야 합니다
+```
+![예외 처리 구조 ](../images/content/2023-07-30-23-07-33.webp)
+이렇게 하면 기존에 있었던 InvalidVolumeError를 통해 에러가 발생했구나를 바로 알 수 있고, 에러를 처리하기 쉬워집니다.  
+그리고 저 같은 경우에는 따로 제가 만든 예외 계층을 사용하여 어디에서 에러가 발생했는지를 확실하게 알기 위해 각각의 위치에서 제가 만든 다른 예외 계층을 사용했습니다.
+
+제가 사용했던 코드의 예시를 잠깐 드리면..!
+
+<div class="code-header">
+	<span class="red btn"></span>
+	<span class="yellow btn"></span>
+	<span class="green btn"></span>
+</div>
+
+```python
+def board_page_crawling():
+    try:
+        ...
+    except TimeoutException:
+        raise SeleniumError(f'Selenium 크롤링 {url}에서 도중 Timeout 발생')
+
+def Crawling():
+    try:
+        crawling_list = board_page_crawling()
+        insert(crawling_list)
+    except SeleniumError:
+        logging.exception('Selenium에서 에러 발생')
+    except InsertError:
+        logging.exception('Insert에서 에러 발생')
+    except Exception:
+        logging.exception('알 수 없는 오류 발생')
+```
+이런식으로 사용했었습니다. 이렇게 사용하니 에러 파악이 예전보다 손 쉬워졌고 특정 게시물에 대해서 에러가 발생해도 프로세스는 종료되지 않고 크롤링을 이어나갈 수 있었습니다.
+
+
+## 요약
+- 모듈에서 사용할 최상위 예외를 정의하면 API 프로세스를 종료되지 않고 보호할 수 있습니다.
+- 자신이 사용하는 예외 계층과 최상위 예외를 같이 사용하면 API 코드의 버그를 쉽게 찾을 수 있습니다.
+- 파이썬 Exception을 최상위 예외에 예외 처리를 해준다면 예상치 못한 경우에 대해서도 로그를 남기고 프로세스가 종료되지 않게 할 수 있습니다.

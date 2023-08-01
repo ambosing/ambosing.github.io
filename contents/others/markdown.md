@@ -52,7 +52,6 @@ this is code block
 this is code block too
 ```
 
-
 *기울임꼴*
 _기울임꼴_
 **강조하기**
