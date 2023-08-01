@@ -1,4 +1,339 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[제멋대로맛 초코볼]]></title><description><![CDATA[이것저것 하고 싶은 개발자의 기술블로그]]></description><link>https://ambosing.github.io/</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 26 Jul 2023 00:52:25 GMT</lastBuildDate><author><![CDATA[Ambosing]]></author><item><title><![CDATA[파이썬에서 정렬을 잘 사용하는 법]]></title><description><![CDATA[파이썬 sort(), sorted(), key, cmp_to_key]]></description><link>https://ambosing.github.io/python/sort/</link><guid isPermaLink="false">https://ambosing.github.io/python/sort/</guid><category><![CDATA[Python]]></category><dc:creator><![CDATA[Ambosing]]></dc:creator><pubDate>Mon, 24 Jul 2023 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;들어가기-전&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%93%A4%EC%96%B4%EA%B0%80%EA%B8%B0-%EC%A0%84&quot; aria-label=&quot;들어가기 전 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;들어가기 전&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[제멋대로맛 초코볼]]></title><description><![CDATA[이것저것 하고 싶은 개발자의 기술블로그]]></description><link>https://ambosing.github.io/</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 01 Aug 2023 03:28:05 GMT</lastBuildDate><author><![CDATA[Ambosing]]></author><item><title><![CDATA[파이썬 함수에서 예외 처리 잘하기]]></title><description><![CDATA[try!! 파이썬 예외 try!!]]></description><link>https://ambosing.github.io/python/function_except/</link><guid isPermaLink="false">https://ambosing.github.io/python/function_except/</guid><category><![CDATA[Python]]></category><dc:creator><![CDATA[Ambosing]]></dc:creator><pubDate>Sat, 29 Jul 2023 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;들어가기-전&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%93%A4%EC%96%B4%EA%B0%80%EA%B8%B0-%EC%A0%84&quot; aria-label=&quot;들어가기 전 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;들어가기 전&lt;/h2&gt;
+&lt;p&gt;이전에 도커로 웹 크롤링을 도커 위에서 하나의 사이트마다 24시간 동안 돌리기 위해 크롤링 구조를 새로 짠 적이 있습니다. 그 때에 예외 처리는 어떻게 하는 것이 좋을까라는 생각을 많이 했었습니다.&lt;br&gt;
+크롤링 같은 경우 에러가 발생한 경우 그 에러 상황을 재현하기가 쉽지 않을 때가 존재합니다..! 해당 URL의 게시물이 사라진 경우.. 또한, 어디에서 에러가 발생했는지 쉽지 않습니다.&lt;br&gt;
+그래서 이번에는 예외 처리를 훌륭하게 해보려고 시도했습니다. 그래도 이번에 이렇게 책에서 나온것처럼 처리한 것 같아서 다행입니다..!&lt;br&gt;
+다른 분들도 파이썬에서 예외처리를 잘하고 싶다면 이번에 나오는 예제를 잘 참고해보시는 것이 좋을 듯 합니다!!&lt;/p&gt;
+&lt;p&gt;이번 글은 &lt;a href=&quot;https://product.kyobobook.co.kr/detail/S000001834494&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;파이썬 코딩의 기술&lt;/a&gt;을 보고 참조 + 저의 생각을 합쳐서 나온 게시글입니다.&lt;br&gt;
+만약 저작권의 문제 발생하거나 잘못된 부분이 있는 경우, 글을 삭제/수정처리 하도록 하겠습니다!&lt;/p&gt;
+&lt;h2 id=&quot;-함수에서-예외가-발생했을-때-none을-반환하는-것의-문제점&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#-%ED%95%A8%EC%88%98%EC%97%90%EC%84%9C-%EC%98%88%EC%99%B8%EA%B0%80-%EB%B0%9C%EC%83%9D%ED%96%88%EC%9D%84-%EB%95%8C-none%EC%9D%84-%EB%B0%98%ED%99%98%ED%95%98%EB%8A%94-%EA%B2%83%EC%9D%98-%EB%AC%B8%EC%A0%9C%EC%A0%90&quot; aria-label=&quot; 함수에서 예외가 발생했을 때 none을 반환하는 것의 문제점 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;❌ 함수에서 예외가 발생했을 때 None을 반환하는 것의 문제점!&lt;/h2&gt;
+&lt;p&gt;갑자기 이게 무슨 이야기인지 싶으실 겁니다.&lt;br&gt;
+바로 아래 예제를 확인하시면 이해가 더 잘 되실 겁니다.&lt;/p&gt;
+&lt;div class=&quot;code-header&quot;&gt;
+	&lt;span class=&quot;red btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;yellow btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;green btn&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;careful_divide&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;a&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; b&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; a &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; b
+    &lt;span class=&quot;token keyword&quot;&gt;except&lt;/span&gt; ZeroDivisionError&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;None&lt;/span&gt;
+
+
+x&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; y &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;
+result &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; careful_divide&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;x&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; y&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; result &lt;span class=&quot;token keyword&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;잘못된 입력&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;함수에서 예외가 발생했을 때 예외 처리로 None을 리턴하는 방식이 있다고 합니다.&lt;br&gt;
+보통 코드를 이렇게 쓰지는 않긴 합니다만..! 만약 None으로 쓰셨다면 이제 쓰지 않으시는 걸 추천합니다!&lt;br&gt;
+그 이유는 바로 현재 함수를 호출하고 있는 호출자에서 if 조건에서 따로 처리를 해주고 있는 모습으로 보입니다.&lt;br&gt;
+그런데 이렇게 처리하는 방법은 실수가 유발되기 쉽습니다.&lt;/p&gt;
+&lt;div class=&quot;code-header&quot;&gt;
+	&lt;span class=&quot;red btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;yellow btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;green btn&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;#&lt;/span&gt;
+x&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; y &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;5&lt;/span&gt;
+result &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; careful_divide&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;x&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; y&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;not&lt;/span&gt; result&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;잘못된 입력&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;# 이 코드가 실행되는데, 사실 이 코드가 실행되면 안된다!&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;이 코드에서는 result 값이 0으로 반환받게 됩니다.&lt;br&gt;
+이렇게 되면 if문 안이 실행되어 print를 실행하게 됩니다. 다른 함수와 같은 경우에도 비슷합니다. False를 반환하는 값이라면 이와 같은 실수가 발생할 수 있게 되는거죠.&lt;/p&gt;
+&lt;p&gt;그러면 어떻게 해야 예외를 잘 처리할 수 있을까요?&lt;/p&gt;
+&lt;h2 id=&quot;-exception에서-다시-한-번-예외를-발생시켜-호출한-쪽에서-처리하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#-exception%EC%97%90%EC%84%9C-%EB%8B%A4%EC%8B%9C-%ED%95%9C-%EB%B2%88-%EC%98%88%EC%99%B8%EB%A5%BC-%EB%B0%9C%EC%83%9D%EC%8B%9C%EC%BC%9C-%ED%98%B8%EC%B6%9C%ED%95%9C-%EC%AA%BD%EC%97%90%EC%84%9C-%EC%B2%98%EB%A6%AC%ED%95%98%EA%B8%B0&quot; aria-label=&quot; exception에서 다시 한 번 예외를 발생시켜 호출한 쪽에서 처리하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;✅ Exception에서 다시 한 번 예외를 발생시켜 호출한 쪽에서 처리하기&lt;/h2&gt;
+&lt;p&gt;말 그대로 함수에서 예외를 처리를 한 번 하고, 다시 한 번 예외를 발생시켜 처리하는 방법입니다.&lt;/p&gt;
+&lt;div class=&quot;code-header&quot;&gt;
+	&lt;span class=&quot;red btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;yellow btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;green btn&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;careful_divide&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;a&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; b&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token triple-quoted-string string&quot;&gt;&quot;&quot;&quot;a를 b로 나눈다.
+
+    Raises:
+        ValueError: b가 0이어서 나눗셈을 할 수 없을 때
+    &quot;&quot;&quot;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; a &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; b
+    &lt;span class=&quot;token keyword&quot;&gt;except&lt;/span&gt; ZeroDivisionError &lt;span class=&quot;token keyword&quot;&gt;as&lt;/span&gt; e&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;raise&lt;/span&gt; ValueError&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;잘못된 입력&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+
+x&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; y &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    result &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; careful_divide&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;x&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; y&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;except&lt;/span&gt; ValueError&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;잘못된 입력&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;결과는 %.1f 입니다&apos;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt; result&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;이렇게 하면 기존의 None은 반환했을 때와 달리 if문 자체를 쓰지 않아도 돼서 실수를 없앨 수 있습니다.&lt;/p&gt;
+&lt;p&gt;근데 이제 굳이 이렇게까지 try-except를 두 번씩 쓰면서 함수의 Main부분에서 예외처리를 할 필요가 있을까라는 생각이 들게 됩니다..!
+&lt;del&gt;저도 처음에 불편해서 했던 생각..&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;이를 최상위 예외라고 합니다.
+그러면 최상위 예외를 왜 쓰면 좋은지를 알아보기 전에 커스텀한 예외를 써야하는 이유에 대해서 알아보겠습니다!
+&lt;del&gt;그래야 예제가 이해가 되고.. 또.. 예외를 더 잘할 수 있다구요!&lt;/del&gt;&lt;/p&gt;
+&lt;h2 id=&quot;새로운-예외-계층-구조를-정의하는-것이-좋은-이유&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%83%88%EB%A1%9C%EC%9A%B4-%EC%98%88%EC%99%B8-%EA%B3%84%EC%B8%B5-%EA%B5%AC%EC%A1%B0%EB%A5%BC-%EC%A0%95%EC%9D%98%ED%95%98%EB%8A%94-%EA%B2%83%EC%9D%B4-%EC%A2%8B%EC%9D%80-%EC%9D%B4%EC%9C%A0&quot; aria-label=&quot;새로운 예외 계층 구조를 정의하는 것이 좋은 이유 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;새로운 예외 계층 구조를 정의하는 것이 좋은 이유&lt;/h2&gt;
+&lt;p&gt;파이썬 언어와 표준 라이브러리에는 이미 예외 계층 구조가 내장되어 있습니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;this &lt;span class=&quot;token keyword&quot;&gt;is&lt;/span&gt; code block&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;code-header&quot;&gt;
+	&lt;span class=&quot;red btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;yellow btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;green btn&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# my_module.py&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;determine_weight&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;volume&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; density&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; density &lt;span class=&quot;token operator&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;raise&lt;/span&gt; ValueError&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;밀도는 0보다 커야 합니다&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;# 내장된 예외&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;경우에 따라 내장된 예외인 ValueError를 사용하는 편이 타당할 때도 있습니다.&lt;br&gt;
+하지만, API의 경우 새로운 예외 계층 구조를 정의하는 편이 훨씬 강력합니다.&lt;br&gt;
+모듈에 최상위 Exception을 정의하고 모듈이 발생시키는 다른 모든 예가 이 최상위 예외를 상속하게 만듦으로써 API에서 발생하는 예외의 계층 구조를 만들 수 있습니다.&lt;/p&gt;
+&lt;div class=&quot;code-header&quot;&gt;
+	&lt;span class=&quot;red btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;yellow btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;green btn&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# my_module.py&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Error&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;Exception&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token triple-quoted-string string&quot;&gt;&quot;&quot;&quot;이 모듈에서 발생할 모든 예외의 상위 클래스.&quot;&quot;&quot;&lt;/span&gt;
+
+
+&lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;InvalidDensityError&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;Error&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token triple-quoted-string string&quot;&gt;&quot;&quot;&quot;밀도 값이 잘못된 경우.&quot;&quot;&quot;&lt;/span&gt;
+
+
+&lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;InvalidVolumeError&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;Error&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token triple-quoted-string string&quot;&gt;&quot;&quot;&quot;부피 값이 잘못된 경우.&quot;&quot;&quot;&lt;/span&gt;
+
+
+&lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;determine_weight&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;volume&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; density&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; density &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;raise&lt;/span&gt; InvalidDensityError&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;밀도는 0보다 커야 합니다&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; volume &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;raise&lt;/span&gt; InvalidVolumeError&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;부피는 0보다 커야 합니다&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; volume &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        density &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; volume&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;그럼 이제 이렇게 커스텀한 예외 구조 계층을 만들어봤으니 다시 최상위 예외가 있으면 왜 좋은지 알아봅시다!@&lt;/p&gt;
+&lt;h2 id=&quot;-최상위-예외와-커스텀한-예외-구조-계층을-쓰면-좋은-점&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#-%EC%B5%9C%EC%83%81%EC%9C%84-%EC%98%88%EC%99%B8%EC%99%80-%EC%BB%A4%EC%8A%A4%ED%85%80%ED%95%9C-%EC%98%88%EC%99%B8-%EA%B5%AC%EC%A1%B0-%EA%B3%84%EC%B8%B5%EC%9D%84-%EC%93%B0%EB%A9%B4-%EC%A2%8B%EC%9D%80-%EC%A0%90&quot; aria-label=&quot; 최상위 예외와 커스텀한 예외 구조 계층을 쓰면 좋은 점 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;❓ 최상위 예외와 커스텀한 예외 구조 계층을 쓰면 좋은 점&lt;/h2&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/9daf1d0f0c5f8726181981a7a563c09e/3c7a2/2023-07-30-12312312.webp&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 41.14583333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/webp;base64,UklGRkAAAABXRUJQVlA4IDQAAAAwAwCdASoUAAgAPtFWo0uoJKMhsAgBABoJaQAAXK+MeIUAAP72EKllrsn5azQ0jYOTl8AA&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/9daf1d0f0c5f8726181981a7a563c09e/a59e9/2023-07-30-12312312.webp 192w,
+/static/9daf1d0f0c5f8726181981a7a563c09e/0ca9f/2023-07-30-12312312.webp 384w,
+/static/9daf1d0f0c5f8726181981a7a563c09e/dc9b9/2023-07-30-12312312.webp 768w,
+/static/9daf1d0f0c5f8726181981a7a563c09e/3c7a2/2023-07-30-12312312.webp 842w&quot;
+              sizes=&quot;(max-width: 768px) 100vw, 768px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/9daf1d0f0c5f8726181981a7a563c09e/a59e9/2023-07-30-12312312.webp 192w,
+/static/9daf1d0f0c5f8726181981a7a563c09e/0ca9f/2023-07-30-12312312.webp 384w,
+/static/9daf1d0f0c5f8726181981a7a563c09e/dc9b9/2023-07-30-12312312.webp 768w,
+/static/9daf1d0f0c5f8726181981a7a563c09e/3c7a2/2023-07-30-12312312.webp 842w&quot;
+            sizes=&quot;(max-width: 768px) 100vw, 768px&quot;
+            type=&quot;image/webp&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/9daf1d0f0c5f8726181981a7a563c09e/dc9b9/2023-07-30-12312312.webp&quot;
+            alt=&quot;현재 이런 상황에서의 모습이라고 생각하시면 됩니다.&quot;
+            title=&quot;&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/131391e36d8285e28d097ce87f695892/8cb6d/2023-07-30-23-07-33.webp&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 83.33333333333334%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAABwAwCdASoUABEAPtFcqE4oJSQiKAqpABoJaQAALkDSxgC3HzAA/vYJVBEXV6p+dxfc5w2iAgRqAKat+0ckShNuQsAAAA==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/131391e36d8285e28d097ce87f695892/a59e9/2023-07-30-23-07-33.webp 192w,
+/static/131391e36d8285e28d097ce87f695892/0ca9f/2023-07-30-23-07-33.webp 384w,
+/static/131391e36d8285e28d097ce87f695892/dc9b9/2023-07-30-23-07-33.webp 768w,
+/static/131391e36d8285e28d097ce87f695892/e2c2f/2023-07-30-23-07-33.webp 1152w,
+/static/131391e36d8285e28d097ce87f695892/f3efb/2023-07-30-23-07-33.webp 1536w,
+/static/131391e36d8285e28d097ce87f695892/8cb6d/2023-07-30-23-07-33.webp 1576w&quot;
+              sizes=&quot;(max-width: 768px) 100vw, 768px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/131391e36d8285e28d097ce87f695892/a59e9/2023-07-30-23-07-33.webp 192w,
+/static/131391e36d8285e28d097ce87f695892/0ca9f/2023-07-30-23-07-33.webp 384w,
+/static/131391e36d8285e28d097ce87f695892/dc9b9/2023-07-30-23-07-33.webp 768w,
+/static/131391e36d8285e28d097ce87f695892/e2c2f/2023-07-30-23-07-33.webp 1152w,
+/static/131391e36d8285e28d097ce87f695892/f3efb/2023-07-30-23-07-33.webp 1536w,
+/static/131391e36d8285e28d097ce87f695892/8cb6d/2023-07-30-23-07-33.webp 1576w&quot;
+            sizes=&quot;(max-width: 768px) 100vw, 768px&quot;
+            type=&quot;image/webp&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/131391e36d8285e28d097ce87f695892/dc9b9/2023-07-30-23-07-33.webp&quot;
+            alt=&quot;예외 처리 구조 &quot;
+            title=&quot;&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+위의 그림들은 아래에 나올 코드 예시들을 쉽게 그림으로 정리한 내용입니다.&lt;br&gt;
+이해에 도움이 되실 것 같아서 첨부하였습니다!&lt;/p&gt;
+&lt;h3 id=&quot;최상위-예외가-있으면-예상치-못한-예외를-처리가-가능하고-api-코드의-버그를-발견할-때-도움이-됩니다&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%B5%9C%EC%83%81%EC%9C%84-%EC%98%88%EC%99%B8%EA%B0%80-%EC%9E%88%EC%9C%BC%EB%A9%B4-%EC%98%88%EC%83%81%EC%B9%98-%EB%AA%BB%ED%95%9C-%EC%98%88%EC%99%B8%EB%A5%BC-%EC%B2%98%EB%A6%AC%EA%B0%80-%EA%B0%80%EB%8A%A5%ED%95%98%EA%B3%A0-api-%EC%BD%94%EB%93%9C%EC%9D%98-%EB%B2%84%EA%B7%B8%EB%A5%BC-%EB%B0%9C%EA%B2%AC%ED%95%A0-%EB%95%8C-%EB%8F%84%EC%9B%80%EC%9D%B4-%EB%90%A9%EB%8B%88%EB%8B%A4&quot; aria-label=&quot;최상위 예외가 있으면 예상치 못한 예외를 처리가 가능하고 api 코드의 버그를 발견할 때 도움이 됩니다 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;최상위 예외가 있으면 예상치 못한 예외를 처리가 가능하고, API 코드의 버그를 발견할 때 도움이 됩니다.&lt;/h3&gt;
+&lt;div class=&quot;code-header&quot;&gt;
+	&lt;span class=&quot;red btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;yellow btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;green btn&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;determine_weight&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;volume&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; density&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; density &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;raise&lt;/span&gt; InvalidDensityError&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;밀도는 0보다 커야 합니다&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; volume &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;raise&lt;/span&gt; InvalidVolumeError&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;부피는 0보다 커야 합니다&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; volume &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        density &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; volume
+
+&lt;span class=&quot;token keyword&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token comment&quot;&gt;# 호출 코드 버그로 인한 오류가 나야 함&lt;/span&gt;
+    weight &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; my_module&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;determine_weight&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;except&lt;/span&gt; my_module&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;InvalidDensityError&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    weight &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;except&lt;/span&gt; Exception&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 
+    logging&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;exception&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;호출 코드에 버그가 있음&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;현재 코드의 최상위 부분에서는 InvalidDensityError, 즉 밀도만 따로 weight를 0으로 처리하고 있을 뿐, 따로 부피에 대해서는 예외를 처리해주지 않고 있습니다.&lt;br&gt;
+이럴 때 &lt;mark&gt;라이브러리에 있는 Exception을 사용하면 모든 예외 상황에 대해서 처리해서 프로세스가 종료되지 않게 할 수 있고 로그를 찍어 에러를 쉽게 파악할 수 있습니다.&lt;/mark&gt;&lt;br&gt;
+그리고 Exception의 Stack trace를 통해 따로 InvalidVolumeError에 대한 예외 처리를 InvalidDensityError와 같이 weight = 0으로 처리를 따로 해줄 수 있습니다.&lt;/p&gt;
+&lt;h3 id=&quot;새로운-예외-계층을-정의하면-api를-잘못-사용한-경우를-더-쉽게-이해할-수-있습니다&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%83%88%EB%A1%9C%EC%9A%B4-%EC%98%88%EC%99%B8-%EA%B3%84%EC%B8%B5%EC%9D%84-%EC%A0%95%EC%9D%98%ED%95%98%EB%A9%B4-api%EB%A5%BC-%EC%9E%98%EB%AA%BB-%EC%82%AC%EC%9A%A9%ED%95%9C-%EA%B2%BD%EC%9A%B0%EB%A5%BC-%EB%8D%94-%EC%89%BD%EA%B2%8C-%EC%9D%B4%ED%95%B4%ED%95%A0-%EC%88%98-%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4&quot; aria-label=&quot;새로운 예외 계층을 정의하면 api를 잘못 사용한 경우를 더 쉽게 이해할 수 있습니다 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;새로운 예외 계층을 정의하면 API를 잘못 사용한 경우를 더 쉽게 이해할 수 있습니다.&lt;/h3&gt;
+&lt;div class=&quot;code-header&quot;&gt;
+	&lt;span class=&quot;red btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;yellow btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;green btn&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token comment&quot;&gt;# 호출 코드 버그로 인한 오류가 나야 함&lt;/span&gt;
+    weight &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; my_module&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;determine_weight&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;except&lt;/span&gt; my_module&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;InvalidDensityError&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    weight &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;except&lt;/span&gt; Exception&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 
+    logging&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;exception&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;호출 코드에 버그가 있음&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;token operator&quot;&gt;&gt;&gt;&lt;/span&gt; ERROR&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;root&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;호출 코드에 버그가 있음
+Traceback &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;most recent call last&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+  File &lt;span class=&quot;token string&quot;&gt;&quot;C:\Users\user\PycharmProjects\issueKeyword\test.py&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; line &lt;span class=&quot;token number&quot;&gt;27&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;module&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+    weight &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; determine_weight&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  File &lt;span class=&quot;token string&quot;&gt;&quot;C:\Users\user\PycharmProjects\issueKeyword\test.py&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; line &lt;span class=&quot;token number&quot;&gt;18&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; determine_weight
+    &lt;span class=&quot;token keyword&quot;&gt;raise&lt;/span&gt; InvalidVolumeError&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;부피는 0보다 커야 합니다&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+InvalidVolumeError&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 부피는 &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;보다 커야 합니다&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/131391e36d8285e28d097ce87f695892/8cb6d/2023-07-30-23-07-33.webp&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 83.33333333333334%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAABwAwCdASoUABEAPtFcqE4oJSQiKAqpABoJaQAALkDSxgC3HzAA/vYJVBEXV6p+dxfc5w2iAgRqAKat+0ckShNuQsAAAA==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/131391e36d8285e28d097ce87f695892/a59e9/2023-07-30-23-07-33.webp 192w,
+/static/131391e36d8285e28d097ce87f695892/0ca9f/2023-07-30-23-07-33.webp 384w,
+/static/131391e36d8285e28d097ce87f695892/dc9b9/2023-07-30-23-07-33.webp 768w,
+/static/131391e36d8285e28d097ce87f695892/e2c2f/2023-07-30-23-07-33.webp 1152w,
+/static/131391e36d8285e28d097ce87f695892/f3efb/2023-07-30-23-07-33.webp 1536w,
+/static/131391e36d8285e28d097ce87f695892/8cb6d/2023-07-30-23-07-33.webp 1576w&quot;
+              sizes=&quot;(max-width: 768px) 100vw, 768px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/131391e36d8285e28d097ce87f695892/a59e9/2023-07-30-23-07-33.webp 192w,
+/static/131391e36d8285e28d097ce87f695892/0ca9f/2023-07-30-23-07-33.webp 384w,
+/static/131391e36d8285e28d097ce87f695892/dc9b9/2023-07-30-23-07-33.webp 768w,
+/static/131391e36d8285e28d097ce87f695892/e2c2f/2023-07-30-23-07-33.webp 1152w,
+/static/131391e36d8285e28d097ce87f695892/f3efb/2023-07-30-23-07-33.webp 1536w,
+/static/131391e36d8285e28d097ce87f695892/8cb6d/2023-07-30-23-07-33.webp 1576w&quot;
+            sizes=&quot;(max-width: 768px) 100vw, 768px&quot;
+            type=&quot;image/webp&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/131391e36d8285e28d097ce87f695892/dc9b9/2023-07-30-23-07-33.webp&quot;
+            alt=&quot;예외 처리 구조 &quot;
+            title=&quot;&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+이렇게 하면 기존에 있었던 InvalidVolumeError를 통해 에러가 발생했구나를 바로 알 수 있고, 에러를 처리하기 쉬워집니다.&lt;br&gt;
+그리고 저 같은 경우에는 따로 제가 만든 예외 계층을 사용하여 어디에서 에러가 발생했는지를 확실하게 알기 위해 각각의 위치에서 제가 만든 다른 예외 계층을 사용했습니다.&lt;/p&gt;
+&lt;p&gt;제가 사용했던 코드의 예시를 잠깐 드리면..!&lt;/p&gt;
+&lt;div class=&quot;code-header&quot;&gt;
+	&lt;span class=&quot;red btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;yellow btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;green btn&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;board_page_crawling&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;except&lt;/span&gt; TimeoutException&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;raise&lt;/span&gt; SeleniumError&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string-interpolation&quot;&gt;&lt;span class=&quot;token string&quot;&gt;f&apos;Selenium 크롤링 &lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;url&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;에서 도중 Timeout 발생&apos;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;Crawling&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        crawling_list &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; board_page_crawling&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+        insert&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;crawling_list&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;except&lt;/span&gt; SeleniumError&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        logging&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;exception&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;Selenium에서 에러 발생&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;except&lt;/span&gt; InsertError&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        logging&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;exception&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;Insert에서 에러 발생&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;except&lt;/span&gt; Exception&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        logging&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;exception&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;알 수 없는 오류 발생&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;이런식으로 사용했었습니다. 이렇게 사용하니 에러 파악이 예전보다 손 쉬워졌고 특정 게시물에 대해서 에러가 발생해도 프로세스는 종료되지 않고 크롤링을 이어나갈 수 있었습니다.&lt;/p&gt;
+&lt;h2 id=&quot;요약&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%9A%94%EC%95%BD&quot; aria-label=&quot;요약 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;요약&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;모듈에서 사용할 최상위 예외를 정의하면 API 프로세스를 종료되지 않고 보호할 수 있습니다.&lt;/li&gt;
+&lt;li&gt;자신이 사용하는 예외 계층과 최상위 예외를 같이 사용하면 API 코드의 버그를 쉽게 찾을 수 있습니다.&lt;/li&gt;
+&lt;li&gt;파이썬 Exception을 최상위 예외에 예외 처리를 해준다면 예상치 못한 경우에 대해서도 로그를 남기고 프로세스가 종료되지 않게 할 수 있습니다.&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[파이썬에서 정렬을 잘 사용하는 법]]></title><description><![CDATA[파이썬 sort(), sorted(), key, cmp_to_key]]></description><link>https://ambosing.github.io/python/sort/</link><guid isPermaLink="false">https://ambosing.github.io/python/sort/</guid><category><![CDATA[Python]]></category><dc:creator><![CDATA[Ambosing]]></dc:creator><pubDate>Mon, 24 Jul 2023 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;들어가기-전&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%93%A4%EC%96%B4%EA%B0%80%EA%B8%B0-%EC%A0%84&quot; aria-label=&quot;들어가기 전 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;들어가기 전&lt;/h2&gt;
 &lt;p&gt;코딩테스트 문제를 풀다가 정렬 문제를 마주한 적이 있습니다..!&lt;br&gt;
 정렬에서는 sort, key 정도만 알고 있었는데 그 이상의 것들로 푸시는 분들도 있더라구요..!&lt;br&gt;
 이번에는 거기서 영감을 받고, 현재 읽고 있는 책 내용에도 존재해서 이번에는 정렬에 대해서 조금 더 깊이 알아보려고 합니다!&lt;/p&gt;
