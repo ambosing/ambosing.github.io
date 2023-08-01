@@ -74,6 +74,7 @@ __강조하기__
   이렇게
 
 ![](../images/content/2023-03-29-14-49-13.webp)
+<div class="source">출처: 초코볼</div>
 
 이미지
 ---
