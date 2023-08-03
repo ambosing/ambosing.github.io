@@ -23,6 +23,7 @@ directories.forEach(directory => {
       );
 
       sharp(imagePath)
+        .withMetadata()
         .toFormat('webp')
         .toFile(outputPath)
         .then(() => {
