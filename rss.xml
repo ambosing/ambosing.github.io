@@ -1,4 +1,320 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[제멋대로맛 초코볼]]></title><description><![CDATA[이것저것 하고 싶은 개발자의 기술블로그]]></description><link>https://ambosing.github.io/</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 01 Aug 2023 14:04:47 GMT</lastBuildDate><author><![CDATA[Ambosing]]></author><item><title><![CDATA[Amazon-linux2 Docker Compose Airflow 설치와 Git Action 배포 자동화]]></title><description><![CDATA[으어어.. 에러가 났떤 지난날들]]></description><link>https://ambosing.github.io/airflow/regex/</link><guid isPermaLink="false">https://ambosing.github.io/airflow/regex/</guid><category><![CDATA[Airflow]]></category><dc:creator><![CDATA[Ambosing]]></dc:creator><pubDate>Mon, 31 Jul 2023 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;들어가기-전에&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%93%A4%EC%96%B4%EA%B0%80%EA%B8%B0-%EC%A0%84%EC%97%90&quot; aria-label=&quot;들어가기 전에 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;들어가기 전에&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[제멋대로맛 초코볼]]></title><description><![CDATA[이것저것 하고 싶은 개발자의 기술블로그]]></description><link>https://ambosing.github.io/</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 07 Aug 2023 05:37:00 GMT</lastBuildDate><author><![CDATA[Ambosing]]></author><item><title><![CDATA[Airflow Execution Date 트러블 슈팅]]></title><description><![CDATA[헷갈릴만한 Execution Date와 Time Window]]></description><link>https://ambosing.github.io/airflow/execution_date/</link><guid isPermaLink="false">https://ambosing.github.io/airflow/execution_date/</guid><category><![CDATA[Airflow]]></category><dc:creator><![CDATA[Ambosing]]></dc:creator><pubDate>Sat, 05 Aug 2023 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;문제-상황&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AC%B8%EC%A0%9C-%EC%83%81%ED%99%A9&quot; aria-label=&quot;문제 상황 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;문제 상황&lt;/h2&gt;
+&lt;p&gt;회사에서 배치 프로세스 작업으로 일단위 데이터 집계를 하기 위해 Airflow를 사용하고 있습니다. 저는 Execution Date를 당연하게 배치 프로세스의 작업 시간이라고 생각하고 스케줄링을 했었습니다..!
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/8e14282c037131eb40df4f201f9ace47/468b3/2023-08-07-14-30-49.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 47.91666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABI0lEQVR42pWPQWsCMRCF9+cWz/099VDvouvFFcVjI+KhoF26RcuWhW4l6RoSdTKbmYKpRaoV+pjLJPO9NxPxUUTEzKvVajQaLRYLIURRFEKI6XQKAHxJ0S84y7JWq9Xv9weDQZqm7Xa71+sZY34GLsDnH3TQedrpY+S9d84hoveeiBAxtAFGRAA4bZ1zABAsoqqqOp1OkiR5njPzfD7vdrvD4TCsOpvN4jgej8fhbCFEHMeTyeQ7WSm12Ww+ldLb/ctDIu9u1s2GajbK+9vXp0e73SsptdZlWeZ5rrVWSllrpZTGmAgRg40nspWsy4zWS1ovXZHajzc6XMnMALDb7cK2ROScq+s64j9FVDu+qnOYDsXeqPr9mcn/Cz56oCOw15O/ABd4OMBR2n3VAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/8e14282c037131eb40df4f201f9ace47/a59e9/2023-08-07-14-30-49.webp 192w,
+/static/8e14282c037131eb40df4f201f9ace47/0ca9f/2023-08-07-14-30-49.webp 384w,
+/static/8e14282c037131eb40df4f201f9ace47/dc9b9/2023-08-07-14-30-49.webp 768w,
+/static/8e14282c037131eb40df4f201f9ace47/e2c2f/2023-08-07-14-30-49.webp 1152w,
+/static/8e14282c037131eb40df4f201f9ace47/b2072/2023-08-07-14-30-49.webp 1212w&quot;
+              sizes=&quot;(max-width: 768px) 100vw, 768px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/8e14282c037131eb40df4f201f9ace47/3b721/2023-08-07-14-30-49.png 192w,
+/static/8e14282c037131eb40df4f201f9ace47/66595/2023-08-07-14-30-49.png 384w,
+/static/8e14282c037131eb40df4f201f9ace47/fe486/2023-08-07-14-30-49.png 768w,
+/static/8e14282c037131eb40df4f201f9ace47/d2d74/2023-08-07-14-30-49.png 1152w,
+/static/8e14282c037131eb40df4f201f9ace47/468b3/2023-08-07-14-30-49.png 1212w&quot;
+            sizes=&quot;(max-width: 768px) 100vw, 768px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/8e14282c037131eb40df4f201f9ace47/fe486/2023-08-07-14-30-49.png&quot;
+            alt=&quot;결과 그림&quot;
+            title=&quot;&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;br&gt;
+그렇지만 무슨일인지 원하는 대로 동작이 되지 않고, 오늘이 만약 8월 6일이면 전날 데이터인 8월 5일 데이터를 집계할 줄 알았지만 8월 4일의 데이터를 집계하고 있었습니다.&lt;br&gt;
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/a0a86625edff20892f11565c13af7bea/3e0bb/2023-08-07-14-32-12.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 46.35416666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAIAAAC9o5sfAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABH0lEQVR42nWRTU+DQBCG+dvGqz+DpCYeiB/HXiHgAYvRNI2xxBA3qXwsoaVscWGhLDOmbquxlTd7eWffzTMzq+GJAEAIURRFVVWMMc65lBL/k6bS/bdUabvdjsdjXddt2x6NRoZhxHGsYkdJDQAQ9gZ7ubOInPOmaYQQjLGu61RaXR2TFxG9f5xOpi8AIKX0PM9xnCiKELEoCsuyXNdljCEiIcQ0zdlstn9cZeHHzcXb5dn71fna1ClNCCHz+SulNFsuKaW+7wdBkGVZmqZJkvi+H4ZhWZZ1XWv1KmkmRv981z9dbx5uy80GDy2uIyLqSkHats3z/KdzIUTbthoOC7oGT+b8O7Na2OH8bgV6uVqA+FRm8KsGuD3wfAcfJn8BFfr/sgA2sBIAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/a0a86625edff20892f11565c13af7bea/a59e9/2023-08-07-14-32-12.webp 192w,
+/static/a0a86625edff20892f11565c13af7bea/0ca9f/2023-08-07-14-32-12.webp 384w,
+/static/a0a86625edff20892f11565c13af7bea/dc9b9/2023-08-07-14-32-12.webp 768w,
+/static/a0a86625edff20892f11565c13af7bea/e2c2f/2023-08-07-14-32-12.webp 1152w,
+/static/a0a86625edff20892f11565c13af7bea/2a579/2023-08-07-14-32-12.webp 1213w&quot;
+              sizes=&quot;(max-width: 768px) 100vw, 768px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/a0a86625edff20892f11565c13af7bea/3b721/2023-08-07-14-32-12.png 192w,
+/static/a0a86625edff20892f11565c13af7bea/66595/2023-08-07-14-32-12.png 384w,
+/static/a0a86625edff20892f11565c13af7bea/fe486/2023-08-07-14-32-12.png 768w,
+/static/a0a86625edff20892f11565c13af7bea/d2d74/2023-08-07-14-32-12.png 1152w,
+/static/a0a86625edff20892f11565c13af7bea/3e0bb/2023-08-07-14-32-12.png 1213w&quot;
+            sizes=&quot;(max-width: 768px) 100vw, 768px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/a0a86625edff20892f11565c13af7bea/fe486/2023-08-07-14-32-12.png&quot;
+            alt=&quot;실제 결과&quot;
+            title=&quot;&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&quot;왜-이런-문제가-발생할까&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%99%9C-%EC%9D%B4%EB%9F%B0-%EB%AC%B8%EC%A0%9C%EA%B0%80-%EB%B0%9C%EC%83%9D%ED%95%A0%EA%B9%8C&quot; aria-label=&quot;왜 이런 문제가 발생할까 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;왜 이런 문제가 발생할까?&lt;/h2&gt;
+&lt;p&gt;바로 Execution Date를 제가 잘못 알고 있었기 때문입니다.&lt;br&gt;
+Execution Date는 제가 생각한대로 실행하고 있지 않았습니다.&lt;br&gt;
+제가 착각한 부분은 실행 시각과 execution_date의 시간이 같은 줄 알고 프로그래밍을 했습니다..!&lt;br&gt;
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/8ba48865898841bfa857a4cae5634a88/d9191/2023-08-07-14-33-49.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 32.8125%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAIAAACHqfpvAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAA+ElEQVR42pWOwU6DQBRF+W03LvwH3bioUTd+gSE4TCWaVANhZSq1DCYGp0gRodBhhpn3DJgYXajx5G5ecs/NsyiljuP4vo+IWyHI1c3F9e1dtEREKaXrurZth2GII5RSQkgQBIgIAFYykmWratO+TE8XRzvz492ns70yOK9b8ZgkjDHOeVVVZVkyxuI4TtO0aRohhKVHjNarvFhfnpjpQe8d9u5+Riav6xwAPgp5nhdFgYjGGACo63qQ8Se0xF7ir3yXjUYwCIAAZlOYbfUfGRF6BaoD1fXPc/PGh1O2w+IfMsDwbBar5WxI5GkeqYeZuvegaz4LX+V37j+Jg7JIABgAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/8ba48865898841bfa857a4cae5634a88/a59e9/2023-08-07-14-33-49.webp 192w,
+/static/8ba48865898841bfa857a4cae5634a88/0ca9f/2023-08-07-14-33-49.webp 384w,
+/static/8ba48865898841bfa857a4cae5634a88/dc9b9/2023-08-07-14-33-49.webp 768w,
+/static/8ba48865898841bfa857a4cae5634a88/e2c2f/2023-08-07-14-33-49.webp 1152w,
+/static/8ba48865898841bfa857a4cae5634a88/0ed6f/2023-08-07-14-33-49.webp 1203w&quot;
+              sizes=&quot;(max-width: 768px) 100vw, 768px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/8ba48865898841bfa857a4cae5634a88/3b721/2023-08-07-14-33-49.png 192w,
+/static/8ba48865898841bfa857a4cae5634a88/66595/2023-08-07-14-33-49.png 384w,
+/static/8ba48865898841bfa857a4cae5634a88/fe486/2023-08-07-14-33-49.png 768w,
+/static/8ba48865898841bfa857a4cae5634a88/d2d74/2023-08-07-14-33-49.png 1152w,
+/static/8ba48865898841bfa857a4cae5634a88/d9191/2023-08-07-14-33-49.png 1203w&quot;
+            sizes=&quot;(max-width: 768px) 100vw, 768px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/8ba48865898841bfa857a4cae5634a88/fe486/2023-08-07-14-33-49.png&quot;
+            alt=&quot;내가 생각한 결과&quot;
+            title=&quot;&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;div class=&quot;source&quot;&gt;제가 생각했던 execution_date&lt;/div&gt;
+&lt;p&gt;8월 6일 00시에 실행하는 Execution Time은 print를 해보니 8월 5일 00시에 찍혀있었습니다.&lt;br&gt;
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/180d070910e29928d4f174ae0ed0e122/c4688/2023-08-07-14-34-26.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 28.125%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAIAAABM9SnKAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABA0lEQVR42n1QO0vEQBjMb/cqsdR/oFaWNhYhSRGPiCSnrHmtlzMYORIEzWN3v9y+PlERTgunmoEZZhgnIVlws1omxFqLiHEce54XRZGUEhEJIb7vB0EAAIjYNI3rumEY9n2PiE5+dkBOF9n5gkUXYhyqzSbP87IsOecCoK7roijSNOWcT9PUtm2appRSxhgAOPLqSHkn1jvuLg+zPEZEpZRFfHtt1yRWxmqtjTGcc0opAFhrjTFCiK7rHPyBNlrq3Rf93I9GWwn4LxxrNMwM5mni75MYpNoxGPnMrNoZMexbv0/Zl442mr4Q8nS7Wi/vq6ja5snj9cPznR47vS3wd+BP8wf7pEwicO+IDgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/180d070910e29928d4f174ae0ed0e122/a59e9/2023-08-07-14-34-26.webp 192w,
+/static/180d070910e29928d4f174ae0ed0e122/0ca9f/2023-08-07-14-34-26.webp 384w,
+/static/180d070910e29928d4f174ae0ed0e122/dc9b9/2023-08-07-14-34-26.webp 768w,
+/static/180d070910e29928d4f174ae0ed0e122/e2c2f/2023-08-07-14-34-26.webp 1152w,
+/static/180d070910e29928d4f174ae0ed0e122/c47e4/2023-08-07-14-34-26.webp 1179w&quot;
+              sizes=&quot;(max-width: 768px) 100vw, 768px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/180d070910e29928d4f174ae0ed0e122/3b721/2023-08-07-14-34-26.png 192w,
+/static/180d070910e29928d4f174ae0ed0e122/66595/2023-08-07-14-34-26.png 384w,
+/static/180d070910e29928d4f174ae0ed0e122/fe486/2023-08-07-14-34-26.png 768w,
+/static/180d070910e29928d4f174ae0ed0e122/d2d74/2023-08-07-14-34-26.png 1152w,
+/static/180d070910e29928d4f174ae0ed0e122/c4688/2023-08-07-14-34-26.png 1179w&quot;
+            sizes=&quot;(max-width: 768px) 100vw, 768px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/180d070910e29928d4f174ae0ed0e122/fe486/2023-08-07-14-34-26.png&quot;
+            alt=&quot;실제 실행했던 결과&quot;
+            title=&quot;&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;div class=&quot;source&quot;&gt;실제 execution_date&lt;/div&gt;
+&lt;p&gt;Airflow에는 TimeWindow라는 처리해야할 데이터의 기간인 개념이 있습니다.&lt;br&gt;
+예를 들어, 8월 5일날 이커머스의 일일 매출을 집계하는 배치 작업이 있다고 합시다.&lt;br&gt;
+일일 매출을 계산하려면 4일이 끝나고 8월 5일 자정에 &lt;code class=&quot;language-text&quot;&gt;08/04 00:00:00 ~ 08/04 23:59:59&lt;/code&gt;까지의 발생한 매출을 계산해야 합니다!&lt;br&gt;
+여기서 작업 대상이 되는 데이터는 8월 4일의 데이터(=&lt;code class=&quot;language-text&quot;&gt;execution_date&lt;/code&gt;)가 되고, 실제 작업이 실행되는 시간은 8월 5일 0시가 됩니다.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/d6672c606a8923282e3a9ba4f2db0dac/7e08f/2023-08-07-14-35-06.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 26.041666666666668%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAIAAADKYVtkAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAA40lEQVR42n2L0U6DMBhGeVzjlQ/iO2j2AjMSAtkN4cbELJGp022ObAJZhymU8lNbgba/2bxaYnbuvnznOIgYx3EQBFEUIWL3oyaBf383XrzNEZHS0vd913WLokDENE09zwvDUCmFiA6llHMOAN+iJWX9Ob4Wtxf16EqMLvPJDeWtaKFpGillkiSMMQAQQgAAY8zp+94YY61Bi7KTy/lDnb1zsiIfT+V6drwOGGOklFrrv6m1HobBwVNAwY6RvMpJvdd9h2c5xNbabbFa5i+v2+kim+2r7HnzSDmxX4kRFR6Nf+Nf6WEUGtg2HFcAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/d6672c606a8923282e3a9ba4f2db0dac/a59e9/2023-08-07-14-35-06.webp 192w,
+/static/d6672c606a8923282e3a9ba4f2db0dac/0ca9f/2023-08-07-14-35-06.webp 384w,
+/static/d6672c606a8923282e3a9ba4f2db0dac/dc9b9/2023-08-07-14-35-06.webp 768w,
+/static/d6672c606a8923282e3a9ba4f2db0dac/e2c2f/2023-08-07-14-35-06.webp 1152w,
+/static/d6672c606a8923282e3a9ba4f2db0dac/0157a/2023-08-07-14-35-06.webp 1186w&quot;
+              sizes=&quot;(max-width: 768px) 100vw, 768px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/d6672c606a8923282e3a9ba4f2db0dac/3b721/2023-08-07-14-35-06.png 192w,
+/static/d6672c606a8923282e3a9ba4f2db0dac/66595/2023-08-07-14-35-06.png 384w,
+/static/d6672c606a8923282e3a9ba4f2db0dac/fe486/2023-08-07-14-35-06.png 768w,
+/static/d6672c606a8923282e3a9ba4f2db0dac/d2d74/2023-08-07-14-35-06.png 1152w,
+/static/d6672c606a8923282e3a9ba4f2db0dac/7e08f/2023-08-07-14-35-06.png 1186w&quot;
+            sizes=&quot;(max-width: 768px) 100vw, 768px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/d6672c606a8923282e3a9ba4f2db0dac/fe486/2023-08-07-14-35-06.png&quot;
+            alt=&quot;Time window&quot;
+            title=&quot;&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;즉, &lt;code class=&quot;language-text&quot;&gt;execution_date&lt;/code&gt;는 해당 Task가 처리해야 할 데이터 기간의 시작 시점인 8월 4일을 의미합니다.&lt;br&gt;
+&lt;code class=&quot;language-text&quot;&gt;execution_date&lt;/code&gt;라는 이름을 직역하면 실행 날짜가 되기 때문에 그 의미와 실제 의미가 달라서 혼란이 유발 됐었습니다..&lt;/p&gt;
+&lt;h2 id=&quot;어떻게-해결해야-할까&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%96%B4%EB%96%BB%EA%B2%8C-%ED%95%B4%EA%B2%B0%ED%95%B4%EC%95%BC-%ED%95%A0%EA%B9%8C&quot; aria-label=&quot;어떻게 해결해야 할까 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;어떻게 해결해야 할까?&lt;/h2&gt;
+&lt;h3 id=&quot;1-execution_date-이해에-따라-수정&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-execution_date-%EC%9D%B4%ED%95%B4%EC%97%90-%EB%94%B0%EB%9D%BC-%EC%88%98%EC%A0%95&quot; aria-label=&quot;1 execution_date 이해에 따라 수정 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1. execution_date 이해에 따라 수정&lt;/h3&gt;
+&lt;p&gt;이건 해결방법 중 가장 쉬운 방법이지만 저만 오해가 풀린 걸 수도 있으므로 언젠가 코드를 유지보수할 다른 분들께서 또 오해의 소지가 있기 때문에 이 방법 스킵하도록 하겠습니다.&lt;/p&gt;
+&lt;h3 id=&quot;2-execution_date를-대체하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2-execution_date%EB%A5%BC-%EB%8C%80%EC%B2%B4%ED%95%98%EA%B8%B0&quot; aria-label=&quot;2 execution_date를 대체하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2. execution_date를 대체하기&lt;/h3&gt;
+&lt;p&gt;execution_date를 대체하는 것이 좋은 방법이라고 생각됩니다.&lt;br&gt;
+&lt;a href=&quot;https://cwiki.apache.org/confluence/display/AIRFLOW/AIP-39+Richer+scheduler_interval&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;confluence의 AIP39&lt;/a&gt;에 보면 execution_date가 너무 오해에 소지가 있으니 새로운 이름을 명칭하는 내용이 있습니다.
+&lt;img src=&quot;../images/content/2023-08-07-13-48-30.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;div class=&quot;source&quot;&gt;새로운 명칭이름&lt;/div&gt;
+이 위에 표에는 없지만 execution_date와 같은 날짜를 가리키는 logical_date도 존재합니다.
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/d6a9b4cbfd316aee8fe04f7ceb157116/c29d8/2023-08-07-14-35-53.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 34.895833333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAIAAACHqfpvAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABJ0lEQVR42m2QvU8CQRTE73+3xNiIiY0JJtIghY0fBVpoiMYCJUEkAhGF4/bkdoHdvduPt7vPIDHGwFTTzLz5vQg3ZK2ldCbzJZtnUkpEDCHgNkXee8YY51xrjYhSyvli8Z7GiZgN08kXpZxzRHTOMcaEEADwFwaAev20Wj0hhCDic7td3ivdHpdw9NC/ODrc3Tm/vFqXViqVWq227rLWAkCEiHmhEjIDAKUKZdxr66ZolIvGgbneJ/dnS5EbrcHaLMvSNAUAYwznXAixCnsfnAsrtJ8x4I3/hQygQ/Bru4WZcpNQ9UkkofYjnT4Nmq1+czjpGFO4+MW+NU3vzg4fPR2H/58LIUQGvDI+V84ALuR8MO0Opt04G1GReTqGSQfiLiS9oOXm5W8XTYfOHuFhIQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/d6a9b4cbfd316aee8fe04f7ceb157116/a59e9/2023-08-07-14-35-53.webp 192w,
+/static/d6a9b4cbfd316aee8fe04f7ceb157116/0ca9f/2023-08-07-14-35-53.webp 384w,
+/static/d6a9b4cbfd316aee8fe04f7ceb157116/dc9b9/2023-08-07-14-35-53.webp 768w,
+/static/d6a9b4cbfd316aee8fe04f7ceb157116/e2c2f/2023-08-07-14-35-53.webp 1152w,
+/static/d6a9b4cbfd316aee8fe04f7ceb157116/f3efb/2023-08-07-14-35-53.webp 1536w,
+/static/d6a9b4cbfd316aee8fe04f7ceb157116/df6ec/2023-08-07-14-35-53.webp 1780w&quot;
+              sizes=&quot;(max-width: 768px) 100vw, 768px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/d6a9b4cbfd316aee8fe04f7ceb157116/3b721/2023-08-07-14-35-53.png 192w,
+/static/d6a9b4cbfd316aee8fe04f7ceb157116/66595/2023-08-07-14-35-53.png 384w,
+/static/d6a9b4cbfd316aee8fe04f7ceb157116/fe486/2023-08-07-14-35-53.png 768w,
+/static/d6a9b4cbfd316aee8fe04f7ceb157116/d2d74/2023-08-07-14-35-53.png 1152w,
+/static/d6a9b4cbfd316aee8fe04f7ceb157116/e8464/2023-08-07-14-35-53.png 1536w,
+/static/d6a9b4cbfd316aee8fe04f7ceb157116/c29d8/2023-08-07-14-35-53.png 1780w&quot;
+            sizes=&quot;(max-width: 768px) 100vw, 768px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/d6a9b4cbfd316aee8fe04f7ceb157116/fe486/2023-08-07-14-35-53.png&quot;
+            alt=&quot;interval Time&quot;
+            title=&quot;&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;div class=&quot;source&quot;&gt; 다양한 Date&lt;/div&gt;
+&lt;p&gt;위와 같이 이외에도 airflow에 정해진 date들이 있습니다.&lt;/p&gt;
+&lt;div class=&quot;code-header&quot;&gt;
+	&lt;span class=&quot;red btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;yellow btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;green btn&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token operator&quot;&gt;//&lt;/span&gt; pendulum&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;DateTime 형식
+date_time_start &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;data_interval_start&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;execution_date 대신 logical_date나 data_interval_start로 변경하여 코드를 수정하는 이 방법이 조금 더 좋아보여 이렇게 수정하였습니다.&lt;/p&gt;
+&lt;h2 id=&quot;깨달은-점&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EA%B9%A8%EB%8B%AC%EC%9D%80-%EC%A0%90&quot; aria-label=&quot;깨달은 점 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;깨달은 점&lt;/h2&gt;
+&lt;p&gt;새로운 기술을 도입할 때 실보다 득이 많다고 생각하여 도입을 했지만, 오해할 만한 여지를 계속 내버려두고 데이터 체크를 하지 않았다면 장기적인 에러로 발전했을 것 같습니다..&lt;br&gt;
+앞으로도 제 로직이 정확하다고 할지라도 테스트는 무조건 진행해야 한다고 생각합니다.&lt;br&gt;
+이번처럼 exection_date가 제가 생각한 방향과 다르게 흘러갈 수 있으므로.. ㅠㅠ&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Amazon-linux2 Docker Compose Airflow 설치와 Git Action 배포 자동화]]></title><description><![CDATA[으어어.. 에러가 났떤 지난날들]]></description><link>https://ambosing.github.io/airflow/install_deploy/</link><guid isPermaLink="false">https://ambosing.github.io/airflow/install_deploy/</guid><category><![CDATA[Airflow]]></category><dc:creator><![CDATA[Ambosing]]></dc:creator><pubDate>Mon, 31 Jul 2023 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;들어가기-전에&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%93%A4%EC%96%B4%EA%B0%80%EA%B8%B0-%EC%A0%84%EC%97%90&quot; aria-label=&quot;들어가기 전에 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;들어가기 전에&lt;/h2&gt;
 &lt;p&gt;저는 회사에서 데이터를 배치하는 작업을 많이 했었습니다. 그 중에 처음으로 도전한 것은 바로 예전 학생 때 프로젝트했던 Linux Cron 배치 작업으로 배치 데이터를 프로세싱 중이었는데요.&lt;br&gt;
 이것보다 더 좋은 것이 없을까하는 생각이 매번 들긴 했었습니다. 그 당시에만 해도 모든 서버를 온프레미스로 돌리고 있는 상황이었습니다!&lt;br&gt;
 이렇게 하다보니 컴퓨터가 꺼지거나 배치 작업이 돌아가지 않을 때는 운영팀의 보고를 통해서만 받게 되었습니다.&lt;/p&gt;
@@ -67,7 +383,7 @@
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 40.625%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAADQAwCdASoUAAgAPtFipk0oJiOiMAgBABoJQApgWZQEz6JrwXASOgAA/v5hO5mI8DVfEvop7ZGEBe06CFhYaRQZ6cixN64DP4iBpz1nABoSE4WnMxHURDXEvyP7A3paAAA=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 40.625%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAADwAwCdASoUAAgAPtFapkuoJaOhsAgBABoJQApgWZEE0E9qjJMR8F4AAP7+rb++/fvrqvfE86whgiz2dUVUTr/nJAn+TJ2sORPWcv8vk3oVr9hhv/aoqRPLKS5YXgxcu8x+mCHy0AAAAA==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;picture&gt;
           &lt;source
@@ -104,6 +420,8 @@
 &lt;p&gt;그러다가 데이터 엔지니어링에 대해 관심을 가지고 있었습니다. 그 중 Airflow라는 기술이 있었는데요. Airflow는 이전에 했던 배치 시스템의 단점들을 보완하고 있었습니다..!&lt;br&gt;
 그래서 이번 글에서는 Airflow를 설치하는 방법과 Git Action으로 AWS EC2에 배포하는 방법을 알아보겠습니다.&lt;br&gt;
 &lt;del&gt;왜 AWS EC2냐고 하면 .. 제가 쓰고 있는 환경이라서..&lt;/del&gt;&lt;/p&gt;
+&lt;h4 id=&quot;참고한-글&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%B0%B8%EA%B3%A0%ED%95%9C-%EA%B8%80&quot; aria-label=&quot;참고한 글 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;참고한 글&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&quot;https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;Airflow 공식문서&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&quot;docker-compose로-airflow-설치하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#docker-compose%EB%A1%9C-airflow-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0&quot; aria-label=&quot;docker compose로 airflow 설치하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Docker compose로 Airflow 설치하기&lt;/h2&gt;
 &lt;p&gt;저는 Docker compose로 로컬(윈도우)에 설치를 해주었습니다. 로컬 설치과정은 쉽기 때문에 이번 설치 과정은 Amazon linux 환경에서 진행된다는 점을 알고계시면 좋을 것 같습니다. Docker compose로 설치를 진행하도록 하겠습니다!&lt;/p&gt;
 &lt;h4 id=&quot;amazon-linux2-환경에서-docker-설치하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#amazon-linux2-%ED%99%98%EA%B2%BD%EC%97%90%EC%84%9C-docker-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0&quot; aria-label=&quot;amazon linux2 환경에서 docker 설치하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Amazon linux2 환경에서 Docker 설치하기&lt;/h4&gt;
@@ -121,7 +439,115 @@ sudo는 언제나 필수입니다! (안그러면 권한 없다고 에러를 냅�
 &lt;p&gt;도커 컴포즈가 잘 설치되었는지 확인해봅니다.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sh&quot;&gt;&lt;pre class=&quot;language-sh&quot;&gt;&lt;code class=&quot;language-sh&quot;&gt;&lt;span class=&quot;token function&quot;&gt;docker-compose&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;--version&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;윈도우에서는 &lt;code class=&quot;language-text&quot;&gt;docker compose&lt;/code&gt;이었는데 리눅스에서는 &lt;code class=&quot;language-text&quot;&gt;docker-compose&lt;/code&gt;입니다!&lt;/p&gt;
-&lt;h4 id=&quot;amazon-linux2에-docker-compose로-airflow-설치하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#amazon-linux2%EC%97%90-docker-compose%EB%A1%9C-airflow-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0&quot; aria-label=&quot;amazon linux2에 docker compose로 airflow 설치하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Amazon-linux2에 Docker-compose로 Airflow 설치하기&lt;/h4&gt;</content:encoded></item><item><title><![CDATA[파이썬 함수에서 예외 처리 잘하기]]></title><description><![CDATA[try!! 파이썬 예외 try!!]]></description><link>https://ambosing.github.io/python/function_except/</link><guid isPermaLink="false">https://ambosing.github.io/python/function_except/</guid><category><![CDATA[Python]]></category><dc:creator><![CDATA[Ambosing]]></dc:creator><pubDate>Sat, 29 Jul 2023 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;들어가기-전&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%93%A4%EC%96%B4%EA%B0%80%EA%B8%B0-%EC%A0%84&quot; aria-label=&quot;들어가기 전 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;들어가기 전&lt;/h2&gt;
+&lt;h4 id=&quot;amazon-linux2에-docker-compose로-airflow-설치하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#amazon-linux2%EC%97%90-docker-compose%EB%A1%9C-airflow-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0&quot; aria-label=&quot;amazon linux2에 docker compose로 airflow 설치하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Amazon-linux2에 Docker-compose로 Airflow 설치하기&lt;/h4&gt;
+&lt;p&gt;먼저 Airflow 폴더를 만들고 폴더에서 작업하겠습니다.&lt;br&gt;
+curl 명령어를 통해 docker-compose.yaml 파일을 fetching해 주겠습니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sh&quot;&gt;&lt;pre class=&quot;language-sh&quot;&gt;&lt;code class=&quot;language-sh&quot;&gt;&lt;span class=&quot;token function&quot;&gt;mkdir&lt;/span&gt; airflow
+&lt;span class=&quot;token builtin class-name&quot;&gt;cd&lt;/span&gt; airflow
+
+&lt;span class=&quot;token function&quot;&gt;curl&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-LfO&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;https://airflow.apache.org/docs/apache-airflow/2.6.3/docker-compose.yaml&apos;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;이렇게 진행하면 현재 진행한 폴더에 yaml 파일이 생기실 겁니다!&lt;br&gt;
+docker-compose에 포함되어 있는 기능은 이렇습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;airflow-scheduler&lt;/strong&gt; : 모든 DAG와 task들을 모니터링합니다. task들의 종속성들이 완료되면 task들을 트리거 시킵니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;airflow-webserver&lt;/strong&gt; : airflow를 UI로 볼수 있는 웹사이트입니다. 기본적으로 URL은 &lt;a href=&quot;http://localhost:8080&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;http://localhost:8080&lt;/a&gt; 입니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;airflow-worker&lt;/strong&gt; : 스케줄러가 부여한 작업을 실행하는 작업자입니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;airflow-triggerer&lt;/strong&gt; : Triggerer는 연기 가능한 작업에 대한 이벤트 루프를 실행합니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;airflow-init&lt;/strong&gt; : airflow 서비스를 초기화합니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;postgres&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;redis&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;이외에도 flower는 있지만 이건 설명을 넘어가겠습니다!&lt;br&gt;
+또한, 몇 개의 디렉토리는 컨테이너에 마운트됩니다. 그래서 정해진 디렉토리는 컨테이너와 동기화됩니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;./dags&lt;/strong&gt; : DAG 파일을 여기에 놓으면 Airflow에서 인식합니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;./logs&lt;/strong&gt; : 스케줄러와 task 실행한 로그들이 담깁니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;./config&lt;/strong&gt; : 커스텀한 log parser를 추가할 수 있습니다. 그리고 airflow_local_settings.py를 추가하여 클러스터 정책을 구성할 수 있습니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;./plugins&lt;/strong&gt; : 커스텀한 plugin들을 여가에 추가할 수 있습니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;그래서 위와 같은 디렉토리들은 필수적으로 구성되어야 합니다.&lt;br&gt;
+폴더들을 모두 만들어줍시다!&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sh&quot;&gt;&lt;pre class=&quot;language-sh&quot;&gt;&lt;code class=&quot;language-sh&quot;&gt;&lt;span class=&quot;token function&quot;&gt;mkdir&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-p&lt;/span&gt; ./dags ./logs ./plugins ./config
+&lt;span class=&quot;token builtin class-name&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;AIRFLOW_UID=&lt;span class=&quot;token variable&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-u&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;)&lt;/span&gt;&lt;/span&gt;&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; .env&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;다른 OS에서는 이렇게 진행했을 때 경고가 나올 수도 있습니다.&lt;br&gt;
+그럴 때는 따로 .env 파일을 추가하여&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sh&quot;&gt;&lt;pre class=&quot;language-sh&quot;&gt;&lt;code class=&quot;language-sh&quot;&gt;&lt;span class=&quot;token assign-left variable&quot;&gt;AIRFLOW_UID&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;50000&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;이제 docker compose 명령어를 사용하여 airflow를 설치해봅시다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sh&quot;&gt;&lt;pre class=&quot;language-sh&quot;&gt;&lt;code class=&quot;language-sh&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# Linux, mac&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;docker-compose&lt;/span&gt; up airflow-init
+&lt;span class=&quot;token comment&quot;&gt;# window&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; compose up airflow-init&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;docker compose가 초기화 되면 이런 메시지를 보실 수 있습니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;txt&quot;&gt;&lt;pre class=&quot;language-txt&quot;&gt;&lt;code class=&quot;language-txt&quot;&gt;airflow-init_1       | Upgrades done
+airflow-init_1       | Admin user airflow created
+airflow-init_1       | 2.6.3
+start_airflow-init_1 exited with code 0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;그리고 웹에 로그인할 계정이 만들어집니다.&lt;br&gt;
+id : &lt;code class=&quot;language-text&quot;&gt;airflow&lt;/code&gt;&lt;br&gt;
+pw : &lt;code class=&quot;language-text&quot;&gt;airflow&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;이제 모든 docker compose로 설치한 모든 서비스를 시작해봅시다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sh&quot;&gt;&lt;pre class=&quot;language-sh&quot;&gt;&lt;code class=&quot;language-sh&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# Linux, mac&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;docker-compose&lt;/span&gt; up 
+&lt;span class=&quot;token comment&quot;&gt;# window&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; compose up &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;정상적으로 잘 동작했는지 docker ps 명령어를 통해 알아봅시다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sh&quot;&gt;&lt;pre class=&quot;language-sh&quot;&gt;&lt;code class=&quot;language-sh&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;ps&lt;/span&gt;
+CONTAINER ID   IMAGE                  COMMAND                  CREATED          STATUS                    PORTS                              NAMES
+247ebe6cf87a   apache/airflow:2.6.3   &lt;span class=&quot;token string&quot;&gt;&quot;/usr/bin/dumb-init …&quot;&lt;/span&gt;   &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt; minutes ago    Up &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt; minutes &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;healthy&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;    &lt;span class=&quot;token number&quot;&gt;8080&lt;/span&gt;/tcp                           compose_airflow-worker_1
+ed9b09fc84b1   apache/airflow:2.6.3   &lt;span class=&quot;token string&quot;&gt;&quot;/usr/bin/dumb-init …&quot;&lt;/span&gt;   &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt; minutes ago    Up &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt; minutes &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;healthy&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;    &lt;span class=&quot;token number&quot;&gt;8080&lt;/span&gt;/tcp                           compose_airflow-scheduler_1
+7cb1fb603a98   apache/airflow:2.6.3   &lt;span class=&quot;token string&quot;&gt;&quot;/usr/bin/dumb-init …&quot;&lt;/span&gt;   &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt; minutes ago    Up &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt; minutes &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;healthy&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;    &lt;span class=&quot;token number&quot;&gt;0.0&lt;/span&gt;.0.0:8080-&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;8080&lt;/span&gt;/tcp             compose_airflow-webserver_1
+74f3bbe506eb   postgres:13            &lt;span class=&quot;token string&quot;&gt;&quot;docker-entrypoint.s…&quot;&lt;/span&gt;   &lt;span class=&quot;token number&quot;&gt;18&lt;/span&gt; minutes ago   Up &lt;span class=&quot;token number&quot;&gt;17&lt;/span&gt; minutes &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;healthy&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;   &lt;span class=&quot;token number&quot;&gt;5432&lt;/span&gt;/tcp                           compose_postgres_1
+0bd6576d23cb   redis:latest           &lt;span class=&quot;token string&quot;&gt;&quot;docker-entrypoint.s…&quot;&lt;/span&gt;   &lt;span class=&quot;token number&quot;&gt;10&lt;/span&gt; hours ago     Up &lt;span class=&quot;token number&quot;&gt;17&lt;/span&gt; minutes &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;healthy&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;   &lt;span class=&quot;token number&quot;&gt;0.0&lt;/span&gt;.0.0:6379-&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;6379&lt;/span&gt;/tcp             compose_redis_1&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;status에 보면 정상적인 서비스들은 healthy라고 나오게 됩니다.&lt;br&gt;
+그런다음에 이제 &lt;a href=&quot;http://localhost:8080&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;http://localhost:8080&lt;/a&gt; 으로 들어가시게 되면 아래와 같이 로그인 창이 뜹니다.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/b62d9e7498a29079de25ea889eee3897/ad089/2023-08-07-14-29-41.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 34.375%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAIAAACHqfpvAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAmUlEQVR42p2PQQ7CIBBFuf91dGH1HAZDu9CdsbSBFovgwBhKJYh248tPGMJ/k0D4OAKAewOw3OAXsaNnzMMQjz5HKSWEkFIOn0gptdaphhg0Es6MuxqMnhw8EX2R6OSQNMWny208Xk3TOcah7oDxJbSFfnI4r1mVaQvbk62Y3TF7aOy+DkPF7Ibac+9SrZT/oJS9R7eSry/jC9qemUFORTwCAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/b62d9e7498a29079de25ea889eee3897/a59e9/2023-08-07-14-29-41.webp 192w,
+/static/b62d9e7498a29079de25ea889eee3897/0ca9f/2023-08-07-14-29-41.webp 384w,
+/static/b62d9e7498a29079de25ea889eee3897/dc9b9/2023-08-07-14-29-41.webp 768w,
+/static/b62d9e7498a29079de25ea889eee3897/e2c2f/2023-08-07-14-29-41.webp 1152w,
+/static/b62d9e7498a29079de25ea889eee3897/f3efb/2023-08-07-14-29-41.webp 1536w,
+/static/b62d9e7498a29079de25ea889eee3897/fad02/2023-08-07-14-29-41.webp 2539w&quot;
+              sizes=&quot;(max-width: 768px) 100vw, 768px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/b62d9e7498a29079de25ea889eee3897/3b721/2023-08-07-14-29-41.png 192w,
+/static/b62d9e7498a29079de25ea889eee3897/66595/2023-08-07-14-29-41.png 384w,
+/static/b62d9e7498a29079de25ea889eee3897/fe486/2023-08-07-14-29-41.png 768w,
+/static/b62d9e7498a29079de25ea889eee3897/d2d74/2023-08-07-14-29-41.png 1152w,
+/static/b62d9e7498a29079de25ea889eee3897/e8464/2023-08-07-14-29-41.png 1536w,
+/static/b62d9e7498a29079de25ea889eee3897/ad089/2023-08-07-14-29-41.png 2539w&quot;
+            sizes=&quot;(max-width: 768px) 100vw, 768px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/b62d9e7498a29079de25ea889eee3897/fe486/2023-08-07-14-29-41.png&quot;
+            alt=&quot;airflow 화면&quot;
+            title=&quot;&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[파이썬 함수에서 예외 처리 잘하기]]></title><description><![CDATA[try!! 파이썬 예외 try!!]]></description><link>https://ambosing.github.io/python/function_except/</link><guid isPermaLink="false">https://ambosing.github.io/python/function_except/</guid><category><![CDATA[Python]]></category><dc:creator><![CDATA[Ambosing]]></dc:creator><pubDate>Sat, 29 Jul 2023 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;들어가기-전&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%93%A4%EC%96%B4%EA%B0%80%EA%B8%B0-%EC%A0%84&quot; aria-label=&quot;들어가기 전 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;들어가기 전&lt;/h2&gt;
 &lt;p&gt;이전에 도커로 웹 크롤링을 도커 위에서 하나의 사이트마다 24시간 동안 돌리기 위해 크롤링 구조를 새로 짠 적이 있습니다. 그 때에 예외 처리는 어떻게 하는 것이 좋을까라는 생각을 많이 했었습니다.&lt;br&gt;
 크롤링 같은 경우 에러가 발생한 경우 그 에러 상황을 재현하기가 쉽지 않을 때가 존재합니다..! 해당 URL의 게시물이 사라진 경우.. 또한, 어디에서 에러가 발생했는지 쉽지 않습니다.&lt;br&gt;
 그래서 이번에는 예외 처리를 훌륭하게 해보려고 시도했습니다. 그래도 이번에 이렇게 책에서 나온것처럼 처리한 것 같아서 다행입니다..!&lt;br&gt;
@@ -2597,7 +3023,7 @@ pattern &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; re&lt;span c
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 66.66666666666666%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAABQAwCdASoUAA0APtFUo0uoJKMhsAgBABoJZwDDNCHhVhc3HAD+8dMKnsLDvXnbxvt8GHD9EDGaWOgl0iNmEq00rW4nrTnL9M69Xv3xu/cSccAA&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 66.66666666666666%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAABQAwCdASoUAA0APtFUo0uoJKMhsAgBABoJZwDDNCHhVhc3HAD+8dMKnsLDvXnbxvt8GHD9EDGaWOgl0iNmEq00rW4nrTnL9M69Xv3xu2qEAAAA&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;picture&gt;
           &lt;source
