@@ -38,7 +38,7 @@ Airflow에는 TimeWindow라는 처리해야할 데이터의 기간인 개념이 
 ### 2. execution_date를 대체하기
 execution_date를 대체하는 것이 좋은 방법이라고 생각됩니다.  
 [confluence의 AIP39](https://cwiki.apache.org/confluence/display/AIRFLOW/AIP-39+Richer+scheduler_interval)에 보면 execution_date가 너무 오해에 소지가 있으니 새로운 이름을 명칭하는 내용이 있습니다.
-![](../images/content/2023-08-07-13-48-30.png)
+![](../images/content/2023-08-08-10-48-18.png)
 <div class="source">새로운 명칭이름</div>
 이 위에 표에는 없지만 execution_date와 같은 날짜를 가리키는 logical_date도 존재합니다.
 
