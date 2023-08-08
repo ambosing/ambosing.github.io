@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[제멋대로맛 초코볼]]></title><description><![CDATA[이것저것 하고 싶은 개발자의 기술블로그]]></description><link>https://ambosing.github.io/</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 07 Aug 2023 05:37:00 GMT</lastBuildDate><author><![CDATA[Ambosing]]></author><item><title><![CDATA[Airflow Execution Date 트러블 슈팅]]></title><description><![CDATA[헷갈릴만한 Execution Date와 Time Window]]></description><link>https://ambosing.github.io/airflow/execution_date/</link><guid isPermaLink="false">https://ambosing.github.io/airflow/execution_date/</guid><category><![CDATA[Airflow]]></category><dc:creator><![CDATA[Ambosing]]></dc:creator><pubDate>Sat, 05 Aug 2023 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;문제-상황&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AC%B8%EC%A0%9C-%EC%83%81%ED%99%A9&quot; aria-label=&quot;문제 상황 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;문제 상황&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[제멋대로맛 초코볼]]></title><description><![CDATA[이것저것 하고 싶은 개발자의 기술블로그]]></description><link>https://ambosing.github.io/</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 08 Aug 2023 01:49:29 GMT</lastBuildDate><author><![CDATA[Ambosing]]></author><item><title><![CDATA[Airflow Execution Date 트러블 슈팅]]></title><description><![CDATA[헷갈릴만한 Execution Date와 Time Window]]></description><link>https://ambosing.github.io/airflow/execution_date/</link><guid isPermaLink="false">https://ambosing.github.io/airflow/execution_date/</guid><category><![CDATA[Airflow]]></category><dc:creator><![CDATA[Ambosing]]></dc:creator><pubDate>Sat, 05 Aug 2023 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;문제-상황&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AC%B8%EC%A0%9C-%EC%83%81%ED%99%A9&quot; aria-label=&quot;문제 상황 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;문제 상황&lt;/h2&gt;
 &lt;p&gt;회사에서 배치 프로세스 작업으로 일단위 데이터 집계를 하기 위해 Airflow를 사용하고 있습니다. 저는 Execution Date를 당연하게 배치 프로세스의 작업 시간이라고 생각하고 스케줄링을 했었습니다..!
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
@@ -250,7 +250,40 @@ Execution Date는 제가 생각한대로 실행하고 있지 않았습니다.&lt
 &lt;h3 id=&quot;2-execution_date를-대체하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2-execution_date%EB%A5%BC-%EB%8C%80%EC%B2%B4%ED%95%98%EA%B8%B0&quot; aria-label=&quot;2 execution_date를 대체하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2. execution_date를 대체하기&lt;/h3&gt;
 &lt;p&gt;execution_date를 대체하는 것이 좋은 방법이라고 생각됩니다.&lt;br&gt;
 &lt;a href=&quot;https://cwiki.apache.org/confluence/display/AIRFLOW/AIP-39+Richer+scheduler_interval&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;confluence의 AIP39&lt;/a&gt;에 보면 execution_date가 너무 오해에 소지가 있으니 새로운 이름을 명칭하는 내용이 있습니다.
-&lt;img src=&quot;../images/content/2023-08-07-13-48-30.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 472px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 88.54166666666666%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAIAAADUsmlHAAAACXBIWXMAAA7DAAAOwwHHb6hkAAACWUlEQVR42mVU2a7dNgw8//9jAdo0uMiCIH0rri1bK7VvpOxA9knRkwp6oCQOZ0RSeiARjXEcx3meYwz6NZHomOO8Tk76z9Fz0niklD/8+eXj2/c/Pn1jXJ/neQfqvb99/vH29e+/3r5/+vyjI56vg8Z4dMRcai4lpFJb/5e8IcZUUq4pl5TLpe+FuSM9Sqkr44zxdZdc6H/e95uZaKxMrCtnu2Sb2Lhalq02/J25ISIRItXWEalfy7nfe229dexItfc+D+mFudW2MM6lfl/5wnYxyTep4DiOZeXLMhWxTTAu2SbHGC/MrWOtrVwMNw+NY8zAOMlbL7WW2kpttfVcpp2n/xT5qK2xTe5Sc6G40KnUO+FjHOC80rCwfVk524SQhgv1vu4r41IDEj1af8abIS/Dh+hD6v155zvb06G0nMtVmumGM9u170ILBVIZpUFoYBtnm2ydnI/aWLbLbZecK6mtVMC2udTGTXDvaF0A54311oXW+i0bkXKpMRWw3trg/ZTjXHAuWBd8zBNca9MawHqpAVxApBtMRDFlF6LSoLU1xjk/YXMJzoU0wa11baw2UxI4D9axXQppEJ9gqUFpa8CBDQacBqeNtT7+YgZnXbi3vI8GnHORLrAPScONdD5EsF7M1EzP3nGClYapZ+YMABwXCmwgGtpMtbvQXBqh5vz9YbTWQ0gxlxBTTDmlEkJKubQ+H8YkjymEFGKOaT6Pawyk0em6MxdKaeDS7FxqY9ddgPXjGNqAEOaqjdq54vJ/zIiYrtLHZzPUlGZLIFHK9a7W1SfTfv0M6Ce13waRZ1hpkgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/038f0fae611830adb190ac0dc77d223a/a59e9/2023-08-08-10-48-18.webp 192w,
+/static/038f0fae611830adb190ac0dc77d223a/0ca9f/2023-08-08-10-48-18.webp 384w,
+/static/038f0fae611830adb190ac0dc77d223a/1fc91/2023-08-08-10-48-18.webp 472w&quot;
+              sizes=&quot;(max-width: 472px) 100vw, 472px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/038f0fae611830adb190ac0dc77d223a/3b721/2023-08-08-10-48-18.png 192w,
+/static/038f0fae611830adb190ac0dc77d223a/66595/2023-08-08-10-48-18.png 384w,
+/static/038f0fae611830adb190ac0dc77d223a/85788/2023-08-08-10-48-18.png 472w&quot;
+            sizes=&quot;(max-width: 472px) 100vw, 472px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/038f0fae611830adb190ac0dc77d223a/85788/2023-08-08-10-48-18.png&quot;
+            alt=&quot;2023 08 08 10 48 18&quot;
+            title=&quot;&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+    &lt;/span&gt;&lt;/p&gt;
 &lt;div class=&quot;source&quot;&gt;새로운 명칭이름&lt;/div&gt;
 이 위에 표에는 없지만 execution_date와 같은 날짜를 가리키는 logical_date도 존재합니다.
 &lt;p&gt;&lt;span
