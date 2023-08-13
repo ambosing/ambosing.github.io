@@ -132,4 +132,4 @@ ed9b09fc84b1   apache/airflow:2.6.3   "/usr/bin/dumb-init …"   3 minutes ago  
 status에 보면 정상적인 서비스들은 healthy라고 나오게 됩니다.  
 그런다음에 이제 http://localhost:8080 으로 들어가시게 되면 아래와 같이 로그인 창이 뜹니다.
 
-![airflow 화면](../images/content/2023-08-03-17-59-39.png)
+![airflow 화면](../images/content/2023-08-07-14-29-41.png)
