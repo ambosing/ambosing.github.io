@@ -3,10 +3,7 @@ const path = require('path');
 const sharp = require('sharp');
 
 // 이미지가 있는 디렉토리
-const directories = [
-  './contents/images/content',
-  './contents/images/thumbnail',
-];
+const directories = ['./contents/images/thumbnail'];
 
 directories.forEach(directory => {
   fs.readdir(directory, (err, files) => {
