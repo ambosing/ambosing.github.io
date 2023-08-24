@@ -69,7 +69,7 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
     "deploy": "gatsby build && gh-pages -d public -b main",
 		"change": "node change_webp.js",
-		"push": "git add . && git commit -m \"working\" && git push origin dev",
+		"push": "node change_webp.js && add . && git commit -m \"working\" && git push origin dev",
 		"all": "node change_webp.js && gatsby build && gh-pages -d public -b main && git add . && git commit -m \"add post\" && git push origin dev"
   },
   "repository": {
