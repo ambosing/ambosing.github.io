@@ -133,3 +133,70 @@ status에 보면 정상적인 서비스들은 healthy라고 나오게 됩니다.
 그런다음에 이제 http://localhost:8080 으로 들어가시게 되면 아래와 같이 로그인 창이 뜹니다.
 
 ![airflow 화면](../images/content/2023-08-07-14-29-41.png)
+그리고 로그인을 하고 나면 이러한 example DAGs가 존재합니다.
+![airflow example DAGs](../images/content/2023-08-24-09-20-12.png)
+엄청나게 많은 example DAGs가 보이는데요. 만약 example DAGs가 필요없다면 제거해줄 수 있습니다.   
+
+docker-compose.yml 파일에서 AIRFLOW__CORE__LOAD_EXAMPLES가 true로 설정돼있는 것을 false로 변경하였습니다.  
+`AIRFLOW__CORE__LOAD_EXAMPLES: 'false'`  
+ 
+
+그러고 나면 DAGs 페이지에 example DAG들이 모두 사라진 걸 알 수 있습니다.
+이로써 일단 EC2에 Docker Compose를 사용해서 Airflow를 띄웠습니다. 
+![](../images/content/2023-08-24-11-07-24.png)
+<div class="source"> 현재 구축한 인프라 </div>
+이제 EC2에는 모두 설정을 해놓았으니 Github Action을 통해 배포자동화를 시켜보겠습니다.
+
+## Git Action 배포 자동화
+먼저 Git Action에서 EC2를 접근하기 위해서는 SSH 키와 HOST Address가 필요합니다. 
+<div class="code-header">
+	<span class="red btn"></span>
+	<span class="yellow btn"></span>
+	<span class="green btn"></span>
+</div>
+
+```yaml
+name: CI to AWS EC2 Airflow
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+    types: [closed]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    name: Send to ec2-airflow
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: SSH Commands
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.AWS_SSH_HOST }}
+          username: ec2-user
+          key: ${{ secrets.AWS_SSH_KEY }}
+          port: 22
+          script_stop: true
+          command_timeout: 200m
+          script: |
+            cd ~/movieboard-batch-airflow
+            sudo chown -R $USER:$USER .
+            git pull origin main
+            python3.8 ./s3/s3_read.py
+            docker-compose down
+            docker-compose up -d
+      - name: action-slack
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          author_name: 배포 결과
+          fields: repo,message,commit,author,action,eventName,workflow
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
+        if: always()
+```
