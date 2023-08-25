@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[제멋대로맛 초코볼]]></title><description><![CDATA[이것저것 하고 싶은 개발자의 기술블로그]]></description><link>https://ambosing.github.io/</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 13 Aug 2023 01:20:32 GMT</lastBuildDate><author><![CDATA[Ambosing]]></author><item><title><![CDATA[Airflow Backfill 트러블 슈팅]]></title><description><![CDATA[Airflow]]></description><link>https://ambosing.github.io/airflow/backfill_trouble_shooting/</link><guid isPermaLink="false">https://ambosing.github.io/airflow/backfill_trouble_shooting/</guid><category><![CDATA[Airflow]]></category><dc:creator><![CDATA[Ambosing]]></dc:creator><pubDate>Sat, 05 Aug 2023 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;문제-상황&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AC%B8%EC%A0%9C-%EC%83%81%ED%99%A9&quot; aria-label=&quot;문제 상황 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;문제 상황&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[제멋대로맛 초코볼]]></title><description><![CDATA[이것저것 하고 싶은 개발자의 기술블로그]]></description><link>https://ambosing.github.io/</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 25 Aug 2023 03:38:29 GMT</lastBuildDate><author><![CDATA[Ambosing]]></author><item><title><![CDATA[Airflow Backfill 트러블 슈팅]]></title><description><![CDATA[Airflow]]></description><link>https://ambosing.github.io/airflow/backfill_trouble_shooting/</link><guid isPermaLink="false">https://ambosing.github.io/airflow/backfill_trouble_shooting/</guid><category><![CDATA[Airflow]]></category><dc:creator><![CDATA[Ambosing]]></dc:creator><pubDate>Sat, 05 Aug 2023 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;문제-상황&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AC%B8%EC%A0%9C-%EC%83%81%ED%99%A9&quot; aria-label=&quot;문제 상황 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;문제 상황&lt;/h2&gt;
 &lt;p&gt;기존 원본 데이터는 크롤링을 통해서 수집하고 있는 상황이었는데 Airflow를 이용한 배치 시스템 자체를 이후에 적용했습니다.&lt;br&gt;
 그래서 Airflow에 있는 Backfill 기능을 사용해 기존 원본 데이터를 채웠습니다만..!&lt;br&gt;
 데이터가 원하는대로 들어가지 않았습니다..&lt;br&gt;
@@ -70,7 +70,7 @@
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 23.4375%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAIAAADKYVtkAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAA9UlEQVR42l2LTUvDQBCG8/+lRZtWag9ePAfNEhPEq2CgqZWAB5NuPnabokn2o2m21SqObqoXh4fhnYd5jSzNSE7+0EM0v4aS/zLP8lVRBNNpWZZGJSq2ZrWsa1kzyaWUXPDuZAe40PKQmd61aAROsJTSQIVrk2tEPYvYYfMEAFGLLWqjpYeoe1k4dFcAgM8DiyBE3SvieC+36nMLAMYonPTvzdF80puZd5UPAHMR9oLBIBgPH85OHk/jDQYAh9wc+cfmbNz3h+fPF+uPRpdjhbFK8TaNFX59KwGAvfOoXeCtllG7aLq/5W4VK5x0Eqtk/7X/KX8DJDoC8qWIcGUAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 23.4375%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAIAAADKYVtkAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAA+UlEQVR42mXLQU+DQBBAYf5/ojYKqVYPXjySCK2Q6N2IoVptvEAX7CxYXZbdKQLV1jjaNvFi8k5f8gx4hgyybRw4AHDgf/If+ZTP8lkYhkIIQyghURZaFihLXSJiqVWhpcRNWiqtEFHqciuFlmquWMIQ0XBzz4GLPvdtcB6rJyKKamaD0+e+y73zbJAtciK6UaEN7lqmA//1qvlqicjojk86gdUdHe8NzWsZENGDHu+Gpjk8su57B6NDVidE5PHLnWDfuut1bq3T6Kxava/nuElYmyZtGjfs7UMQUfmpombC2pS1aVRPqlVFRNniJW5ZskHWpMvv5e/8A34TA3LmT6x3AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;picture&gt;
           &lt;source
@@ -140,7 +140,7 @@ DAG의 default_args를 &lt;code class=&quot;language-text&quot;&gt;depends_on_pa
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 47.91666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABIUlEQVR42o2PQU/CQBCF+3fVs39HEuK1h7IXUmzS47ZpOBihBiTVJk2gOhW22+rutjMcCogEiS+bTWbyvpl5Fu2FiESUJInnedPplHOeZRnnPIoipRSdk3XAun8+n/f7/eFwOBqN4ji2bZsxVpblie0H/t3CQ+fYd3LgDkZErbUxpm1bRDTGdGUHny2VUt0Ia71eO47juu5bmhLR02TiDAYPnielJKLxeMwY832/ix0EAWMsDMPd5qIoNptNUYCov1+4C3dXee8Getf5/e3r86OsvwBACLFardI0FUIAQFVVACCltLTWXZQWUX5+NMsZ5gt8X6gsrvL0EFIpVdc17qW1bprGoj+F2Gi6KOvEv3tEbQnNckbY/hs+nmM0qury5i2uuTh6CqKcewAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 47.91666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABI0lEQVR42pWPQWsCMRCF9+cWz/099VDvouvFFcVjI+KhoF26RcuWhW4l6RoSdTKbmYKpRaoV+pjLJPO9NxPxUUTEzKvVajQaLRYLIURRFEKI6XQKAHxJ0S84y7JWq9Xv9weDQZqm7Xa71+sZY34GLsDnH3TQedrpY+S9d84hoveeiBAxtAFGRAA4bZ1zABAsoqqqOp1OkiR5njPzfD7vdrvD4TCsOpvN4jgej8fhbCFEHMeTyeQ7WSm12Ww+ldLb/ctDIu9u1s2GajbK+9vXp0e73SsptdZlWeZ5rrVWSllrpZTGmAgRg40nspWsy4zWS1ovXZHajzc6XMnMALDb7cK2ROScq+s64j9FVDu+qnOYDsXeqPr9mcn/Cz56oCOw15O/ABd4OMBR2n3VAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;picture&gt;
           &lt;source
@@ -187,7 +187,7 @@ DAG의 default_args를 &lt;code class=&quot;language-text&quot;&gt;depends_on_pa
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 46.35416666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAIAAAC9o5sfAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABHklEQVR42nWQTUvDQBCG88PFq38iYBGEIPXWayt7iVFEc5AGKQk0Jlnz1W4SNl/dnRGzsZbaPuxh3513eGdHw38AQNu2jDHOeVEUnHMhBJ5CU245oJ76vp/NZrquE0Imk4lhGGEYKtuRUwMAhFGgFD8SsaqqZoAx1ve9Slal4+R1QMmz/fj2DgBCCMuyCCFBECDidrtdLBamaTLGENF13fl8btv22Fynn/706uPmwr293Dxcf1Hqed5yuaSUpmlKKXUcZ7VaJUkSx3EURY7j+L5flmVd11qdRe2TIV/vxctdaU3LosDfETeB19RchXRdl+f5fvKmabqu005uezTt2lEc/PbwPixMiv35q4EU2RqaSomzCzsNSFllsGvxPN83Of+2gEQ7TQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 46.35416666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAIAAAC9o5sfAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABH0lEQVR42nWRTU+DQBCG+dvGqz+DpCYeiB/HXiHgAYvRNI2xxBA3qXwsoaVscWGhLDOmbquxlTd7eWffzTMzq+GJAEAIURRFVVWMMc65lBL/k6bS/bdUabvdjsdjXddt2x6NRoZhxHGsYkdJDQAQ9gZ7ubOInPOmaYQQjLGu61RaXR2TFxG9f5xOpi8AIKX0PM9xnCiKELEoCsuyXNdljCEiIcQ0zdlstn9cZeHHzcXb5dn71fna1ClNCCHz+SulNFsuKaW+7wdBkGVZmqZJkvi+H4ZhWZZ1XWv1KmkmRv981z9dbx5uy80GDy2uIyLqSkHats3z/KdzIUTbthoOC7oGT+b8O7Na2OH8bgV6uVqA+FRm8KsGuD3wfAcfJn8BFfr/sgA2sBIAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;picture&gt;
           &lt;source
@@ -237,7 +237,7 @@ Execution Date는 제가 생각한대로 실행하고 있지 않았습니다.&lt
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 32.8125%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAIAAACHqfpvAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAA+klEQVR42oWNTU+DQBCG+dtePPgf9ODBmMaLv0CCy0eNplEwXEyKStySmA3QIkIJy8LsjAGTRg/W5zSTeZ93DMdxLMvyfZ+IWinZ7f313cPTc0xESinbtk3TDMOQJlzXZYwFQUBEiGgkScI5z7Osatrcu3g5P1jODt8vj8rHq7pVyWrFOU/TtKqqsizfJoQQTdNIKQ2Y0ADputjMZ9o7GW5OB+c4ZWcfmzUifgfyPC+Kgoi01ohY1/Uo01+AokHRXn7LGgiBUBOi3ha6rXYXnNgrEyH0OHTYdyCW8CnGVbVj3T+fp2LI4j5e9K+LPpqDiMY58rDb7gI/5S/hj4lwh1RJWAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 32.8125%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAIAAACHqfpvAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAA+ElEQVR42pWOwU6DQBRF+W03LvwH3bioUTd+gSE4TCWaVANhZSq1DCYGp0gRodBhhpn3DJgYXajx5G5ecs/NsyiljuP4vo+IWyHI1c3F9e1dtEREKaXrurZth2GII5RSQkgQBIgIAFYykmWratO+TE8XRzvz492ns70yOK9b8ZgkjDHOeVVVZVkyxuI4TtO0aRohhKVHjNarvFhfnpjpQe8d9u5+Riav6xwAPgp5nhdFgYjGGACo63qQ8Se0xF7ir3yXjUYwCIAAZlOYbfUfGRF6BaoD1fXPc/PGh1O2w+IfMsDwbBar5WxI5GkeqYeZuvegaz4LX+V37j+Jg7JIABgAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;picture&gt;
           &lt;source
@@ -285,7 +285,7 @@ Execution Date는 제가 생각한대로 실행하고 있지 않았습니다.&lt
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 28.125%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAIAAABM9SnKAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABBklEQVR42n1QTU+DQBTkr6snD970F9iLZ08mBDhQJWmoFXTXQj+ImAYxKe3C223ZffuMTUyqB+c0k8xkJuPEKQui8TB+QmuJKI5jz/OiKNJaE1GSJL7vB0EgpSSisixd1w3DsGkaInL44OT5+pQPztqHG9huF4sl5zybTgEApCqKgnPOGAMAIURVVYyxLMu6rpNSOv3dhfav0Lusbs8ZHxGR1toSrT+reRprtMYYRASAPM+VUtZaRJRS1nXt0A8Mmt7sD/R7P6GxvaJ/4Vij1a6VSrSwFrDp9b5TAnZg9R7l5thqD6ccS8egyd7TdDl6nN1P5tFsxcf58OVtYsSHWb3S78Cf5i/h80wJufmirwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 28.125%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAIAAABM9SnKAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABA0lEQVR42n1QO0vEQBjMb/cqsdR/oFaWNhYhSRGPiCSnrHmtlzMYORIEzWN3v9y+PlERTgunmoEZZhgnIVlws1omxFqLiHEce54XRZGUEhEJIb7vB0EAAIjYNI3rumEY9n2PiE5+dkBOF9n5gkUXYhyqzSbP87IsOecCoK7roijSNOWcT9PUtm2appRSxhgAOPLqSHkn1jvuLg+zPEZEpZRFfHtt1yRWxmqtjTGcc0opAFhrjTFCiK7rHPyBNlrq3Rf93I9GWwn4LxxrNMwM5mni75MYpNoxGPnMrNoZMexbv0/Zl442mr4Q8nS7Wi/vq6ja5snj9cPznR47vS3wd+BP8wf7pEwicO+IDgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;picture&gt;
           &lt;source
@@ -336,7 +336,7 @@ Execution Date는 제가 생각한대로 실행하고 있지 않았습니다.&lt
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 26.041666666666668%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAIAAADKYVtkAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAA4ElEQVR42n3Mz06DMAAG8D6u8eKL+AyaPcGMEDC7wMWDMUEzt0zEOITAMHWlLV3ZoO1nMr2YGH/X7w8BkCRJGIZxHAM47PvZTXh9NV0tFwAopUEQeJ7XNA2APM9934+iqO97AIRSyjkXQuy6rv5k+fS8uzxhkzM1OS1nF7SVnZScc611lmWMMSmlUkpKyRgjwzBYa52zcNgd9Gpx274vRZVuXhKaPRyjH1prYwwA55wxZhxHgt+EllVblduiZrUZ9vgX+X5aN2lazp/W98/F42ZbzN/uKK/dx6tVDMfGn+Mvv8oT7+Acvz4AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 26.041666666666668%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAIAAADKYVtkAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAA40lEQVR42n2L0U6DMBhGeVzjlQ/iO2j2AjMSAtkN4cbELJGp022ObAJZhymU8lNbgba/2bxaYnbuvnznOIgYx3EQBFEUIWL3oyaBf383XrzNEZHS0vd913WLokDENE09zwvDUCmFiA6llHMOAN+iJWX9Ob4Wtxf16EqMLvPJDeWtaKFpGillkiSMMQAQQgAAY8zp+94YY61Bi7KTy/lDnb1zsiIfT+V6drwOGGOklFrrv6m1HobBwVNAwY6RvMpJvdd9h2c5xNbabbFa5i+v2+kim+2r7HnzSDmxX4kRFR6Nf+Nf6WEUGtg2HFcAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;picture&gt;
           &lt;source
@@ -383,7 +383,7 @@ Execution Date는 제가 생각한대로 실행하고 있지 않았습니다.&lt
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 88.54166666666666%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAIAAADUsmlHAAAACXBIWXMAAA7DAAAOwwHHb6hkAAACbUlEQVR42l1Ua2/cIBC8///DKrWKkjZVn1+q9s427+UNy2K7wr5EadEKYRaYnfHAhXrv67pt27bv67r2l6Det2N2JPa9v0ndo6+XGPO7D58enr6+f/wyM7UfR+z7johPz9+fPv98+Pjt8fkHtrbv+/amUe+XRpQr5lJTKhXbK3hrlHIZ86WmXGjU9w9y6/2SS51mPs98ZooL9fu6HAx26us0i2niM5PLImaurrelIA38I/q6Xlqjiq01wka54DFojfqYr1gqVmzYWq2I2OhQ6IxG/VIr3mbOpb5O/DYxLtSvP7OQsG7bbeLXG5uYnAfy6E85zjaQ8UCoA50OELpTImpEiFSO7FlCLrVUzLWWUUa/lIrzIphQI7hKuZ6q9r6C9VLDdWK3ic2L4FJzrsbnzIUCon7Bdj+vHJqXiiEkH9JJvmJLuaRcxoKC+dB/REU6kRlXQhmpjNQgFEwznxaJjZyP2thBeJGMK6VBSDMtYmFSGTc2t0bWBbDeWA8uVLybgYhyKTFlsB5scD76kJwLzgXrgo+JiIbaWsNJD6wn6i+ce0zJh6g0KG2NsdYHcGOZNtaFdHDGpoxVxkoF4DyAm5nkwnTqISbnx2apwYAb1YHV4LS21oUXZHDWBT3Ojj5EA8650KjHlH1MGpwBZ60bKeu5NMpY8BHbsVkpsC7IQzMDjnNlbCBatRnVMqG51EIaIc15w+4m6esoO8SccgkxxZRTGoM0jEoxlxM8xBxSjim/enPYsw/OyISSGpjQjEml4bYIY1xfu9LAhZ4WuTC5cMmE/v9KEvWUx3+P6W6G0Q/z9dMP8TBJPtb8+xj0v6hfBbAmvpyaAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 88.54166666666666%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAIAAADUsmlHAAAACXBIWXMAAA7DAAAOwwHHb6hkAAACWUlEQVR42mVU2a7dNgw8//9jAdo0uMiCIH0rri1bK7VvpOxA9knRkwp6oCQOZ0RSeiARjXEcx3meYwz6NZHomOO8Tk76z9Fz0niklD/8+eXj2/c/Pn1jXJ/neQfqvb99/vH29e+/3r5/+vyjI56vg8Z4dMRcai4lpFJb/5e8IcZUUq4pl5TLpe+FuSM9Sqkr44zxdZdc6H/e95uZaKxMrCtnu2Sb2Lhalq02/J25ISIRItXWEalfy7nfe229dexItfc+D+mFudW2MM6lfl/5wnYxyTep4DiOZeXLMhWxTTAu2SbHGC/MrWOtrVwMNw+NY8zAOMlbL7WW2kpttfVcpp2n/xT5qK2xTe5Sc6G40KnUO+FjHOC80rCwfVk524SQhgv1vu4r41IDEj1af8abIS/Dh+hD6v155zvb06G0nMtVmumGM9u170ILBVIZpUFoYBtnm2ydnI/aWLbLbZecK6mtVMC2udTGTXDvaF0A54311oXW+i0bkXKpMRWw3trg/ZTjXHAuWBd8zBNca9MawHqpAVxApBtMRDFlF6LSoLU1xjk/YXMJzoU0wa11baw2UxI4D9axXQppEJ9gqUFpa8CBDQacBqeNtT7+YgZnXbi3vI8GnHORLrAPScONdD5EsF7M1EzP3nGClYapZ+YMABwXCmwgGtpMtbvQXBqh5vz9YbTWQ0gxlxBTTDmlEkJKubQ+H8YkjymEFGKOaT6Pawyk0em6MxdKaeDS7FxqY9ddgPXjGNqAEOaqjdq54vJ/zIiYrtLHZzPUlGZLIFHK9a7W1SfTfv0M6Ce13waRZ1hpkgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;picture&gt;
           &lt;source
@@ -426,7 +426,7 @@ Execution Date는 제가 생각한대로 실행하고 있지 않았습니다.&lt
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 34.895833333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAIAAACHqfpvAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABJklEQVR42m2QzUvDQBTE8797q3iy4MVDwJ7aiwcVDxahUAUPoQdLajVKa8hHu9l2Ny/J7r7sPvELkXZOc5kZfuPRjowxRbGCSnC+BiiJyDlH++RZaznnUkqlFBEBwGYrXvMkBRat4lXBpRBEhIiccwBAxL8wIg4Gg17vLE1TIgomk+5RZ+R36O3u+fL05PDg4uqaiMqy9H2/3++Lry6tNSJ6RFTVTZqtEbGpa2XaWXBbD7vVTVcPj7P7c1FWSimDhjGW57kxRiklhJBSfoatdW3riH7A0Gr7C+lQOWe/7R7mQuiENYsMssIs8yR4GQfzcRQ/al238VTPx3o2MtFDWyzd/+ecc55B22hbq9YgbWETJWGUhglb8JJZ/o7xFJMQsyenYHf5A+ewh6n46vagAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 34.895833333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAIAAACHqfpvAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABJ0lEQVR42m2QvU8CQRTE73+3xNiIiY0JJtIghY0fBVpoiMYCJUEkAhGF4/bkdoHdvduPt7vPIDHGwFTTzLz5vQg3ZK2ldCbzJZtnUkpEDCHgNkXee8YY51xrjYhSyvli8Z7GiZgN08kXpZxzRHTOMcaEEADwFwaAev20Wj0hhCDic7td3ivdHpdw9NC/ODrc3Tm/vFqXViqVWq227rLWAkCEiHmhEjIDAKUKZdxr66ZolIvGgbneJ/dnS5EbrcHaLMvSNAUAYwznXAixCnsfnAsrtJ8x4I3/hQygQ/Bru4WZcpNQ9UkkofYjnT4Nmq1+czjpGFO4+MW+NU3vzg4fPR2H/58LIUQGvDI+V84ALuR8MO0Opt04G1GReTqGSQfiLiS9oOXm5W8XTYfOHuFhIQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;picture&gt;
           &lt;source
@@ -543,7 +543,7 @@ date_time_start &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 40.625%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAADQAwCdASoUAAgAPtFipk0oJiOiMAgBABoJQApgWZQEz6JrwXASOgAA/v5hO5mI8DVfEvop7ZGEBe06CFhYaRQZ6cixN64DP4iBpz1nABoSE4WnMxHURDXEvyP7A3paAAA=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 40.625%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAADwAwCdASoUAAgAPtFapkuoJaOhsAgBABoJQApgWZEE0E9qjJMR8F4AAP7+rb++/fvrqvfE86whgiz2dUVUTr/nJAn+TJ2sORPWcv8vk3oVr9hhv/aoqRPLKS5YXgxcu8x+mCHy0AAAAA==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;picture&gt;
           &lt;source
@@ -599,8 +599,27 @@ sudo는 언제나 필수입니다! (안그러면 권한 없다고 에러를 냅�
 &lt;p&gt;도커 컴포즈가 잘 설치되었는지 확인해봅니다.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sh&quot;&gt;&lt;pre class=&quot;language-sh&quot;&gt;&lt;code class=&quot;language-sh&quot;&gt;&lt;span class=&quot;token function&quot;&gt;docker-compose&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;--version&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;윈도우에서는 &lt;code class=&quot;language-text&quot;&gt;docker compose&lt;/code&gt;이었는데 리눅스에서는 &lt;code class=&quot;language-text&quot;&gt;docker-compose&lt;/code&gt;입니다!&lt;/p&gt;
+&lt;h4 id=&quot;github-repository를-하나-생성&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#github-repository%EB%A5%BC-%ED%95%98%EB%82%98-%EC%83%9D%EC%84%B1&quot; aria-label=&quot;github repository를 하나 생성 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Github Repository를 하나 생성&lt;/h4&gt;
+&lt;p&gt;Github에 들어가 먼저 Repository를 하나 생성해줍니다.&lt;br&gt;
+저는 Airflow라고 먼저 해주었습니다!&lt;/p&gt;
+&lt;p&gt;그런 다음 amazon linux에 Git을 설치합니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;아래 명령을 실행해 yum을 업데이트 합니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; yum update&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;명령어를 실행해 git을 설치합니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; yum &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;마지막으로 git이 잘 설치되었는지 확인합니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; version&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;이제 아까 만들었던 Git Repository를 Clone 받습니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; clone &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;Git 주소&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h4 id=&quot;amazon-linux2에-docker-compose로-airflow-설치하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#amazon-linux2%EC%97%90-docker-compose%EB%A1%9C-airflow-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0&quot; aria-label=&quot;amazon linux2에 docker compose로 airflow 설치하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Amazon-linux2에 Docker-compose로 Airflow 설치하기&lt;/h4&gt;
 &lt;p&gt;먼저 Airflow 폴더를 만들고 폴더에서 작업하겠습니다.&lt;br&gt;
+저는 GitRepository 이름이 airflow라고 가정하겠습니다.&lt;br&gt;
 curl 명령어를 통해 docker-compose.yaml 파일을 fetching해 주겠습니다.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sh&quot;&gt;&lt;pre class=&quot;language-sh&quot;&gt;&lt;code class=&quot;language-sh&quot;&gt;&lt;span class=&quot;token function&quot;&gt;mkdir&lt;/span&gt; airflow
 &lt;span class=&quot;token builtin class-name&quot;&gt;cd&lt;/span&gt; airflow
@@ -673,7 +692,7 @@ ed9b09fc84b1   apache/airflow:2.6.3   &lt;span class=&quot;token string&quot;&gt
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 34.375%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAIAAACHqfpvAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAlklEQVR42p2P0QrCMAxF+/+fow9O/0MdraCPMrth17puIU2kq5ZtshcPF3Ih9wYitLWIGL5gIps5KeNHhn4QNMc5+4yYdo4xxnufY8xMRCLOCS/XQt8RAjMtlDpTRHZpdavs8T5c6iA1qhql/uj8wKYLPJ5ZLZ8q3JZQSNhJOCjYq2gKCZsSrg3m2LL8B8syEYcV/bzMb8wamTD4tbklAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 34.375%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAIAAACHqfpvAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAmUlEQVR42p2PQQ7CIBBFuf91dGH1HAZDu9CdsbSBFovgwBhKJYh248tPGMJ/k0D4OAKAewOw3OAXsaNnzMMQjz5HKSWEkFIOn0gptdaphhg0Es6MuxqMnhw8EX2R6OSQNMWny208Xk3TOcah7oDxJbSFfnI4r1mVaQvbk62Y3TF7aOy+DkPF7Ibac+9SrZT/oJS9R7eSry/jC9qemUFORTwCAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;picture&gt;
           &lt;source
@@ -707,7 +726,396 @@ ed9b09fc84b1   apache/airflow:2.6.3   &lt;span class=&quot;token string&quot;&gt
           /&gt;
         &lt;/picture&gt;
   &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[파이썬 함수에서 예외 처리 잘하기]]></title><description><![CDATA[try!! 파이썬 예외 try!!]]></description><link>https://ambosing.github.io/python/function_except/</link><guid isPermaLink="false">https://ambosing.github.io/python/function_except/</guid><category><![CDATA[Python]]></category><dc:creator><![CDATA[Ambosing]]></dc:creator><pubDate>Sat, 29 Jul 2023 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;들어가기-전&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%93%A4%EC%96%B4%EA%B0%80%EA%B8%B0-%EC%A0%84&quot; aria-label=&quot;들어가기 전 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;들어가기 전&lt;/h2&gt;
+    &lt;/span&gt;
+그리고 로그인을 하고 나면 이러한 example DAGs가 존재합니다.
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/d4ec149cbfd44c698029cb3cbed471e8/1e185/2023-08-24-09-20-12.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 43.22916666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAIAAAC9o5sfAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAwElEQVR42pWRyU4EMQxE8//fyAUkxNb0dMdb2U4QmkSDhmYRvJPjpFxlpQBQM3ePiD5orfXe367oV8xORCBaeVpOtVYR4QtEJCJEpKrMvG0bDfZBrdXMxoNa7pYV8PwCM8dgFpk5jwAyU8+Dpdy8rIg4Z/2MqmZma83MDleZCXc3Kw/rrob2Z/HMBcBNy+1yItL/i4fz/evOYplx2FlE5qpzygHAoVoe113UIvIn54/iG+fnjSLil9jMDGD+/0H8DoujDWJRmauYAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/d4ec149cbfd44c698029cb3cbed471e8/a59e9/2023-08-24-09-20-12.webp 192w,
+/static/d4ec149cbfd44c698029cb3cbed471e8/0ca9f/2023-08-24-09-20-12.webp 384w,
+/static/d4ec149cbfd44c698029cb3cbed471e8/dc9b9/2023-08-24-09-20-12.webp 768w,
+/static/d4ec149cbfd44c698029cb3cbed471e8/e2c2f/2023-08-24-09-20-12.webp 1152w,
+/static/d4ec149cbfd44c698029cb3cbed471e8/f3efb/2023-08-24-09-20-12.webp 1536w,
+/static/d4ec149cbfd44c698029cb3cbed471e8/58bdf/2023-08-24-09-20-12.webp 2340w&quot;
+              sizes=&quot;(max-width: 768px) 100vw, 768px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/d4ec149cbfd44c698029cb3cbed471e8/3b721/2023-08-24-09-20-12.png 192w,
+/static/d4ec149cbfd44c698029cb3cbed471e8/66595/2023-08-24-09-20-12.png 384w,
+/static/d4ec149cbfd44c698029cb3cbed471e8/fe486/2023-08-24-09-20-12.png 768w,
+/static/d4ec149cbfd44c698029cb3cbed471e8/d2d74/2023-08-24-09-20-12.png 1152w,
+/static/d4ec149cbfd44c698029cb3cbed471e8/e8464/2023-08-24-09-20-12.png 1536w,
+/static/d4ec149cbfd44c698029cb3cbed471e8/1e185/2023-08-24-09-20-12.png 2340w&quot;
+            sizes=&quot;(max-width: 768px) 100vw, 768px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/d4ec149cbfd44c698029cb3cbed471e8/fe486/2023-08-24-09-20-12.png&quot;
+            alt=&quot;airflow example DAGs&quot;
+            title=&quot;&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+엄청나게 많은 example DAGs가 보이는데요. 만약 example DAGs가 필요없다면 제거해줄 수 있습니다.&lt;/p&gt;
+&lt;p&gt;docker-compose.yml 파일에서 AIRFLOW__CORE__LOAD_EXAMPLES가 true로 설정돼있는 것을 false로 변경하였습니다.&lt;br&gt;
+&lt;code class=&quot;language-text&quot;&gt;AIRFLOW__CORE__LOAD_EXAMPLES: &apos;false&apos;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;그러고 나면 DAGs 페이지에 example DAG들이 모두 사라진 걸 알 수 있습니다.
+이로써 일단 EC2에 Docker Compose를 사용해서 Airflow를 띄웠습니다.
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 627px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/7da5e1737c2195854175dcccca4a0425/5986b/2023-08-24-11-07-24.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 128.125%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAaCAIAAAA44esqAAAACXBIWXMAAA7DAAAOwwHHb6hkAAADhElEQVR42o2UTWwbRRTHfeBCD4CEVIREP6BShCCuQjlUHFoJqSdO9MQRCQqVWglKJapSFAlQU2gpUvphAgmpcEISt4QY2hDHENux3biuwdHaqhN/bmyv4yT2xrv2eHeyzs485LVrh+A0vMPsaGd+//cx80YHAEAINIxS+vC70aCV6QCgkojw506I3eeV8AMAUAn1iAhriq2hJqzJoqHvM+1PcYdegNm73y4V3g4tlIvFWDTKcelYLM5xnBZf02qx6LSRsmtwfHA+dORwsPO9Z92BTjYLUnmWYaLRaHZxkU0kEEKwIZ1m2CVMj14tPnMBvTlw43UPo/fHw1gRVlbcMzPpdDoei9lsNpNpJMEmWJZNJZOpVEqW5To8HsS7Tsqvjvc95ji096/R6XJ1wevzmcfGLBMTbrc7HA7bbDaH3e6w24eHh81ms6IodfiSRfp4RF4B/ojzpO7HtrfcZ3hcQiUkYTmfz0uSJGMsSVIulxMEoVgsrvJ8PWcACHDrolyt7apSMrKWd7xdvy/drVaIUvIwQ/qfSR3W9oFKCYGqBFEJk166v5D1sZmSVE2BLyJJS7LBN2FCoXELCFGtfqb9M8PznT17z13psTgASK838tEkE13Kt7gkzTMgxBmK68/f0F82tX9pfOWbm7s+7bnpDXY6wzsNUz1Of81TC1glNBqJHPx65Mnrjud6Xfu6b+/pdb5osDxx3bn7gmna4xX4/MaY/w1rfy9Oep/uvnPgJ9eOHzy67zy6y1OPd42Z/w7V1B8VNgBgjH2B4NCMX2+wvGSYPHbLxbCcRpLWjdEwsVSaiyV4QVwVRBGhOJtMLixQSgtFRAiRMd7UXrqGTy6bnbBNX+03/jJhtU67zRZrYC58pd9odbgGfh4b/9Pu8vpaeK7BSS5z+w/bb9apO9o4OPprIDTfN2QaHbdc6zc6Zu6lM4tbFgwAlnPVyyhKWCzLWKnkBCRX1hFeWy1JilJRVXWbgqmKXClwlUJG4dNEXAQhQwtpkPgtX5I6TKrCfNjHnN7/4MwB/6n9iU86lEuvlT/vWLt1urZlO3j+nv/47uAHbf4PX06c7VC+OojO7sGD79di2/qotLV1LC07Bua73rh/oi12at/aF3p54BhJzW4Hb5AgGGVcpuW+dyHp3erpbAFXtxIClPIFoYBkXFnf/DY/ynNdgkQjcwwT4PObm2F7+H/aP3p/Z/ewWTPOAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/7da5e1737c2195854175dcccca4a0425/a59e9/2023-08-24-11-07-24.webp 192w,
+/static/7da5e1737c2195854175dcccca4a0425/0ca9f/2023-08-24-11-07-24.webp 384w,
+/static/7da5e1737c2195854175dcccca4a0425/faefd/2023-08-24-11-07-24.webp 627w&quot;
+              sizes=&quot;(max-width: 627px) 100vw, 627px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/7da5e1737c2195854175dcccca4a0425/3b721/2023-08-24-11-07-24.png 192w,
+/static/7da5e1737c2195854175dcccca4a0425/66595/2023-08-24-11-07-24.png 384w,
+/static/7da5e1737c2195854175dcccca4a0425/5986b/2023-08-24-11-07-24.png 627w&quot;
+            sizes=&quot;(max-width: 627px) 100vw, 627px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/7da5e1737c2195854175dcccca4a0425/5986b/2023-08-24-11-07-24.png&quot;
+            alt=&quot;2023 08 24 11 07 24&quot;
+            title=&quot;&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;div class=&quot;source&quot;&gt; 현재 구축한 인프라 &lt;/div&gt;
+&lt;p&gt;이제 EC2에는 모두 설정을 해놓았으니 Github Action을 통해 배포자동화를 시켜보겠습니다.&lt;/p&gt;
+&lt;h2 id=&quot;git-action-배포-자동화&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#git-action-%EB%B0%B0%ED%8F%AC-%EC%9E%90%EB%8F%99%ED%99%94&quot; aria-label=&quot;git action 배포 자동화 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Git Action 배포 자동화&lt;/h2&gt;
+&lt;p&gt;먼저 Git Action에서 EC2를 접근하기 위해서는 SSH 키와 HOST Address가 필요합니다.&lt;br&gt;
+이를 먼저 안전하게 저장하기 위해 Github Secrets로 저장해봅시다.&lt;/p&gt;
+&lt;p&gt;Github에 접속해 Airflow파일들이 담겨있는 Repository를 선택합니다.&lt;br&gt;
+그런 다음 아래와 같이 github settings 클릭합니다.
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/bf22b1a588f931f337e7564821031193/9fe9d/2023-08-25-09-10-13.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 5.208333333333334%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAABCAIAAABR8BlyAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAOElEQVR42hXKwQ2AMAwDQPaflKoYx05aVbxQvqe7XJuuN1JeVD6gcoGiayKoBCW3RDe3TIx77PP9ud44XpvT/iMAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/bf22b1a588f931f337e7564821031193/a59e9/2023-08-25-09-10-13.webp 192w,
+/static/bf22b1a588f931f337e7564821031193/0ca9f/2023-08-25-09-10-13.webp 384w,
+/static/bf22b1a588f931f337e7564821031193/dc9b9/2023-08-25-09-10-13.webp 768w,
+/static/bf22b1a588f931f337e7564821031193/bf53a/2023-08-25-09-10-13.webp 1131w&quot;
+              sizes=&quot;(max-width: 768px) 100vw, 768px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/bf22b1a588f931f337e7564821031193/3b721/2023-08-25-09-10-13.png 192w,
+/static/bf22b1a588f931f337e7564821031193/66595/2023-08-25-09-10-13.png 384w,
+/static/bf22b1a588f931f337e7564821031193/fe486/2023-08-25-09-10-13.png 768w,
+/static/bf22b1a588f931f337e7564821031193/9fe9d/2023-08-25-09-10-13.png 1131w&quot;
+            sizes=&quot;(max-width: 768px) 100vw, 768px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/bf22b1a588f931f337e7564821031193/fe486/2023-08-25-09-10-13.png&quot;
+            alt=&quot;2023 08 25 09 10 13&quot;
+            title=&quot;&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Settings에 들어오면 메인화면 좌측에 메뉴가 나옵니다.&lt;br&gt;
+여기서 빨간색으로 칠해진 버튼을 누르면 드롭다운이 됩니다.
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 425px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/a1154e8af69e9711a12f11de02cb2961/df70d/2023-08-25-09-19-36.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 222.39583333333334%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAsCAIAAADqwg+aAAAACXBIWXMAAA7DAAAOwwHHb6hkAAADEklEQVR42qVV227bOBDN//9S96VAN9hgg760u9uHOrZsSuJFvN+GIiktpLjuBXEiowcDvh0OeebMzJ0K09fOEowp44xxQqh1PkIKEa6FDwBpnOf5jtrp407sdrv/vnz9/PnfT5/+4VK7ANbHa2FcCDEt5Hmep2maf0Ct05Y4k0spQiprXa31l4tex5mslDbW3cQ8kyGNQirn3LFpKKGMDYwNpZRN5JyzdT6EwAcupdTaaGNKKdOreFmwZ0xv4dufc+4JZVxQNhDKMKFtT7hQm549TVMIMUKCNMJS/xEg5Zw3kWMEwhjGuDsh1By1sTeVqo4553FMaUlYar2lVJAwZYSQE2pvrnOpNUaIMXrvt/jkYsT1zwCo6wc+HJrDFp3SOD5b6GISlyB572OEN5OXUuqqy1ntHhOtFCGYc1HfEiylnzMb67Q2UkhnrVZ6Y4fcrTclSgcpJcFEDJyyoW4nhxCbU2uMUUpprbVSQvCtDoOU6MC9s0prY5ZnK6W2kkOEQ3O01vU95mwYBu59ePvRpZwzY0ITgNZGrIgxbv2ztW7fHBljx+MJIN1mz5xziAukVGPO0zacyefRMd82/c7kcRx7TDtM3BadfiHXWpcVkNI4jtNUa63P7s3reXHyVZPsm6OSummOZEV3aruuQ6hFXfu02xFKr8+wOvlFMYghJoAYIY+5rihL5qtrZO2qEAmhjLLmcBgIPp1OUsofh/AL8b0xxqx9SKWEXCBnyCWOYyrFAYT0QtnLNNVLqdT+8OXdH+Tx8fDhz/7hAX247/56QPf3u/fv0d+P9YRK05S+r5xXzichYttm676p7dys5CzlrNQkxMT5JSqjBeOCcUYo7/fneHqqWn/fktxY5bww1t9qz1qrVIYLKaTy4UpLvKTZc0tG1PVKKoop54ISyjlfDbvJntkY67032qyDRKv1SxvHUDiiVgjRtZ0UEnf9srh6zLnc1JLOewAwxsQYnXPOLg8JIW7aVajtOOcItR1q+TCgE6KU9X0PKb2tdkopQQohQoSUIIYAsJyvL4C7+TfwW+T/AQa2D4nvMHvlAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/a1154e8af69e9711a12f11de02cb2961/a59e9/2023-08-25-09-19-36.webp 192w,
+/static/a1154e8af69e9711a12f11de02cb2961/0ca9f/2023-08-25-09-19-36.webp 384w,
+/static/a1154e8af69e9711a12f11de02cb2961/b5bcc/2023-08-25-09-19-36.webp 425w&quot;
+              sizes=&quot;(max-width: 425px) 100vw, 425px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/a1154e8af69e9711a12f11de02cb2961/3b721/2023-08-25-09-19-36.png 192w,
+/static/a1154e8af69e9711a12f11de02cb2961/66595/2023-08-25-09-19-36.png 384w,
+/static/a1154e8af69e9711a12f11de02cb2961/df70d/2023-08-25-09-19-36.png 425w&quot;
+            sizes=&quot;(max-width: 425px) 100vw, 425px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/a1154e8af69e9711a12f11de02cb2961/df70d/2023-08-25-09-19-36.png&quot;
+            alt=&quot;2023 08 25 09 19 36&quot;
+            title=&quot;&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;그 다음은 버튼을 눌러줍니다!
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/2ed9012faf6b67d84ab978a43e06ca96/eba7c/2023-08-25-09-27-28.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 72.91666666666666%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAIAAABr+ngCAAAACXBIWXMAAA7DAAAOwwHHb6hkAAACKUlEQVR42nVTbUscMRD2//8F/SL0KMiJipz0g9xh7xAs9YQr0tbDcqtV29vdbN42k2QmScmud9yXDpMlJPNk5nlmds8AxBDSxsCYVislldZaCG6MSf+3PWMMEcWYepeqLWtZN6oRLeOqYY2UUgihlBJcMMYa3gipraMMllIppbePcaHf1oI1kgvVcMkbLriQQkmZ90oqBO8BA8UM1roloi3YWjCt1loDWOgWeh9jCinFstSKXxd3n399+fb2I4OVUjHGHhljIgpEhIS73GIIwUJal5KtPy2no+/j69U8g6uqBgPbOAO2rBjjAhyCJ2gNMA51A1yC9dblmr3ZlF3V9S5nouARMUT0Hmpma2Zb4zw6JJcvyDoH3jn0vdpd2o3aPYMIEIRAAMwUyHuPGYkxbQj2rZJaG8gWKHe7VboqnuW6dJ6sJ+cwu6ddt/kki7LH12te12BdAJvA/pzfffwwGJ6czOdZEiSiELBrR/H0NDw+vri4+PO39Nj1mRUFf/5t1qUTIiKuimI8mVxdXU0mk368YmcppdfX1/F4fH9/b513ruMMUrpNUErp8fHx9PT07Ozs9vYW8X3yQshXDw/LwWBweXmpOwnfOfe72EUsFouDg4PDw8PZbBZC6NOGbvgXi8X+/v5oNJK6tX3mqqqqsvLe9zIul8ujo6PhcHh+fr493C1qNpsppX2fOc8TYtj8WHVdf+1stVptYf335eVlOp3e3Nywhvfx/wB/kU6/Q2h5rAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/2ed9012faf6b67d84ab978a43e06ca96/a59e9/2023-08-25-09-27-28.webp 192w,
+/static/2ed9012faf6b67d84ab978a43e06ca96/0ca9f/2023-08-25-09-27-28.webp 384w,
+/static/2ed9012faf6b67d84ab978a43e06ca96/dc9b9/2023-08-25-09-27-28.webp 768w,
+/static/2ed9012faf6b67d84ab978a43e06ca96/e2c2f/2023-08-25-09-27-28.webp 1152w,
+/static/2ed9012faf6b67d84ab978a43e06ca96/f4b45/2023-08-25-09-27-28.webp 1473w&quot;
+              sizes=&quot;(max-width: 768px) 100vw, 768px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/2ed9012faf6b67d84ab978a43e06ca96/3b721/2023-08-25-09-27-28.png 192w,
+/static/2ed9012faf6b67d84ab978a43e06ca96/66595/2023-08-25-09-27-28.png 384w,
+/static/2ed9012faf6b67d84ab978a43e06ca96/fe486/2023-08-25-09-27-28.png 768w,
+/static/2ed9012faf6b67d84ab978a43e06ca96/d2d74/2023-08-25-09-27-28.png 1152w,
+/static/2ed9012faf6b67d84ab978a43e06ca96/eba7c/2023-08-25-09-27-28.png 1473w&quot;
+            sizes=&quot;(max-width: 768px) 100vw, 768px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/2ed9012faf6b67d84ab978a43e06ca96/fe486/2023-08-25-09-27-28.png&quot;
+            alt=&quot;2023 08 25 09 27 28&quot;
+            title=&quot;&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;그러면 Secret키를 등록할 수 있습니다.&lt;br&gt;
+여기에 이제 AWS SSH 키와 연결할 AWS HOST를 등록시켜주면 됩니다!
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/1426d11ad80940f26b70c172a2a1987e/6b1ac/2023-08-25-09-29-50.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 52.60416666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAi0lEQVR42r2QMQ7CMAxFe2xGZjZOw8CJqsZR08YBx04KLhFCLDUdePIU6enpp+sDu5n7kf1EAOAGBwAishjoYqIslbgSC73IuZRSt1AZAFJKiPhZqwZUDmFiFmYW0Z79VDbO+6KVl100+T3g7+X5HpHSr+n2YYfL6Xg9I930aV1gu1V20Xscd8x+yg82gosdEb7UhwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/1426d11ad80940f26b70c172a2a1987e/a59e9/2023-08-25-09-29-50.webp 192w,
+/static/1426d11ad80940f26b70c172a2a1987e/0ca9f/2023-08-25-09-29-50.webp 384w,
+/static/1426d11ad80940f26b70c172a2a1987e/dc9b9/2023-08-25-09-29-50.webp 768w,
+/static/1426d11ad80940f26b70c172a2a1987e/096fc/2023-08-25-09-29-50.webp 1065w&quot;
+              sizes=&quot;(max-width: 768px) 100vw, 768px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/1426d11ad80940f26b70c172a2a1987e/3b721/2023-08-25-09-29-50.png 192w,
+/static/1426d11ad80940f26b70c172a2a1987e/66595/2023-08-25-09-29-50.png 384w,
+/static/1426d11ad80940f26b70c172a2a1987e/fe486/2023-08-25-09-29-50.png 768w,
+/static/1426d11ad80940f26b70c172a2a1987e/6b1ac/2023-08-25-09-29-50.png 1065w&quot;
+            sizes=&quot;(max-width: 768px) 100vw, 768px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/1426d11ad80940f26b70c172a2a1987e/fe486/2023-08-25-09-29-50.png&quot;
+            alt=&quot;2023 08 25 09 29 50&quot;
+            title=&quot;&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Git Action은 Yaml 파일을 통해 설정합니다.&lt;br&gt;
+.github/workflows 폴더 아래 파일이 위치해야 Github에서 워크플로우로 인식을 하도록 약속이 돼 있습니다!&lt;br&gt;
+이제 .github/workflows에 하나의 yaml 파일을 등록해 줍니다.&lt;br&gt;
+내용은 아래처럼 작성하시면 push 했을 때나 PR이 Closed 되었을 때 동작합니다.&lt;/p&gt;
+&lt;div class=&quot;code-header&quot;&gt;
+	&lt;span class=&quot;red btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;yellow btn&quot;&gt;&lt;/span&gt;
+	&lt;span class=&quot;green btn&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;yaml&quot;&gt;&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; CI to AWS EC2 Airflow
+
+&lt;span class=&quot;token key atrule&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;token key atrule&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;branches&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;main&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;token key atrule&quot;&gt;pull_request&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;branches&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;main&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;types&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;closed&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+
+  &lt;span class=&quot;token key atrule&quot;&gt;workflow_dispatch&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+
+&lt;span class=&quot;token key atrule&quot;&gt;jobs&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;token key atrule&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+
+    &lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Send to ec2&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;airflow
+    &lt;span class=&quot;token key atrule&quot;&gt;runs-on&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; ubuntu&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;latest
+
+    &lt;span class=&quot;token key atrule&quot;&gt;steps&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; SSH Commands
+        &lt;span class=&quot;token key atrule&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; appleboy/ssh&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;action@v1.0.0
+        &lt;span class=&quot;token key atrule&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;token key atrule&quot;&gt;host&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; $&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; secrets.AWS_SSH_HOST &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+          &lt;span class=&quot;token key atrule&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; ec2&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;user
+          &lt;span class=&quot;token key atrule&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; $&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; secrets.AWS_SSH_KEY &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+          &lt;span class=&quot;token key atrule&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;22&lt;/span&gt;
+          &lt;span class=&quot;token key atrule&quot;&gt;script_stop&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean important&quot;&gt;true&lt;/span&gt;
+          &lt;span class=&quot;token key atrule&quot;&gt;command_timeout&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 200m
+          &lt;span class=&quot;token key atrule&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;token scalar string&quot;&gt;
+            cd ~/your-airflow-repository
+            sudo chown -R $USER:$USER .
+            git pull origin main
+            docker-compose down
+            docker-compose up -d&lt;/span&gt;
+      &lt;span class=&quot;token comment&quot;&gt;# 이 부분은 슬랙이라 추가적으로 슬랙으로 배포를 열람받고 싶은 분은 WEBHOOK 등록해서 쓰시면 됩니다.&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; action&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;slack
+        &lt;span class=&quot;token key atrule&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 8398a7/action&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;slack@v3
+        &lt;span class=&quot;token key atrule&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;token key atrule&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; $&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; job.status &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+          &lt;span class=&quot;token key atrule&quot;&gt;author_name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 배포 결과
+          &lt;span class=&quot;token key atrule&quot;&gt;fields&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; repo&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;message&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;commit&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;author&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;action&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;eventName&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;workflow
+        &lt;span class=&quot;token key atrule&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;token key atrule&quot;&gt;SLACK_WEBHOOK_URL&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; $&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; secrets.SLACK_WEBHOOK_URL &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;# required&lt;/span&gt;
+        &lt;span class=&quot;token key atrule&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; always()&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;이렇게 Git Action을 통해 배포 자동화를 해보았습니다.&lt;br&gt;
+보통 개발을 하실 때 로컬에서 개발하시고 실제 서버에 배포하실텐데요.&lt;br&gt;
+보통 개발 하시는 구조가 이럴 것이라고 생각해서 한 번 만들어봤습니다!&lt;br&gt;
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/11a4f12d60c9545c9af00d6d114522d6/4b033/2023-08-25-11-20-02.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 40.10416666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAIAAAB2/0i6AAAACXBIWXMAAA7DAAAOwwHHb6hkAAABPklEQVR42nWRQUsCQRTH94P1SfomHbt4skuQByXplmF0DSKLCBGJhEDIWDcrNdd119F1dubtzLx5oVumQb/T483//Wfm/xzaBhHpP1Cj+zxLQCOStUTkrI/siqzYaJKlTGmVof3jyuHj3eCt3/O6jDFnPUlEQRBUq9UoirJeogj0twWRlUDX49FZt/4+nPSDUAjhtE3vRrSelOf7fj5/UCqVCoXClDGj5DCmW29pQWTDKOKck6Xdyv1O+ephsLzA6eBHHdod7MfzebFYbDQauVxOG6NUKlPd/tRzYYgsAGitp4xdtDonzZdJGP3+OXt2HMeu63qel6YpIkoJAFJKaYzJZALS19qpf3kUR+OtwNYWiMg5Z4xxzs0PQojFYkFEo1o5Pt8jLeyf4c3MjTEAEIbhbEWSJNkWtTaQqkz8BVu9wEG+4mo6AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/11a4f12d60c9545c9af00d6d114522d6/a59e9/2023-08-25-11-20-02.webp 192w,
+/static/11a4f12d60c9545c9af00d6d114522d6/0ca9f/2023-08-25-11-20-02.webp 384w,
+/static/11a4f12d60c9545c9af00d6d114522d6/dc9b9/2023-08-25-11-20-02.webp 768w,
+/static/11a4f12d60c9545c9af00d6d114522d6/e2c2f/2023-08-25-11-20-02.webp 1152w,
+/static/11a4f12d60c9545c9af00d6d114522d6/f3efb/2023-08-25-11-20-02.webp 1536w,
+/static/11a4f12d60c9545c9af00d6d114522d6/c25ec/2023-08-25-11-20-02.webp 1797w&quot;
+              sizes=&quot;(max-width: 768px) 100vw, 768px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/11a4f12d60c9545c9af00d6d114522d6/3b721/2023-08-25-11-20-02.png 192w,
+/static/11a4f12d60c9545c9af00d6d114522d6/66595/2023-08-25-11-20-02.png 384w,
+/static/11a4f12d60c9545c9af00d6d114522d6/fe486/2023-08-25-11-20-02.png 768w,
+/static/11a4f12d60c9545c9af00d6d114522d6/d2d74/2023-08-25-11-20-02.png 1152w,
+/static/11a4f12d60c9545c9af00d6d114522d6/e8464/2023-08-25-11-20-02.png 1536w,
+/static/11a4f12d60c9545c9af00d6d114522d6/4b033/2023-08-25-11-20-02.png 1797w&quot;
+            sizes=&quot;(max-width: 768px) 100vw, 768px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/11a4f12d60c9545c9af00d6d114522d6/fe486/2023-08-25-11-20-02.png&quot;
+            alt=&quot;2023 08 25 11 20 02&quot;
+            title=&quot;&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;div class=&quot;source&quot;&gt; 현재 구축한 인프라 &lt;/div&gt;
+&lt;p&gt;제 포스팅이 Airflow를 사용하시는 분들에게 도움이 됐으면 좋겠네요!&lt;/p&gt;</content:encoded></item><item><title><![CDATA[파이썬 함수에서 예외 처리 잘하기]]></title><description><![CDATA[try!! 파이썬 예외 try!!]]></description><link>https://ambosing.github.io/python/function_except/</link><guid isPermaLink="false">https://ambosing.github.io/python/function_except/</guid><category><![CDATA[Python]]></category><dc:creator><![CDATA[Ambosing]]></dc:creator><pubDate>Sat, 29 Jul 2023 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;들어가기-전&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%93%A4%EC%96%B4%EA%B0%80%EA%B8%B0-%EC%A0%84&quot; aria-label=&quot;들어가기 전 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;들어가기 전&lt;/h2&gt;
 &lt;p&gt;이전에 도커로 웹 크롤링을 도커 위에서 하나의 사이트마다 24시간 동안 돌리기 위해 크롤링 구조를 새로 짠 적이 있습니다. 그 때에 예외 처리는 어떻게 하는 것이 좋을까라는 생각을 많이 했었습니다.&lt;br&gt;
 크롤링 같은 경우 에러가 발생한 경우 그 에러 상황을 재현하기가 쉽지 않을 때가 존재합니다..! 해당 URL의 게시물이 사라진 경우.. 또한, 어디에서 에러가 발생했는지 쉽지 않습니다.&lt;br&gt;
 그래서 이번에는 예외 처리를 훌륭하게 해보려고 시도했습니다. 그래도 이번에 이렇게 책에서 나온것처럼 처리한 것 같아서 다행입니다..!&lt;br&gt;
@@ -3183,7 +3591,7 @@ pattern &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; re&lt;span c
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 66.66666666666666%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAABQAwCdASoUAA0APtFUo0uoJKMhsAgBABoJZwDDNCHhVhc3HAD+8dMKnsLDvXnbxvt8GHD9EDGaWOgl0iNmEq00rW4nrTnL9M69Xv3xu/cSccAA&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 66.66666666666666%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAABQAwCdASoUAA0APtFUo0uoJKMhsAgBABoJZwDDNCHhVhc3HAD+8dMKnsLDvXnbxvt8GHD9EDGaWOgl0iNmEq00rW4nrTnL9M69Xv3xu2qEAAAA&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;picture&gt;
           &lt;source
