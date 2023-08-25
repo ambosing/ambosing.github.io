@@ -58,8 +58,32 @@ docker-compose --version
 ```
 윈도우에서는 `docker compose`이었는데 리눅스에서는 `docker-compose`입니다!
 
+#### Github Repository를 하나 생성
+Github에 들어가 먼저 Repository를 하나 생성해줍니다.  
+저는 Airflow라고 먼저 해주었습니다!
+
+그런 다음 amazon linux에 Git을 설치합니다.
+- 아래 명령을 실행해 yum을 업데이트 합니다.
+```bash
+sudo yum update
+```
+- 명령어를 실행해 git을 설치합니다.
+```bash
+sudo yum install git
+```
+- 마지막으로 git이 잘 설치되었는지 확인합니다.
+```bash
+git version
+```
+
+이제 아까 만들었던 Git Repository를 Clone 받습니다.
+```bash
+git clone {{Git 주소}}
+```
+
 #### Amazon-linux2에 Docker-compose로 Airflow 설치하기
 먼저 Airflow 폴더를 만들고 폴더에서 작업하겠습니다.  
+저는 GitRepository 이름이 airflow라고 가정하겠습니다.  
 curl 명령어를 통해 docker-compose.yaml 파일을 fetching해 주겠습니다.
 ```sh
 mkdir airflow
@@ -145,10 +169,35 @@ docker-compose.yml 파일에서 AIRFLOW__CORE__LOAD_EXAMPLES가 true로 설정�
 이로써 일단 EC2에 Docker Compose를 사용해서 Airflow를 띄웠습니다. 
 ![](../images/content/2023-08-24-11-07-24.png)
 <div class="source"> 현재 구축한 인프라 </div>
+
+
+
 이제 EC2에는 모두 설정을 해놓았으니 Github Action을 통해 배포자동화를 시켜보겠습니다.
 
 ## Git Action 배포 자동화
-먼저 Git Action에서 EC2를 접근하기 위해서는 SSH 키와 HOST Address가 필요합니다. 
+먼저 Git Action에서 EC2를 접근하기 위해서는 SSH 키와 HOST Address가 필요합니다.  
+이를 먼저 안전하게 저장하기 위해 Github Secrets로 저장해봅시다.
+
+Github에 접속해 Airflow파일들이 담겨있는 Repository를 선택합니다.  
+그런 다음 아래와 같이 github settings 클릭합니다.
+![](../images/content/2023-08-25-09-10-13.png)
+
+Settings에 들어오면 메인화면 좌측에 메뉴가 나옵니다.  
+여기서 빨간색으로 칠해진 버튼을 누르면 드롭다운이 됩니다.
+![](../images/content/2023-08-25-09-19-36.png)
+
+그 다음은 버튼을 눌러줍니다!
+![](../images/content/2023-08-25-09-27-28.png)
+
+그러면 Secret키를 등록할 수 있습니다.   
+여기에 이제 AWS SSH 키와 연결할 AWS HOST를 등록시켜주면 됩니다!
+![](../images/content/2023-08-25-09-29-50.png)
+
+Git Action은 Yaml 파일을 통해 설정합니다.  
+.github/workflows 폴더 아래 파일이 위치해야 Github에서 워크플로우로 인식을 하도록 약속이 돼 있습니다!  
+이제 .github/workflows에 하나의 yaml 파일을 등록해 줍니다.  
+내용은 아래처럼 작성하시면 push 했을 때나 PR이 Closed 되었을 때 동작합니다.
+
 <div class="code-header">
 	<span class="red btn"></span>
 	<span class="yellow btn"></span>
@@ -184,12 +233,12 @@ jobs:
           script_stop: true
           command_timeout: 200m
           script: |
-            cd ~/movieboard-batch-airflow
+            cd ~/your-airflow-repository
             sudo chown -R $USER:$USER .
             git pull origin main
-            python3.8 ./s3/s3_read.py
             docker-compose down
             docker-compose up -d
+      # 이 부분은 슬랙이라 추가적으로 슬랙으로 배포를 열람받고 싶은 분은 WEBHOOK 등록해서 쓰시면 됩니다.
       - name: action-slack
         uses: 8398a7/action-slack@v3
         with:
@@ -200,3 +249,10 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
         if: always()
 ```
+이렇게 Git Action을 통해 배포 자동화를 해보았습니다.  
+보통 개발을 하실 때 로컬에서 개발하시고 실제 서버에 배포하실텐데요.  
+보통 개발 하시는 구조가 이럴 것이라고 생각해서 한 번 만들어봤습니다!  
+![](../images/content/2023-08-25-11-20-02.png)
+<div class="source"> 현재 구축한 인프라 </div>
+
+제 포스팅이 Airflow를 사용하시는 분들에게 도움이 됐으면 좋겠네요! 
