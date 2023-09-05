@@ -1,6 +1,6 @@
 ---
 date: '2023-08-31'
-title: 'Docker compose로 띄운 Kafka Log를 docker volume 사용해서 로컬에서 보기'
+title: 'Docker compose로 띄운 Kafka Log를 docker bindmount 사용해서 로컬에서 보기'
 categories: ['Docker', 'Kafka']
 summary: 'Docker!!!!!!!!!!! 너무 편해요..!'
 thumbnail: '../images/thumbnail/chocoball.webp'
@@ -8,7 +8,7 @@ thumbnail: '../images/thumbnail/chocoball.webp'
 ## 하게 된 이유
 카프카를 배워보려고 강의를 듣다가 VirtualBox와 Ubuntu로 설치하는 것이 힘들어보여서 Docker로 설치하였습니다.  
 
-그러다 보니 강의 개발 환경과 많이 달라졌었는데요. 강의에서 Kafka Log를 보는 일도 있다고 해서 이 때마다 로그를 확인하러 가기가 너무 시간이 오래 걸릴 것 같아서 로그를 docker volume을 사용해 로컬에서 바로 볼 수 있도록 해보겠습니다.
+그러다 보니 강의 개발 환경과 많이 달라졌었는데요. 강의에서 Kafka Log를 보는 일도 있다고 해서 이 때마다 로그를 확인하러 가기가 너무 시간이 오래 걸릴 것 같아서 로그를 docker bindmount을 사용해 로컬에서 바로 볼 수 있도록 해보겠습니다.
 
 ## 해결 과정
 먼저 로컬에 logs라는 디렉터리를 먼저 만들어줬습니다. 
@@ -109,7 +109,7 @@ services:
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
-    # Docker Volume
+    # Docker bindmount
 		volumes:
       - ./logs:/var/lib/kafka/data
 ```
@@ -122,4 +122,4 @@ services:
 ## 배운 점
 
 - docker compose에 root 권한을 줄 수 있습니다.
-- docker compose에 docker volume을 추가하는 방법을 깨달았습니다.
+- docker compose에 docker bindmount을 추가하는 방법을 깨달았습니다.
