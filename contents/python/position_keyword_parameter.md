@@ -87,7 +87,7 @@ result = safe_division(1.0, 10**500, ignore_overflow=True, ignore_zero_division=
 ```
 
 함수는 기존 예시코드 함수를 사용했습니다!  
-첫 번째 코드의 경우, 키워드 인자를 사용했지만 함수 정의에서 ignore_zero_division가 있는데 인자에서는 값을 정해주지 않아 오류가 발생했습니다. 이 경우 함수의 기본값을 정해주면 에러가 발생하지 않습니다.  
+첫 번째 문제 코드의 경우, 키워드 인자를 사용했지만 함수 정의에서 ignore_zero_division가 있는데 인자에서는 값을 정해주지 않아 오류가 발생했습니다. 이 경우 아래와 같이 함수의 기본값을 정해주면 에러가 발생하지 않습니다.  
 <div class="code-header">
 	<span class="red btn"></span>
 	<span class="yellow btn"></span>
@@ -100,7 +100,7 @@ def safe_division(number, divisor,
                   ignore_overflow,
                   ignore_zero_division=False):
 ```
-두 번째 코드의 경우에는 <mark>위치 인자가 키워드 인자 뒤에 와서 오류가 발생</mark>합니다. 
+두 번째 문제 코드의 경우에는 <mark>위치 인자가 키워드 인자 뒤에 와서 오류가 발생</mark>합니다. 
 나머지 경우는 정상적으로 잘 동작합니다.
 
 
