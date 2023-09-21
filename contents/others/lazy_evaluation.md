@@ -132,3 +132,64 @@ Lazy Evaluation을 통해 조건을 만족하면 반복문이 종료되는 것�
 이를 통해 효율성을 챙기는 것입니다.
 
 그럼 이번에는 메모리 관점으로 어떻게 무한한 자료구조를 쓸 수 있는지 보겠습니다.
+
+## Lazy Evaluation은 어떻게 무한한 자료구조를 만들 수 있을까?
+아래는 파이썬의 제너레이터로 작성한 자료구조와 리스트 컴프리헨션으로 만든 리스트의 메모리를 비교한 것입니다.
+<div class="code-header">
+	<span class="red btn"></span>
+	<span class="yellow btn"></span>
+	<span class="green btn"></span>
+</div>
+
+```python
+import sys
+
+# 제너레이터
+
+
+def generate_numbers():
+    for x in range(1000000):
+        yield x
+
+
+gen = generate_numbers()
+print(sys.getsizeof(gen), "bytes")
+
+
+numbers = [x for x in range(1000000)]
+print(sys.getsizeof(numbers), "bytes")
+
+```
+출력 결과
+```python
+112 bytes
+8448728 bytes
+```
+출력결과를 보면 알 수 있듯이 Lazy Evaluation을 활용한 제너레이터는 리스트로 만든 결과와는 다르게 메모리 차이가 큽니다.
+이는 Lazy Evaluation이 무한한 자료구조를 가질 수 있다는 단서가 됩니다!!  
+
+제너레이터의 동작을 보면, 제너레이터는 순차적으로 값이 필요할 때 생성하는 프로세스, 매커니즘에 가깝습니다. 
+그래서 다음 값이 필요할 때 값에 대한 연산을 하고 가져오기 때문에 메모리를 신경쓰지 않고 자료구조를 만들 수 있는 겁니다!
+
+즉 정리하자면, 리스트로 만든 자료구조는 미리 100만개의 정수 자료형을 메모리에 올리는 것이고 제너레이터는 100만 개를 처리할 프로세스를 만들고 그걸 메모리에 올린 뒤 필요할 때 가져다 쓰는 방식이라고 이해하시면 됩니다.
+
+## Lazy Evaluation이 쓰이는 곳
+Lazy evaluation은 다양한 컴퓨팅 분야에서 사용되며, 특히 다음과 같은 곳에서 사용됩니다!
+
+- <mark>함수형 프로그래밍 언어</mark>: Haskell(프로그래밍 언어)은 lazy evaluation을 기본 평가 전략으로 사용하는 가장 잘 알려진 함수형 프로그래밍 언어입니다. 여기서 lazy evaluation은 무한한 자료구조 생성, 고차원 함수 조합 등 다양한 표현력을 제공합니다.
+
+- <mark>스트림 처리</mark>: Java 8 이후의 Stream API나 Python의 generator와 같은 프로그래밍 언어의 특성에서 lazy evaluation이 사용됩니다. 이들은 필요할 때만 데이터를 처리하도록 설계되었습니다.
+
+- <mark>데이터베이스 시스템</mark>: 데이터베이스 쿼리의 최적화에서 lazy evaluation이 사용될 수 있습니다. 예를 들면, 특정 조건에 맞는 첫 번째 항목만 필요한 경우 전체 데이터셋을 스캔하지 않고, 조건을 만족하는 첫 번째 항목을 찾자마자 종료할 수 있습니다.
+
+- <mark>빅 데이터 처리</mark>: Apache Spark와 같은 빅 데이터 처리 프레임워크에서는 transformation 작업을 lazy하게 처리하고, 실제로 action이 호출될 때만 연산을 수행합니다. 이렇게 하면 연산의 최적화와 재사용이 가능합니다.
+
+- <mark>AI 및 기계 학습 프레임워크</mark>: Tensorflow나 PyTorch와 같은 딥러닝 프레임워크에서는 연산 그래프를 먼저 정의하고, 실제로 데이터가 흐를 때만 연산을 수행합니다. 이는 lazy evaluation의 일종으로 볼 수 있습니다.
+
+- <mark>웹 브라우저 렌더링</mark>: 웹 페이지의 컨텐츠 중 일부는 사용자가 스크롤하거나 특정 액션을 취할 때까지 로드되지 않을 수 있습니다. 이러한 "lazy loading"은 웹 페이지의 초기 로딩 시간을 단축하고 자원 사용을 최적화하는데 도움을 줍니다.
+
+
+## 정리
+이렇게 Lazy Evaluation을 알아보았는데요. 저도 이렇게 알아보면서 많이 알게되었습니다.  
+아무래도 대부분 프로그래밍하실 때는 Eager Evaluation을 생각하고 계실텐데요.  
+이렇게 Lazy Evaluation으로 동작하는 것인지, Eager Evaluation으로 동작할지 한 번씩은 고민해보는 게 좋을 것 같네요!
