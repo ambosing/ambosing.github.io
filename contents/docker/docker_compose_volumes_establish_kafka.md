@@ -115,7 +115,7 @@ services:
 ```
 이제 잘 되더군요!  
 `docker compose up`을 통해 이제 도커 컨테이너를 띄우고 logs 디렉터리를 확인해보겠습니다.
-![](../images/content/2023-08-31-22-13-18.png)
+![](../images/content/2023-08-31-22-13-18.webp)
 
 잘 들어가 있습니다!!
 

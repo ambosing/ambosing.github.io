@@ -156,9 +156,9 @@ ed9b09fc84b1   apache/airflow:2.6.3   "/usr/bin/dumb-init …"   3 minutes ago  
 status에 보면 정상적인 서비스들은 healthy라고 나오게 됩니다.  
 그런다음에 이제 http://localhost:8080 으로 들어가시게 되면 아래와 같이 로그인 창이 뜹니다.
 
-![airflow 화면](../images/content/2023-08-07-14-29-41.png)
+![airflow 화면](../images/content/2023-08-07-14-29-41.webp)
 그리고 로그인을 하고 나면 이러한 example DAGs가 존재합니다.
-![airflow example DAGs](../images/content/2023-08-24-09-20-12.png)
+![airflow example DAGs](../images/content/2023-08-24-09-20-12.webp)
 엄청나게 많은 example DAGs가 보이는데요. 만약 example DAGs가 필요없다면 제거해줄 수 있습니다.   
 
 docker-compose.yml 파일에서 AIRFLOW__CORE__LOAD_EXAMPLES가 true로 설정돼있는 것을 false로 변경하였습니다.  
@@ -167,7 +167,7 @@ docker-compose.yml 파일에서 AIRFLOW__CORE__LOAD_EXAMPLES가 true로 설정�
 
 그러고 나면 DAGs 페이지에 example DAG들이 모두 사라진 걸 알 수 있습니다.
 이로써 일단 EC2에 Docker Compose를 사용해서 Airflow를 띄웠습니다. 
-![](../images/content/2023-08-24-11-07-24.png)
+![](../images/content/2023-08-24-11-07-24.webp)
 <div class="source"> 현재 구축한 인프라 </div>
 
 
@@ -180,18 +180,18 @@ docker-compose.yml 파일에서 AIRFLOW__CORE__LOAD_EXAMPLES가 true로 설정�
 
 Github에 접속해 Airflow파일들이 담겨있는 Repository를 선택합니다.  
 그런 다음 아래와 같이 github settings 클릭합니다.
-![](../images/content/2023-08-25-09-10-13.png)
+![](../images/content/2023-08-25-09-10-13.webp)
 
 Settings에 들어오면 메인화면 좌측에 메뉴가 나옵니다.  
 여기서 빨간색으로 칠해진 버튼을 누르면 드롭다운이 됩니다.
-![](../images/content/2023-08-25-09-19-36.png)
+![](../images/content/2023-08-25-09-19-36.webp)
 
 그 다음은 버튼을 눌러줍니다!
-![](../images/content/2023-08-25-09-27-28.png)
+![](../images/content/2023-08-25-09-27-28.webp)
 
 그러면 Secret키를 등록할 수 있습니다.   
 여기에 이제 AWS SSH 키와 연결할 AWS HOST를 등록시켜주면 됩니다!
-![](../images/content/2023-08-25-09-29-50.png)
+![](../images/content/2023-08-25-09-29-50.webp)
 
 Git Action은 Yaml 파일을 통해 설정합니다.  
 .github/workflows 폴더 아래 파일이 위치해야 Github에서 워크플로우로 인식을 하도록 약속이 돼 있습니다!  
@@ -252,7 +252,7 @@ jobs:
 이렇게 Git Action을 통해 배포 자동화를 해보았습니다.  
 보통 개발을 하실 때 로컬에서 개발하시고 실제 서버에 배포하실텐데요.  
 보통 개발 하시는 구조가 이럴 것이라고 생각해서 한 번 만들어봤습니다!  
-![](../images/content/2023-08-25-11-20-02.png)
+![](../images/content/2023-08-25-11-20-02.webp)
 <div class="source"> 현재 구축한 인프라 </div>
 
 제 포스팅이 Airflow를 사용하시는 분들에게 도움이 됐으면 좋겠네요! 

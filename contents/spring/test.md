@@ -144,7 +144,7 @@ class TestLifeCycle {
 
 ## afterAll 호출
 ```
-![테스트 실행 결과](../images/content/2023-06-02-13-06-47.png)
+![테스트 실행 결과](../images/content/2023-06-02-13-06-47.webp)
 테스트 3는 Disable Annotation 때문에 실행이 되지 않았습니다!
 
 ## 좋은 테스트를 위한 이론!
