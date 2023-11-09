@@ -287,6 +287,7 @@ const MarkdownRenderer = styled.div`
 
   code[class*='language-'],
   pre[class*='language-'] {
+    font-family: 'JetBrains Mono', monospace;
     tab-size: 2;
   }
 
