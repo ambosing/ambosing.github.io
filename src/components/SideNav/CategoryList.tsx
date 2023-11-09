@@ -24,8 +24,7 @@ const CategoryListWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-top: 32px;
-  padding: 0 18px;
+  padding: 32px 18px;
 
   @media (max-width: 428px) {
     margin-top: 18px;
