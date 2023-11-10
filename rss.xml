@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[제멋대로맛 초코볼]]></title><description><![CDATA[이것저것 하고 싶은 개발자의 기술블로그]]></description><link>https://ambosing.github.io/</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 09 Nov 2023 08:45:49 GMT</lastBuildDate><author><![CDATA[Ambosing]]></author><item><title><![CDATA[Java 멀티 스레딩 환경에서 Data Race]]></title><description><![CDATA[아니 이런게 있었다니.. Data Race]]></description><link>https://ambosing.github.io/java/datarace/</link><guid isPermaLink="false">https://ambosing.github.io/java/datarace/</guid><category><![CDATA[Java]]></category><category><![CDATA[MultiThreading]]></category><category><![CDATA[Data Race]]></category><dc:creator><![CDATA[Ambosing]]></dc:creator><pubDate>Wed, 08 Nov 2023 15:00:00 GMT</pubDate><content:encoded>&lt;p&gt;오늘은 강의를 듣고 있다가 Data Race라는 용어를 처음들어봐서 이렇게 정리하게 되었습니다.&lt;br&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[제멋대로맛 초코볼]]></title><description><![CDATA[이것저것 하고 싶은 개발자의 기술블로그]]></description><link>https://ambosing.github.io/</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 10 Nov 2023 01:50:40 GMT</lastBuildDate><author><![CDATA[Ambosing]]></author><item><title><![CDATA[Java 멀티 스레딩 환경에서 Data Race]]></title><description><![CDATA[아니 이런게 있었다니.. Data Race]]></description><link>https://ambosing.github.io/java/datarace/</link><guid isPermaLink="false">https://ambosing.github.io/java/datarace/</guid><category><![CDATA[Java]]></category><category><![CDATA[MultiThreading]]></category><category><![CDATA[Data Race]]></category><dc:creator><![CDATA[Ambosing]]></dc:creator><pubDate>Wed, 08 Nov 2023 15:00:00 GMT</pubDate><content:encoded>&lt;p&gt;오늘은 강의를 듣고 있다가 Data Race라는 용어를 처음들어봐서 이렇게 정리하게 되었습니다.&lt;br&gt;
 멀티스레딩 환경에서 발생하는 문제입니다.&lt;br&gt;
 일단 이 글에서는 JAVA 기준으로 설명되어 있습니다. :)&lt;/p&gt;
 &lt;h2 id=&quot;멀티스레딩-환경에서의-공유자원&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%94%A9-%ED%99%98%EA%B2%BD%EC%97%90%EC%84%9C%EC%9D%98-%EA%B3%B5%EC%9C%A0%EC%9E%90%EC%9B%90&quot; aria-label=&quot;멀티스레딩 환경에서의 공유자원 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;멀티스레딩 환경에서의 공유자원&lt;/h2&gt;
 &lt;p&gt;Data Race를 이해하기 위해서는 먼저 멀티스레딩 환경에서 어떤 부분을 공유하고 있는지를 알고 있어야 합니다.&lt;br&gt;
-일단 메모리에 있는 Heap영역에 할당된 자원들은 모두 멀티스레딩 환경에서 공유되어집니다.&lt;/p&gt;
+일단 메모리에 있는 Heap영역에 할당된 자원들은 모두 멀티스레딩 환경에서 공유됩니다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;객체들&lt;/li&gt;
 &lt;li&gt;Class 멤버 변수&lt;/li&gt;
@@ -59,6 +59,7 @@
         &lt;/picture&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
+&lt;div class=&quot;source&quot;&gt;[혼공운체] 명령어 파이프라인 사용 X&lt;/div&gt;
 &lt;p&gt;명령어 파이프라인을 사용하면 아래와 같이 빠르게 실행할 수 있게 됩니다.&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
@@ -102,6 +103,7 @@
         &lt;/picture&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
+&lt;div class=&quot;source&quot;&gt;[혼공운체] 명령어 파이프라인 사용 O&lt;/div&gt;
 &lt;p&gt;&lt;mark&gt;비순차적 명령어 처리&lt;/mark&gt;는 명령어 파이프라인에서 사용되는 명령어 병렬처리 기법입니다.
 먼저 예시를 보며 이해를 돕겠습니다.&lt;/p&gt;
 &lt;p&gt;예를들어 아래와 같은 명령어들로 이루어진 소스 코드가 있다고 해봅시다.
@@ -197,8 +199,10 @@
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;이렇게 되면 4, 5, 6 명령어는 기다리지 않고, 바로 실행할 수 있게 됩니다.&lt;/p&gt;
 &lt;p&gt;아무 명령어나 순서를 바꾸지는 않고, 코드의 의존성으로 문제가 되지 않을 때만 변경합니다.&lt;/p&gt;
-&lt;h2 id=&quot;data-race가-발생하는-상황&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#data-race%EA%B0%80-%EB%B0%9C%EC%83%9D%ED%95%98%EB%8A%94-%EC%83%81%ED%99%A9&quot; aria-label=&quot;data race가 발생하는 상황 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Data Race가 발생하는 상황&lt;/h2&gt;
-&lt;p&gt;먼저 코드 예시를 보면서 Data Race가 발생하는 상황을 봅시다.&lt;/p&gt;
+&lt;h2 id=&quot;data-race&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#data-race&quot; aria-label=&quot;data race permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Data Race&lt;/h2&gt;
+&lt;p&gt;&lt;mark&gt;Data Race란 &lt;/mark&gt; 여러 프로세스/스레드가 공유된 데이터를 읽고 쓰는 작업을 할 때 실행 순서에 따라서 잘못된 값을 읽거나 쓰게 되는 상황입니다.&lt;/p&gt;
+&lt;h3 id=&quot;data-race가-발생하는-상황&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#data-race%EA%B0%80-%EB%B0%9C%EC%83%9D%ED%95%98%EB%8A%94-%EC%83%81%ED%99%A9&quot; aria-label=&quot;data race가 발생하는 상황 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Data Race가 발생하는 상황&lt;/h3&gt;
+&lt;p&gt;말로만 들으면 이해가 잘 되지 않으니 코드 예시를 보면서 Data Race가 발생하는 상황을 봅시다.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;java&quot;&gt;&lt;pre class=&quot;language-java&quot;&gt;&lt;code class=&quot;language-java&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;SharedClass&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
         &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; x &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// 공유 자원&lt;/span&gt;
         &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; y &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// 공유 자원&lt;/span&gt;
@@ -367,7 +371,7 @@ increment메서드의 내용을 한 번 다시 봅시다.&lt;/p&gt;
     x&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
     y&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;increment메서드의 안에 x++, y++은 서로 의존적이지 않습니다. 그래서 컴파일러 최적화 과정에서 비순차적 명령어 처리가 충분히 일어날 수 있는 부분입니다. &lt;mark&gt;그래서 x++, y++ 순서대로 처리가 되는 것이 아닌 비순차적 처리 때문에 y++, x++로 처리가 되는 것이죠.&lt;/mark&gt;
+&lt;p&gt;increment메서드의 안에 x++, y++은 서로 의존적이지 않습니다. 그래서 컴파일러 최적화 과정에서 비순차적 명령어 처리가 충분히 일어날 수 있는 부분입니다. &lt;mark&gt;그래서 x++, y++ 순서대로 처리가 되는 것이 아닌 비순차적 처리 때문에 y++, x++로 처리가 되는 경우가 있어 Data Race가 발생하게 됩니다.&lt;/mark&gt;
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
       style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; &quot;
@@ -418,31 +422,31 @@ increment메서드의 내용을 한 번 다시 봅시다.&lt;/p&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;h2 id=&quot;data-race-해결-방법&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#data-race-%ED%95%B4%EA%B2%B0-%EB%B0%A9%EB%B2%95&quot; aria-label=&quot;data race 해결 방법 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Data Race 해결 방법&lt;/h2&gt;
 &lt;p&gt;Data Race의 해결 방법에는 두 가지가 있습니다.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;mark&gt;메서드에 Synchroized 키워드 사용하기&lt;/mark&gt;
+&lt;details&gt;&lt;summary&gt;&lt;mark&gt;메서드에 Synchroized 키워드 사용하기&lt;/mark&gt;&lt;/summary&gt;
 &lt;ul&gt;
 &lt;li&gt;한 번에 하나의 스레드만이 블록 또는 메서드에 진입할 수 있도록 보장합니다.&lt;/li&gt;
 &lt;li&gt;임계 영역에 진입하는 스레드는 다른 스레드가 해당 블록 또는 메서드에 접근하지 못하게 합니다.&lt;/li&gt;
 &lt;li&gt;락을 사용하여 동기화를 구현하므로 상대적으로 무겁고 오버헤드가 큽니다.&lt;/li&gt;
-&lt;li&gt;코드 블록이나 메서드 내에서 사용되며, 메서드에 적용할 경우 전체 메서드가 동기화됩니다.&lt;/li&gt;
-&lt;/ul&gt;
+&lt;li&gt;코드 블록이나 메서드 내에서 사용되며, 메서드에 적용할 경우 전체 메서드가 동기화됩니다.
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;java&quot;&gt;&lt;pre class=&quot;language-java&quot;&gt;&lt;code class=&quot;language-java&quot;&gt;  &lt;span class=&quot;token keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;synchronized&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;synchronizedMethod&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
 &lt;span class=&quot;token comment&quot;&gt;// 동기화된 메서드 내용&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;mark&gt;변수에 Volatile 키워드 사용하기&lt;/mark&gt;
+&lt;/ul&gt;
+&lt;/details&gt;
+&lt;br&gt;
+&lt;details&gt;&lt;summary&gt;&lt;mark&gt;변수에 Volatile 키워드 사용하기&lt;/mark&gt;&lt;/summary&gt;
 &lt;ul&gt;
 &lt;li&gt;변수를 메모리에서 읽거나 쓸 때 항상 메인 메모리를 참조하도록 보장합니다.&lt;/li&gt;
 &lt;li&gt;캐시된 값 사용을 방지하여 변수의 일관성을 제공합니다.&lt;/li&gt;
 &lt;li&gt;volatile 키워드를 사용한 변수는 원자적으로 읽기 및 쓰기 연산이 수행됩니다.&lt;/li&gt;
 &lt;li&gt;단순한 변수의 상태를 보장하며, 복합 연산에 대해서는 synchronized가 더 적합합니다.&lt;/li&gt;
-&lt;li&gt;비순차적 명령어 처리하는 경우,&lt;/li&gt;
-&lt;/ul&gt;
+&lt;li&gt;비순차적 명령어 처리하는 경우,&lt;br&gt;
 volatile 변수에 대한 쓰기 명령 이전의 명령들은 reordering 이후에도 volatile 변수에 대한 쓰기 명령 이전에 실행되도록 유지됩니다.&lt;br&gt;
 volatile 변수에 대한 읽기 명령 이후의 명령들은 reordeing 이후에도 volatile 변수에 대한 읽기 명령 이후에 실행되도록 유지합니다.&lt;br&gt;
 -&gt; 즉, 비순차적 명령어 처리가 발생하지 않는 것을 의미합니다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;/ul&gt;
 &lt;div class=&quot;code-header&quot;&gt;
    &lt;span class=&quot;red btn&quot;&gt;&lt;/span&gt;
    &lt;span class=&quot;yellow btn&quot;&gt;&lt;/span&gt;
@@ -455,6 +459,7 @@ volatile 변수에 대한 읽기 명령 이후의 명령들은 reordeing 이후�
   &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// volatile 명령어 이후에 있는 명령어들은 volatile 명령어 접근 후에 실행되도록 보장&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/details&gt;
 &lt;hr&gt;
 &lt;p&gt;여기서는 두 개의 스레드로 한 메서드를 실행하는 Race Condition이 아니므로 두 메서드에 Synchronize 키워드로 동시 실행을 막지 않아도 됩니다. 그래서 Lock를 덜 잡는 Volatile를 사용해서 Data Race를 해결해보겠습니다.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;java&quot;&gt;&lt;pre class=&quot;language-java&quot;&gt;&lt;code class=&quot;language-java&quot;&gt;
@@ -479,7 +484,8 @@ volatile 변수에 대한 읽기 명령 이후의 명령들은 reordeing 이후�
 이러한 Data Race를 해결하기 위해서는 Synchronized, Volatile을 적용할 수 있습니다.&lt;/p&gt;
 &lt;p&gt;참고한 사이트&lt;br&gt;
 Volatile : &lt;a href=&quot;https://ttl-blog.tistory.com/238&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;말랑님 블로그&lt;/a&gt;&lt;br&gt;
-Data Race : &lt;a href=&quot;https://www.udemy.com/course/java-multi-threading/&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;Udemy 강의&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Lazy Evaluation 지연 계산법]]></title><description><![CDATA[지연 계산법 너는 무엇이냐!]]></description><link>https://ambosing.github.io/others/lazy_evaluation/</link><guid isPermaLink="false">https://ambosing.github.io/others/lazy_evaluation/</guid><category><![CDATA[Others]]></category><dc:creator><![CDATA[Ambosing]]></dc:creator><pubDate>Tue, 19 Sep 2023 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;들어가며&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%93%A4%EC%96%B4%EA%B0%80%EB%A9%B0&quot; aria-label=&quot;들어가며 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;들어가며&lt;/h2&gt;
+Data Race : &lt;a href=&quot;https://www.udemy.com/course/java-multi-threading/&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;Udemy 강의&lt;/a&gt;&lt;br&gt;
+명령어 파이프라인 : 혼자 공부하는 컴퓨터 구조 및 운영체제&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Lazy Evaluation 지연 계산법]]></title><description><![CDATA[지연 계산법 너는 무엇이냐!]]></description><link>https://ambosing.github.io/others/lazy_evaluation/</link><guid isPermaLink="false">https://ambosing.github.io/others/lazy_evaluation/</guid><category><![CDATA[Others]]></category><dc:creator><![CDATA[Ambosing]]></dc:creator><pubDate>Tue, 19 Sep 2023 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;들어가며&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%93%A4%EC%96%B4%EA%B0%80%EB%A9%B0&quot; aria-label=&quot;들어가며 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;들어가며&lt;/h2&gt;
 &lt;p&gt;Lazy Evaluation은 예전에 조건문에서 두 개의 조건이 존재할 때 AND에서는 앞 조건이 False라고 하는 경우 뒤 조건을 안하는 경우를 Early Termination이라고 들은 적이 있었습니다. 그 때 비슷한 최적화의 형태로 Lazy Evaluation가 있다고 들었었는데요.&lt;br&gt;
 뭔가 다른 건가 싶기도 했었습니다. 한참 데이터 쪽으로 공부하고 있을 때 spark에 대해서 공부한 적이 있었는데요. spark는 Lazy Evaluation을 지원해서 좋다고 합니다. 아니 그래서 뭐가 좋은건지도 모르지 말고 이번에는 공부하면서 블로그에 정리하려고 합니다. &lt;del&gt;역시 공부는 호기심&lt;/del&gt;&lt;/p&gt;
 &lt;p&gt;참고:&lt;br&gt;
