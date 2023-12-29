@@ -45,8 +45,10 @@ const MarkdownRenderer = styled.div`
     margin: 16px 0;
   }
 
-  img {
+  .gatsby-resp-image-image,
+  .gatsby-resp-image-wrapper {
     border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   }
 
   a.anchor.before {
